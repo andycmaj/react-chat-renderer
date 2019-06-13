@@ -24,7 +24,7 @@ jobs:
       - run: *install
       - save-cache: *save-cache
       - run:
-          command: yarn test-ci
+          command: yarn test
       - store_test_results:
           path: reports/junit
 
