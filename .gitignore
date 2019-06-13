@@ -1,0 +1,9 @@
+node_modules
+dist
+coverage
+.nyc_output
+*.lcov
+*.log
+package-lock.json
+.env
+.DS_Store
