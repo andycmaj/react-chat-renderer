@@ -1,14 +1,11 @@
 export default class Block {
-  constructor(root, props, blockType, blockId) {
+  constructor(root, props, blockType) {
     this.root = root;
     this.props = props;
     this.blockType = blockType;
-    this.blockId = blockId;
   }
 
-  appendChild(child) {
-    console.log(`${this.blockType}.super.appendChild`, child);
-  }
+  appendChild(child) {}
 
   renderBlock() {}
 
@@ -18,10 +15,13 @@ export default class Block {
       ...this.renderBlock(),
     };
 
-    if (!!this.blockId) {
-      block.block_id = this.blockId;
+    if (!!this.props.blockId) {
+      block.block_id = this.props.blockId;
     }
 
+    // TODO: probably the parent Message should be responsible for
+    // adding this block to an array it maintains, as opposed to
+    // cheating and doing a deep merge... maybe?
     return {
       blocks: [block],
     };

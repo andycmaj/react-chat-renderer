@@ -1,21 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renderer renders Hello, world 1`] = `
+exports[`renderer renders a Block component without a parent Message 1`] = `
 Object {
-  "response_type": "in_channel",
-  "text": "Hello, world",
+  "blocks": Array [
+    Object {
+      "block_id": "section1",
+      "text": Object {
+        "text": Object {
+          "emoji": true,
+          "text": "section \`\`\`code\`\`\`",
+          "type": "plain_text",
+          "verbatim": true,
+        },
+      },
+      "type": "section",
+    },
+  ],
 }
 `;
 
-exports[`renderer renders an array of Blocks 1`] = `
+exports[`renderer renders a ButtonElement 1`] = `
+Object {
+  "action_id": "doAThing",
+  "style": undefined,
+  "text": "Go!",
+  "type": "button",
+  "url": undefined,
+  "value": undefined,
+}
+`;
+
+exports[`renderer renders a Message with Hello, world text 1`] = `
+Object {
+  "response_type": "in_channel",
+  "text": Object {
+    "emoji": false,
+    "text": "Hello, world",
+    "type": "mrkdwn",
+    "verbatim": false,
+  },
+}
+`;
+
+exports[`renderer renders a Message with an array of Blocks 1`] = `
 Object {
   "blocks": Array [
+    Object {
+      "text": Object {
+        "text": Object {
+          "emoji": true,
+          "text": "section text :sadkeanu:",
+          "type": "plaintext",
+          "verbatim": false,
+        },
+      },
+      "type": "section",
+    },
     Object {
       "type": "divider",
     },
     Object {
+      "block_id": "section1",
       "text": Object {
-        "text": "section text",
+        "text": Object {
+          "emoji": false,
+          "text": "section \`\`\`code\`\`\`",
+          "type": "mrkdwn",
+          "verbatim": false,
+        },
       },
       "type": "section",
     },

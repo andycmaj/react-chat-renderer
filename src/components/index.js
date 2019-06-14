@@ -3,6 +3,8 @@ import Text from './Text';
 import Root from './Root';
 import DividerBlock from './DividerBlock';
 import SectionBlock from './SectionBlock';
+import ButtonElement from './ButtonElement';
+import ImageElement from './ImageElement';
 
 const constructors = {
   ROOT: Root,
@@ -10,6 +12,8 @@ const constructors = {
   MESSAGE: Message,
   DIVIDER_BLOCK: DividerBlock,
   SECTION_BLOCK: SectionBlock,
+  BUTTON_ELEMENT: ButtonElement,
+  IMAGE_ELEMENT: ImageElement,
 };
 
 export function createInstance(element, root) {
