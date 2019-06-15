@@ -4,7 +4,7 @@ import { createInstance } from './components';
 
 const reconciler = Reconciler(hostConfig);
 
-const RendererPublicAPI = {
+const SlackRenderer = {
   render(element /*, container, callback */) {
     // element: This is the react element for Message component
     // renderDom: This is the host root element to which the rendered app will be attached.
@@ -20,4 +20,4 @@ const RendererPublicAPI = {
   },
 };
 
-export default RendererPublicAPI;
+export default SlackRenderer;

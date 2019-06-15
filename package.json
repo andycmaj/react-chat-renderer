@@ -3,8 +3,13 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "postversion": "npm publish",
+    "preversion": "npm test",
+    "test": "jest",
+    "build": "babel src/ --out-dir lib/ --ignore \"src/**/*.test.js\" --source-maps",
+    "prepare": "npm run build"
   },
+  "main": "index.js",
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
