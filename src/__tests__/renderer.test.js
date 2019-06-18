@@ -7,7 +7,6 @@ import {
   DividerBlock,
   SectionBlock,
   ButtonElement,
-  // ImageElement,
 } from '../index';
 
 describe('renderer', () => {

@@ -47,6 +47,14 @@ exports[`renderer renders a Message with an array of Blocks 1`] = `
 Object {
   "blocks": Array [
     Object {
+      "accessory": Object {
+        "action_id": "doAThing",
+        "style": undefined,
+        "text": "Go!",
+        "type": "button",
+        "url": undefined,
+        "value": undefined,
+      },
       "text": Object {
         "emoji": true,
         "text": "section text :sadkeanu:",

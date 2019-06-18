@@ -55,7 +55,12 @@ export default {
   If it returns false, getChildHostContext and shouldSetTextContent will be called on the child elements and it will continue till shouldSetTextContent returns true or if the recursion reaches the last tree endpoint which usually is a text node. When it reaches the last leaf text node it will call createTextInstance
   */
   shouldSetTextContent(type, props) {
-    const textNodeTypes = ['TEXT', 'PLAIN_TEXT', 'MARKDOWN_TEXT'];
+    const textNodeTypes = [
+      'TEXT',
+      'PLAIN_TEXT',
+      'MARKDOWN_TEXT',
+      'BUTTON_ELEMENT',
+    ];
     return textNodeTypes.includes(type);
   },
 

@@ -21,9 +21,22 @@ const constructors = {
 export function createInstance(element, root) {
   const { type, props = {} } = element;
 
-  if (constructors[type]) {
-    return new constructors[type](root, props);
+  const instanceProps = {};
+
+  for (let propName of Object.keys(props)) {
+    if (propName === 'children') {
+      continue;
+    }
+
+    let prop = props[propName];
+    if (constructors[prop.type]) {
+      instanceProps[propName] = new constructors[prop.type](root, prop.props);
+    }
   }
 
-  throw new Error(`Invalid element of type ${type} passed to PDF renderer`);
+  if (constructors[type]) {
+    return new constructors[type](root, { ...props, ...instanceProps });
+  }
+
+  throw new Error(`Invalid element of type ${type} passed to createInstance`);
 }

@@ -1,6 +1,6 @@
 {
   "name": "react-slack-renderer",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "license": "MIT",
   "scripts": {
     "postversion": "npm publish",
@@ -17,7 +17,8 @@
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
-    "react-reconciler": "^0.20.4"
+    "react-reconciler": "^0.20.4",
+    "react": "^16.8.6"
   },
   "peerDependencies": {
     "react": "^16.8.6"

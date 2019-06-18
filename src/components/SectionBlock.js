@@ -13,19 +13,28 @@ export default class SectionBlock extends Block {
   };
 
   constructor(root, props) {
-    super(root, props, 'section');
+    super(
+      root,
+      // { ...props, children: [props.children, props.accessory] },
+      props,
+      'section'
+    );
 
     this.instance = new Map();
+
+    if (props.accessory) {
+      this.appendChild(props.accessory);
+    }
   }
 
   appendChild(child) {
-    if (!(child instanceof Text)) {
-      throw new Error('child not supported yet');
+    if (child instanceof BlockElement) {
+      this.instance = this.instance.set('accessory', child.render());
+    } else if (child instanceof Text) {
+      this.instance = this.instance.set('text', child.render());
+    } else {
+      throw new Error(`child not supported yet: ${typeof child}`);
     }
-
-    // TODO: validate singleton text (invariant?)
-
-    this.instance = this.instance.set('text', child.render());
   }
 
   renderBlock() {
