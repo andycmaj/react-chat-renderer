@@ -1,6 +1,6 @@
 {
   "name": "react-slack-renderer",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "license": "MIT",
   "scripts": {
     "postversion": "npm publish",
@@ -10,22 +10,29 @@
     "prepare": "npm run build"
   },
   "main": "index.js",
+  "files": [
+    "/lib",
+    "index.js"
+  ],
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
     "react-reconciler": "^0.20.4"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
   },
   "devDependencies": {
     "@babel/cli": "7.4.4",
     "@babel/core": "7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-prettier": "^5.0.0",
     "eslint-config-standard-react": "^7.0.2",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.8.0",

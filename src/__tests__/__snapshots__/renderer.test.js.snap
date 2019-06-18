@@ -6,12 +6,10 @@ Object {
     Object {
       "block_id": "section1",
       "text": Object {
-        "text": Object {
-          "emoji": true,
-          "text": "section \`\`\`code\`\`\`",
-          "type": "plain_text",
-          "verbatim": true,
-        },
+        "emoji": true,
+        "text": "section \`\`\`code\`\`\`",
+        "type": "plain_text",
+        "verbatim": true,
       },
       "type": "section",
     },
@@ -32,13 +30,11 @@ Object {
 
 exports[`renderer renders a Message with Hello, world text 1`] = `
 Object {
+  "emoji": false,
   "response_type": "in_channel",
-  "text": Object {
-    "emoji": false,
-    "text": "Hello, world",
-    "type": "mrkdwn",
-    "verbatim": false,
-  },
+  "text": "Hello, world",
+  "type": "mrkdwn",
+  "verbatim": false,
 }
 `;
 
@@ -47,12 +43,10 @@ Object {
   "blocks": Array [
     Object {
       "text": Object {
-        "text": Object {
-          "emoji": true,
-          "text": "section text :sadkeanu:",
-          "type": "plaintext",
-          "verbatim": false,
-        },
+        "emoji": true,
+        "text": "section text :sadkeanu:",
+        "type": "plaintext",
+        "verbatim": false,
       },
       "type": "section",
     },
@@ -62,12 +56,10 @@ Object {
     Object {
       "block_id": "section1",
       "text": Object {
-        "text": Object {
-          "emoji": false,
-          "text": "section \`\`\`code\`\`\`",
-          "type": "mrkdwn",
-          "verbatim": false,
-        },
+        "emoji": false,
+        "text": "section \`\`\`code\`\`\`",
+        "type": "mrkdwn",
+        "verbatim": false,
       },
       "type": "section",
     },

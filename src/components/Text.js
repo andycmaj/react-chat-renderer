@@ -26,6 +26,6 @@ export default class Text {
 
   render() {
     const { type, emoji, verbatim, children: text } = this.props;
-    return { text: { type, emoji, verbatim, text } };
+    return { type, emoji, verbatim, text };
   }
 }
