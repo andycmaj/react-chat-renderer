@@ -25,6 +25,17 @@ export default class ButtonElement extends BlockElement {
       value, // TODO: assume value is an object and JSON.serialize?
       style,
     } = this.props;
-    return { text, action_id, url, value, style };
+    return {
+      text: {
+        // plain_text only allowed in button text.
+        type: 'plain_text',
+        emoji: true,
+        text,
+      },
+      action_id,
+      url,
+      value,
+      style,
+    };
   }
 }

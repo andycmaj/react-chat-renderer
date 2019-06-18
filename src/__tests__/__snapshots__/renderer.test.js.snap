@@ -20,7 +20,11 @@ exports[`renderer renders a ButtonElement 1`] = `
 Object {
   "action_id": "doAThing",
   "style": undefined,
-  "text": "Go!",
+  "text": Object {
+    "emoji": true,
+    "text": "Go!",
+    "type": "plain_text",
+  },
   "type": "button",
   "url": undefined,
   "value": undefined,
@@ -50,7 +54,11 @@ Object {
       "accessory": Object {
         "action_id": "doAThing",
         "style": undefined,
-        "text": "Go!",
+        "text": Object {
+          "emoji": true,
+          "text": "Go!",
+          "type": "plain_text",
+        },
         "type": "button",
         "url": undefined,
         "value": undefined,

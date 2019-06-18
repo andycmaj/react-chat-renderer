@@ -30,7 +30,7 @@ export function createInstance(element, root) {
 
     let prop = props[propName];
     if (constructors[prop.type]) {
-      instanceProps[propName] = new constructors[prop.type](root, prop.props);
+      instanceProps[propName] = createInstance(prop, root);
     }
   }
 
