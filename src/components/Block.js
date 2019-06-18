@@ -15,7 +15,7 @@ export default class Block {
       ...this.renderBlock(),
     };
 
-    if (!!this.props.blockId) {
+    if (this.props.blockId) {
       block.block_id = this.props.blockId;
     }
 

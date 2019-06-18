@@ -19,6 +19,7 @@ export default class ButtonElement extends BlockElement {
   renderElement() {
     const {
       children: text,
+      // eslint-disable-next-line camelcase
       actionId: action_id,
       url,
       value, // TODO: assume value is an object and JSON.serialize?

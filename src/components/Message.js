@@ -24,6 +24,7 @@ export default class Message {
   }
 
   render() {
+    // eslint-disable-next-line camelcase
     const { responseType: response_type } = this.props;
 
     return {

@@ -2,11 +2,12 @@ import React from 'react';
 import SlackRenderer from '../renderer';
 import {
   Message,
-  Text,
+  PlainText,
+  MarkdownText,
   DividerBlock,
   SectionBlock,
   ButtonElement,
-  ImageElement,
+  // ImageElement,
 } from '../index';
 
 describe('renderer', () => {
@@ -14,7 +15,9 @@ describe('renderer', () => {
     expect(
       SlackRenderer.render(
         <Message responseType="in_channel">
-          <Text>Hello, world</Text>
+          <SectionBlock>
+            <PlainText emoji>Hello, world</PlainText>
+          </SectionBlock>
         </Message>
       )
     ).toMatchSnapshot();
@@ -27,13 +30,11 @@ describe('renderer', () => {
           <SectionBlock
             accessory={<ButtonElement actionId="doAThing">Go!</ButtonElement>}
           >
-            <Text type="plaintext" emoji={true}>
-              section text :sadkeanu:
-            </Text>
+            <PlainText emoji>section text :sadkeanu:</PlainText>
           </SectionBlock>
           <DividerBlock />
           <SectionBlock blockId="section1">
-            <Text type="mrkdwn">section ```code```</Text>
+            <MarkdownText>```code```</MarkdownText>
           </SectionBlock>
         </Message>
       )
@@ -44,9 +45,7 @@ describe('renderer', () => {
     expect(
       SlackRenderer.render(
         <SectionBlock blockId="section1">
-          <Text type="plain_text" verbatim={true} emoji={true}>
-            section ```code```
-          </Text>
+          <PlainText emoji>section ```code```</PlainText>
         </SectionBlock>
       )
     ).toMatchSnapshot();

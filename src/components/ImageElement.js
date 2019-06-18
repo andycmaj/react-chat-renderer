@@ -13,6 +13,7 @@ export default class ImageElement extends BlockElement {
   }
 
   renderElement() {
+    // eslint-disable-next-line camelcase
     const { imageUrl: image_url, altText: alt_text } = this.props;
     return { image_url, alt_text };
   }

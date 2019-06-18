@@ -1,14 +1,16 @@
 import Message from './Message';
-import Text from './Text';
 import Root from './Root';
 import DividerBlock from './DividerBlock';
 import SectionBlock from './SectionBlock';
 import ButtonElement from './ButtonElement';
 import ImageElement from './ImageElement';
+import PlainText from './PlainText';
+import MarkdownText from './MarkdownText';
 
 const constructors = {
   ROOT: Root,
-  TEXT: Text,
+  PLAIN_TEXT: PlainText,
+  MARKDOWN_TEXT: MarkdownText,
   MESSAGE: Message,
   DIVIDER_BLOCK: DividerBlock,
   SECTION_BLOCK: SectionBlock,
