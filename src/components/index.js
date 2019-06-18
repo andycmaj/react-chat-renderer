@@ -23,6 +23,11 @@ export function createInstance(element, root) {
 
   const instanceProps = {};
 
+  // 3rd party react renderers don't support components as props,
+  // so let's recursively check for any component-props we have
+  // and manually replace the Element with an instance of the Component
+  // class. Since we don't REALLY have to do any reconciling, this
+  // shouldn't be a problem.
   for (let propName of Object.keys(props)) {
     if (propName === 'children') {
       continue;
