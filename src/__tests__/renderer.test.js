@@ -13,7 +13,11 @@ describe('renderer', () => {
   it('renders a Message with Hello, world text', () => {
     expect(
       SlackRenderer.render(
-        <Message responseType="in_channel">
+        <Message
+          token="test_token"
+          channel="test_channel"
+          responseType="in_channel"
+        >
           <SectionBlock>
             <PlainText emoji>Hello, world</PlainText>
           </SectionBlock>
@@ -25,7 +29,7 @@ describe('renderer', () => {
   it('renders a Message with an array of Blocks', () => {
     expect(
       SlackRenderer.render(
-        <Message>
+        <Message token="test_token" channel="test_channel">
           <SectionBlock
             accessory={<ButtonElement actionId="doAThing">Go!</ButtonElement>}
           >

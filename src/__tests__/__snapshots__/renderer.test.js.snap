@@ -33,6 +33,7 @@ Object {
 
 exports[`renderer renders a Message with Hello, world text 1`] = `
 Object {
+  "as_user": false,
   "blocks": Array [
     Object {
       "text": Object {
@@ -43,12 +44,15 @@ Object {
       "type": "section",
     },
   ],
+  "channel": "test_channel",
   "response_type": "in_channel",
+  "token": "test_token",
 }
 `;
 
 exports[`renderer renders a Message with an array of Blocks 1`] = `
 Object {
+  "as_user": false,
   "blocks": Array [
     Object {
       "accessory": Object {
@@ -83,6 +87,8 @@ Object {
       "type": "section",
     },
   ],
+  "channel": "test_channel",
   "response_type": "ephemeral",
+  "token": "test_token",
 }
 `;

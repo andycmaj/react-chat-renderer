@@ -6,10 +6,14 @@ export default class Message {
   static propTypes = {
     // https://api.slack.com/messaging/interactivity/enabling#publishing_ephemeral_response
     responseType: PropTypes.oneOf(['ephemeral', 'in_channel']),
+    asUser: PropTypes.bool,
+    channel: PropTypes.string.isRequired,
+    token: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
     responseType: 'ephemeral',
+    asUser: false,
   };
 
   constructor(root, props) {
@@ -24,11 +28,20 @@ export default class Message {
   }
 
   render() {
-    // eslint-disable-next-line camelcase
-    const { responseType: response_type } = this.props;
+    const {
+      // eslint-disable-next-line camelcase
+      asUser: as_user,
+      // eslint-disable-next-line camelcase
+      responseType: response_type,
+      channel,
+      token,
+    } = this.props;
 
     return {
       response_type,
+      channel,
+      as_user,
+      token,
       ...this.instance.toJS(),
     };
   }
