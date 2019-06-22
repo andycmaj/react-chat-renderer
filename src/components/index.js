@@ -6,6 +6,7 @@ import ButtonElement from './ButtonElement';
 import ImageElement from './ImageElement';
 import PlainText from './PlainText';
 import MarkdownText from './MarkdownText';
+import ProgressBar from './ProgressBar';
 
 const constructors = {
   ROOT: Root,
@@ -16,6 +17,7 @@ const constructors = {
   SECTION_BLOCK: SectionBlock,
   BUTTON_ELEMENT: ButtonElement,
   IMAGE_ELEMENT: ImageElement,
+  PROGRESS_BAR: ProgressBar,
 };
 
 export function createInstance(element, root) {

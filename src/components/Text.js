@@ -15,9 +15,7 @@ export default class Text {
     throw new Error('Text should not have component children.');
   }
 
-  renderText() {
-    return {};
-  }
+  renderText() {}
 
   render() {
     const { type, children: text } = this.props;

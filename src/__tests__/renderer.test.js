@@ -7,6 +7,7 @@ import {
   DividerBlock,
   SectionBlock,
   ButtonElement,
+  ProgressBar,
 } from '../index';
 
 describe('renderer', () => {
@@ -60,5 +61,34 @@ describe('renderer', () => {
         <ButtonElement actionId="doAThing">Go!</ButtonElement>
       )
     ).toMatchSnapshot();
+  });
+
+  it('renders Markdown with a ProgressBar', () => {
+    expect(
+      SlackRenderer.render(
+        <MarkdownText>
+          progress: <ProgressBar columnWidth="10" total="300" value="200" />
+        </MarkdownText>
+      )
+    ).toEqual({
+      type: 'mrkdwn',
+      text: 'progress: ▇▇▇▇▇▇▇',
+      verbatim: false,
+    });
+  });
+
+  it('renders a Red ProgressBar', () => {
+    expect(
+      SlackRenderer.render(
+        <MarkdownText>
+          progress:{' '}
+          <ProgressBar columnWidth="10" total="300" value="200" color="red" />
+        </MarkdownText>
+      )
+    ).toEqual({
+      type: 'mrkdwn',
+      text: 'progress: `▇▇▇▇▇▇▇`',
+      verbatim: false,
+    });
   });
 });

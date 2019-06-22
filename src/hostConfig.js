@@ -14,7 +14,7 @@ export default {
   },
 
   createTextInstance(text, rootContainerInstance) {
-    return emptyObject;
+    return text;
   },
 
   finalizeInitialChildren(element, type, props) {
@@ -58,7 +58,7 @@ export default {
     const textNodeTypes = [
       'TEXT',
       'PLAIN_TEXT',
-      'MARKDOWN_TEXT',
+      // 'MARKDOWN_TEXT',
       'BUTTON_ELEMENT',
     ];
     return textNodeTypes.includes(type);
