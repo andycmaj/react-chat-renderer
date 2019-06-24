@@ -1,5 +1,7 @@
 # React-slack-renderer
 
+[![npm version](https://img.shields.io/npm/v/react-slack-renderer.svg?style=for-the-badge)](https://npmjs.org/package/react-slack-renderer "View this project on npm")
+
 ## Design Principles
 
 * Support for Slack's new Blocks API first

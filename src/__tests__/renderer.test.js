@@ -72,7 +72,7 @@ describe('renderer', () => {
       )
     ).toEqual({
       type: 'mrkdwn',
-      text: 'progress: ▇▇▇▇▇▇▇',
+      text: 'progress: ▓▓▓▓▓▓▓░░░',
       verbatim: false,
     });
   });
@@ -87,7 +87,7 @@ describe('renderer', () => {
       )
     ).toEqual({
       type: 'mrkdwn',
-      text: 'progress: `▇▇▇▇▇▇▇`',
+      text: 'progress: `▓▓▓▓▓▓▓░░░`',
       verbatim: false,
     });
   });

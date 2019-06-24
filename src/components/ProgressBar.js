@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import Span from './Span';
 
-const SEGMENT_CHAR = '▇';
+const COMPLETED_CHAR = '▓';
+const INCOMPLETE_CHAR = '░';
 
 // https://api.slack.com/reference/messaging/composition-objects#text
 export default class ProgressBar extends Span {
@@ -23,8 +24,11 @@ export default class ProgressBar extends Span {
 
   render() {
     const { color, total, value, columnWidth } = this.props;
-    const segmentCount = Math.ceil((value / total) * columnWidth);
-    const segments = SEGMENT_CHAR.repeat(segmentCount);
+    const completedCount = Math.ceil((value / total) * columnWidth);
+    const incompleteCount = columnWidth - completedCount;
+    const segments =
+      COMPLETED_CHAR.repeat(completedCount) +
+      INCOMPLETE_CHAR.repeat(incompleteCount);
 
     return color === 'red' ? `\`${segments}\`` : segments;
   }
