@@ -9,6 +9,7 @@
     "build": "babel src/ --out-dir lib/ --ignore \"src/**/*.test.js\" --source-maps",
     "prepare": "npm run build"
   },
+  "repository": "https://github.com/andycmaj/react-chat-renderer",
   "main": "index.js",
   "files": [
     "/lib",
