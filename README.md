@@ -1,6 +1,6 @@
-# React-slack-renderer
+# React-chat-renderer
 
-[![npm version](https://img.shields.io/npm/v/react-slack-renderer.svg?style=for-the-badge)](https://npmjs.org/package/react-slack-renderer "View this project on npm")
+[![npm version](https://img.shields.io/npm/v/react-chat-renderer.svg?style=for-the-badge)](https://npmjs.org/package/react-chat-renderer "View this project on npm")
 
 I wanted to build rich, interactive Slack and Discord workflows in a familiar idiom. Hence, a custom React renderer for declarative chat interactions.
 
