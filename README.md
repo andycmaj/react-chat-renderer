@@ -52,6 +52,8 @@ const json = SlackRenderer.render(message);
 
 ### Rendered JSON Message
 
+![slack message](https://www.dropbox.com/s/gheqc7lnmgytuzd/slack-message.png?dl=0)
+
 ```json
 {
     "response_type": "in_channel",
