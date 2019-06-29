@@ -2,27 +2,47 @@
 
 [![npm version](https://img.shields.io/npm/v/react-slack-renderer.svg?style=for-the-badge)](https://npmjs.org/package/react-slack-renderer "View this project on npm")
 
+I wanted to build rich, interactive Slack and Discord workflows in a familiar idiom. Hence, a custom React renderer for declarative chat interactions.
+
 ## Design Principles
 
-* Support for Slack's new Blocks API first
+* Support Slack's new [Interactive Messaging Workflows](https://api.slack.com/messaging/interactivity).
   * Attachments considered legacy/obsolete
-* Components are stateless. Follow a flux model. Props only, and map events to actions.
+* Components are stateless, but message handlers will follow a redux/flux model. Props only, and map event handlers to actions.
 * Each Component encapsulates a parent-agnostic view of a Slack message entity (eg. a [layout block](https://api.slack.com/reference/messaging/blocks)). It's responsible for `render`ing its own JSON shape.
   * `render` should always return a JSON entity that is a subtree of a Slack message.
 
+## Upcoming
+
+* [redux-like state management for slack interaction workflows](https://github.com/andycmaj/react-chat-renderer/issues/4)
+* discord support
+* more out-of-the-box elements
+
+## Inspirations
+
+* [ink](https://github.com/vadimdemedes/ink/blob/master/src/reconciler.js)
+* [react-ionize](https://github.com/mhink/react-ionize/blob/master/src/IonizeHostConfig.js)
+* [react-synth](https://github.com/FormidableLabs/react-synth)
+* [react-slack](https://github.com/andreyvital/react-slack-renderer/blob/master/components/SlackAttachment.js)
+
 ## Example
+
+### React `Message`
 
 ```js
 const message = (
-  <Message>
-    <SectionBlock accessory={<ButtonElement actionId="doAThing">Go!</ButtonElement>}>
-      <Text type="plaintext" emoji={true}>section text :sadkeanu:</Text>
+  <Message responseType="in_channel">
+    <SectionBlock
+      accessory={<ButtonElement actionId="doAThing">Go!</ButtonElement>}
+    >
+      <PlainText emoji>section text :sadkeanu:</PlainText>
     </SectionBlock>
     <DividerBlock />
     <SectionBlock blockId="section1">
-      <Text type="mrkdwn">
-        section ```code```
-      </Text>
+      <MarkdownText>
+        section ```code``` *progress:*{' '}
+        <ProgressBar color="red" columnWidth="10" total="300" value="200" />
+      </MarkdownText>
     </SectionBlock>
   </Message>
 );
@@ -30,34 +50,42 @@ const message = (
 const json = SlackRenderer.render(message);
 ```
 
+### Rendered JSON Message
+
 ```json
 {
-  "response_type": "ephemeral",
-  "blocks": [
-    {
-      "type": "section",
-      "text": {
-        "text": {
-          "type": "plaintext",
-          "emoji": true,
-          "verbatim": false,
-          "text": "section text :sadkeanu:"
+    "response_type": "in_channel",
+    "as_user": false,
+    "blocks": [
+        {
+            "type": "section",
+            "accessory": {
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "emoji": true,
+                    "text": "Go!"
+                },
+                "action_id": "doAThing"
+            },
+            "text": {
+                "type": "plain_text",
+                "text": "section text :sadkeanu:",
+                "emoji": true
+            }
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": "section ```code``` *progress:* `ââââââââââ`",
+                "verbatim": false
+            },
+            "block_id": "section1"
         }
-      }
-    },
-    { "type": "divider" },
-    {
-      "type": "section",
-      "text": {
-        "text": {
-          "type": "mrkdwn",
-          "emoji": false,
-          "verbatim": false,
-          "text": "section ```code```"
-        }
-      },
-      "block_id": "section1"
-    }
-  ]
+    ]
 }
 ```

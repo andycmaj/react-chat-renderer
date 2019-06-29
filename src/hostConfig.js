@@ -3,6 +3,9 @@ import { createInstance } from './components';
 
 const emptyObject = {};
 
+// https://github.com/mhink/react-ionize/blob/master/src/IonizeHostConfig.js is a well
+// documented hostConfig and a good reference impl
+
 export default {
   supportsMutation: true,
   appendInitialChild(parentInstance, child) {

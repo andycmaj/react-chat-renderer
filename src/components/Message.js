@@ -12,7 +12,7 @@ export default class Message {
   };
 
   static defaultProps = {
-    responseType: 'ephemeral',
+    responseType: 'in_channel',
     asUser: false,
   };
 

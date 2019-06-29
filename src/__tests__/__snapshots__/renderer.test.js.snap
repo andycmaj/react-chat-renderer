@@ -88,7 +88,7 @@ Object {
     },
   ],
   "channel": "test_channel",
-  "response_type": "ephemeral",
+  "response_type": "in_channel",
   "token": "test_token",
 }
 `;
