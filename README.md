@@ -83,7 +83,7 @@ const json = SlackRenderer.render(message);
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": "section ```code``` *progress:* `ââââââââââ`",
+                "text": "section ```code``` *progress:* `▓▓▓▓▓▓▓░░░`",
                 "verbatim": false
             },
             "block_id": "section1"
