@@ -6,7 +6,7 @@ I wanted to build rich, interactive Slack and Discord workflows in a familiar id
 
 ## Design Principles
 
-* Support Slack's new [Interactive Messaging Workflows](https://api.slack.com/messaging/interactivity).
+* Support Slack's new [Block-kit](https://api.slack.com/block-kit) and [Interactive Messaging Workflows](https://api.slack.com/messaging/interactivity).
   * Attachments considered legacy/obsolete
 * Components are stateless, but message handlers will follow a redux/flux model. Props only, and map event handlers to actions.
 * Each Component encapsulates a parent-agnostic view of a Slack message entity (eg. a [layout block](https://api.slack.com/reference/messaging/blocks)). It's responsible for `render`ing its own JSON shape.
@@ -20,6 +20,7 @@ I wanted to build rich, interactive Slack and Discord workflows in a familiar id
 
 ## Inspirations
 
+* [React-pdf](https://github.com/diegomura/react-pdf)
 * [ink](https://github.com/vadimdemedes/ink/blob/master/src/reconciler.js)
 * [react-ionize](https://github.com/mhink/react-ionize/blob/master/src/IonizeHostConfig.js)
 * [react-synth](https://github.com/FormidableLabs/react-synth)
