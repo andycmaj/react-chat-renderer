@@ -1,49 +1,53 @@
 {
   "name": "react-chat-renderer",
-  "version": "0.0.7",
+  "version": "0.1.0-alpha.12",
   "license": "MIT",
   "scripts": {
     "postversion": "npm publish",
-    "preversion": "npm test",
+    "preversion": "yarn test && yarn build",
     "test": "jest",
-    "build": "babel src/ --out-dir lib/ --ignore \"src/**/*.test.js\" --source-maps",
-    "prepare": "npm run build"
+    "clean": "rm -rf dist",
+    "build": "yarn clean && tsc --build tsconfig.build.json"
   },
-  "repository": "https://github.com/andycmaj/react-chat-renderer",
-  "main": "index.js",
+  "homepage": "https://github.com/asynchronous-dev/react-chat-renderer#readme",
+  "bugs": {
+    "url": "https://github.com/asynchronous-dev/react-chat-renderer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asynchronous-dev/react-chat-renderer"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "/lib",
-    "index.js"
+    "dist/**/*"
   ],
   "dependencies": {
-    "immutable": "^4.0.0-rc.12",
-    "prop-types": "^15.7.2",
-    "react-reconciler": "^0.20.4",
-    "react": "^16.8.6"
-  },
-  "peerDependencies": {
-    "react": "^16.8.6"
+    "@slack/types": "1.2.1"
   },
   "devDependencies": {
-    "@babel/cli": "7.5.0",
-    "@babel/core": "7.5.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
-    "@babel/preset-env": "7.5.4",
-    "@babel/preset-react": "7.0.0",
-    "babel-eslint": "^10.0.2",
-    "babel-jest": "^24.8.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^5.0.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-config-standard-react": "^7.0.2",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.14.2",
-    "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.8.0",
-    "prettier": "^1.18.2"
+    "@babel/cli": "7.6.4",
+    "@babel/core": "7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/preset-env": "7.6.3",
+    "@babel/preset-react": "7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@slack/types": "^1.2.1",
+    "@slack/web-api": "^5.3.0",
+    "@types/jest": "^24.0.21",
+    "@types/lodash": "^4.14.144",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
+    "@wordpress/babel-plugin-import-jsx-pragma": "^2.3.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
   }
 }

@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`slack jsx component with array of nested component children 1`] = `
+Object {
+  "as_user": false,
+  "blocks": Array [
+    Object {
+      "text": Object {
+        "emoji": true,
+        "text": "section text :sadkeanu:",
+        "type": "plain_text",
+      },
+      "type": "section",
+    },
+    Object {
+      "type": "divider",
+    },
+    Object {
+      "block_id": "section1",
+      "text": Object {
+        "text": "\`\`\`code\`\`\`",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+  ],
+  "channel": "test_channel",
+  "response_type": "in_channel",
+  "token": "test_token",
+}
+`;
+
+exports[`slack jsx component with component props 1`] = `
+Object {
+  "accessory": Object {
+    "alt_text": "foo",
+    "image_url": "foo",
+    "type": "image",
+  },
+  "fields": Array [
+    Object {
+      "text": "**foo**: bar",
+      "type": "mrkdwn",
+      "verbatim": false,
+    },
+    Object {
+      "text": "**foo**: bar",
+      "type": "mrkdwn",
+      "verbatim": false,
+    },
+  ],
+  "text": Object {
+    "text": "\`\`\`code\`\`\`",
+    "type": "mrkdwn",
+    "verbatim": false,
+  },
+  "type": "section",
+}
+`;
+
+exports[`slack jsx component with single nested component child 1`] = `
+Object {
+  "elements": Array [
+    Object {
+      "emoji": false,
+      "text": "fooooo",
+      "type": "plain_text",
+    },
+  ],
+  "type": "context",
+}
+`;
+
+exports[`slack jsx component with single string child 1`] = `
+Object {
+  "emoji": false,
+  "text": "fooooo",
+  "type": "plain_text",
+}
+`;
+
+exports[`slack jsx component with span array children 1`] = `
+Object {
+  "text": "link <https://google.com|hi google>\\\\n hi user <@U12345>",
+  "type": "mrkdwn",
+  "verbatim": false,
+}
+`;
+
+exports[`slack jsx renders ActionsBlock elements as children 1`] = `
+Object {
+  "elements": Array [
+    Object {
+      "action_id": "foo",
+      "text": Object {
+        "emoji": true,
+        "text": "Click",
+        "type": "plain_text",
+      },
+      "type": "button",
+    },
+    Object {
+      "alt_text": "alt",
+      "image_url": "https://api.slack.com/img/blocks/bkb_template_images/beagle.png",
+      "type": "image",
+    },
+  ],
+  "type": "actions",
+}
+`;
+
+exports[`slack jsx renders a complex message 1`] = `
+Object {
+  "as_user": false,
+  "blocks": Array [
+    Object {
+      "text": Object {
+        "text": "Hey <@foo>Hot code review alert! :thermometer:<foo|some title> has *34 discussions*. You're missing out!",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "action_id": "view",
+          "style": "primary",
+          "text": Object {
+            "emoji": true,
+            "text": "Get involved!",
+            "type": "plain_text",
+          },
+          "type": "button",
+        },
+        Object {
+          "action_id": "snooze",
+          "text": Object {
+            "emoji": true,
+            "text": "Snooze",
+            "type": "plain_text",
+          },
+          "type": "button",
+        },
+        Object {
+          "action_id": "mute",
+          "style": "danger",
+          "text": Object {
+            "emoji": true,
+            "text": "Please stop!",
+            "type": "plain_text",
+          },
+          "type": "button",
+        },
+      ],
+      "type": "actions",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "emoji": false,
+          "text": "This review has been open for N days.",
+          "type": "plain_text",
+        },
+      ],
+      "type": "context",
+    },
+  ],
+  "response_type": "in_channel",
+}
+`;
