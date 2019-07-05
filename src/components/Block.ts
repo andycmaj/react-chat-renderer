@@ -5,7 +5,10 @@ export interface BlockProps {
   blockId?: string;
 }
 
-export default abstract class Block<B extends Slack.Block>
+type Block<P extends BlockProps, T> = P & { __blockType: T };
+export default Block;
+
+export abstract class BlockClass<B extends Slack.Block>
   implements SlackElement<BlockProps> {
   root: any;
   props: BlockProps;

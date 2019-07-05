@@ -26,8 +26,10 @@
     "types/"
   ],
   "dependencies": {
+    "@slack/types": "^1.0.0",
+    "@types/lodash": "^4.14.135",
     "immutable": "^4.0.0-rc.12",
-    "lodash.isequal": "^4.5.0",
+    "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-reconciler": "^0.20.4"
