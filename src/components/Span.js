@@ -1,10 +1,10 @@
 // https://api.slack.com/reference/messaging/composition-objects#text
-export default class Text {
+export default class Span {
   static propTypes = {};
 
   constructor(root, props) {
     this.root = root;
-    this.props = { ...Text.defaultProps, ...props };
+    this.props = { ...Span.defaultProps, ...props };
   }
 
   appendChild(child) {

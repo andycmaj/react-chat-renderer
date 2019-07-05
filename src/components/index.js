@@ -41,8 +41,18 @@ export function createInstance(element, root) {
     }
   }
 
-  if (constructors[type]) {
+  function isClass(func) {
+    return (
+      typeof func === 'function' &&
+      /^class\s/.test(Function.prototype.toString.call(func))
+    );
+  }
+
+  const component = constructors[type];
+  if (isClass(component)) {
     return new constructors[type](root, { ...props, ...instanceProps });
+  } else if (typeof component === 'function') {
+    return constructors[type]({ ...props, ...instanceProps });
   }
 
   throw new Error(`Invalid element of type ${type} passed to createInstance`);
