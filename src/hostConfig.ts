@@ -1,4 +1,4 @@
-import propsEqual from './utils/propsEqual';
+import isEqual from 'lodash.isequal';
 import { createInstance } from './components';
 
 const emptyObject = {};
@@ -33,7 +33,7 @@ export default {
   },
 
   prepareUpdate(element, type, oldProps, newProps) {
-    return !propsEqual(oldProps, newProps);
+    return !isEqual(oldProps, newProps);
   },
 
   resetAfterCommit() {

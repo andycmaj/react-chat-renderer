@@ -1,7 +1,14 @@
 {
   "parser": "babel-eslint",
-  "extends": ["standard", "standard-react", "prettier", "prettier/react"],
-  "plugins": ["prettier"],
+  "extends": [
+    "standard",
+    "standard-react",
+    "@typescript-eslint/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
   "globals": { "describe": true, "it": true, "expect": true },
   "rules": {
     "quotes": [

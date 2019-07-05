@@ -17,8 +17,6 @@ export default class Root {
 
   removeChild(child) {}
 
-  updateTree() {}
-
   render() {
     return this.instance.toJS();
   }

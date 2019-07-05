@@ -11,8 +11,11 @@ import ContextBlock from './ContextBlock';
 import ActionsBlock from './ActionsBlock';
 import Link from './Link';
 import Mention from './Mention';
+import { SlackElement } from '../@types/index';
 
-const constructors = {
+type ReactElementType = string;
+
+const constructors: { [key: string]: SlackElement } = {
   ROOT: Root,
   PLAIN_TEXT: PlainText,
   MARKDOWN_TEXT: MarkdownText,
@@ -28,7 +31,10 @@ const constructors = {
   MENTION: Mention,
 };
 
-export function createInstance(element, root) {
+export function createInstance(
+  element: React.ReactElement,
+  root?: any
+): SlackElement {
   const { type, props = {} } = element;
 
   const instanceProps = {};

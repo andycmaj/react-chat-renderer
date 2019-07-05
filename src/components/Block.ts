@@ -1,15 +1,27 @@
-export default class Block {
-  constructor(root, props, blockType) {
+import * as Slack from '@slack/types';
+import { SlackComponent, SlackElement } from '../@types/index';
+
+export interface BlockProps {
+  blockId?: string;
+}
+
+export default abstract class Block<B extends Slack.Block>
+  implements SlackElement<BlockProps> {
+  root: any;
+  props: BlockProps;
+  blockType: string;
+
+  constructor(root: any, props: BlockProps, blockType: string) {
     this.root = root;
     this.props = props;
     this.blockType = blockType;
   }
 
-  appendChild(child) {}
+  abstract appendChild(child) {}
 
-  renderBlock() {}
+  renderBlock(): B {}
 
-  render() {
+  render(): { blocks: [B] } {
     const block = {
       type: this.blockType,
       ...this.renderBlock(),
