@@ -12,8 +12,14 @@ export default {
     parentInstance.appendChild(child);
   },
 
-  createInstance(type, props, internalInstanceHandle) {
-    return createInstance({ type, props }, internalInstanceHandle);
+  createInstance(
+    type,
+    newProps,
+    rootContainerInstance,
+    currentHostContext,
+    workInProgress
+  ) {
+    return createInstance({ type, newProps }, rootContainerInstance);
   },
 
   createTextInstance(text, rootContainerInstance) {

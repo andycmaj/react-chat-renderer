@@ -1,9 +1,8 @@
-import PropTypes from 'prop-types';
-import { Map } from 'immutable';
-
 import Block from './Block';
 import BlockElement from './BlockElement';
 import Text from './Text';
+import PropTypes from 'prop-types';
+import { Map } from 'immutable';
 
 export default class SectionBlock extends Block {
   static propTypes = {
