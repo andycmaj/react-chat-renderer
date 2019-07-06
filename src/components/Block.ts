@@ -1,5 +1,15 @@
+import { Block as SlackBlock } from '@slack/types';
+
+export type BlockComponentProps = {
+  blockId?: string;
+};
+
 export default class Block {
-  constructor(root, props, blockType) {
+  root: any;
+  props: BlockComponentProps;
+  blockType: string;
+
+  constructor(root, props: BlockComponentProps, blockType) {
     this.root = root;
     this.props = props;
     this.blockType = blockType;
@@ -7,10 +17,12 @@ export default class Block {
 
   appendChild(child) {}
 
-  renderBlock() {}
+  renderBlock(): {} {
+    return {};
+  }
 
   render() {
-    const block = {
+    const block: SlackBlock = {
       type: this.blockType,
       ...this.renderBlock(),
     };
