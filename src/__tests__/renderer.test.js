@@ -91,4 +91,34 @@ describe('renderer', () => {
       verbatim: false,
     });
   });
+
+  it('renders a Message with child expression', () => {
+    const block = (
+      <SectionBlock>
+        <PlainText emoji>Hello, world</PlainText>
+      </SectionBlock>
+    );
+
+    const out1 = SlackRenderer.render(
+      <Message
+        token="test_token"
+        channel="test_channel"
+        responseType="in_channel"
+      >
+        {block}
+      </Message>
+    );
+
+    const out2 = SlackRenderer.render(
+      <Message
+        token="test_token"
+        channel="test_channel"
+        responseType="in_channel"
+      >
+        {block}
+      </Message>
+    );
+
+    expect(out1).toEqual(out2);
+  });
 });
