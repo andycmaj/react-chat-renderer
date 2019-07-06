@@ -1,5 +1,6 @@
 import propsEqual from './utils/propsEqual';
 import { createInstance } from './components';
+import { Map } from 'immutable';
 
 const emptyObject = {};
 
@@ -9,13 +10,41 @@ const emptyObject = {};
 export default {
   supportsMutation: true,
   appendInitialChild(parentInstance, child) {
-    parentInstance.appendChild(child);
+    if (parentInstance.appendChild) {
+      parentInstance.appendChild(child);
+    } else if (Map.isMap(parentInstance)) {
+      // if (Array.isArray(children)) {
+      //   children.forEach(child => {
+      //     instance = instance.mergeDeep(child.render());
+      //   });
+      // } else if (children) {
+      parentInstance = parentInstance.mergeDeep(child.render());
+      // }
+    }
   },
 
-  createInstance(type, props, internalInstanceHandle) {
-    return createInstance({ type, props }, internalInstanceHandle);
+  /*
+  This is where react-reconciler wants to create an instance of UI element
+  in terms of the target. Since our target here is the DOM, we will create
+  document.createElement and type is the argument that contains the type
+  string like div or img or h1 etc. [Update 1: The initial values of
+    domElement attributes can be set in this function from the newProps
+    argument ]
+  */
+  createInstance(
+    type,
+    newProps,
+    rootContainerInstance,
+    currentHostContext,
+    workInProgress
+  ) {
+    return createInstance({ type, newProps }, rootContainerInstance);
   },
 
+  /*
+  This function is used to create separate text nodes if the target allows
+  only creating text in separate text nodes.
+  */
   createTextInstance(text, rootContainerInstance) {
     return text;
   },

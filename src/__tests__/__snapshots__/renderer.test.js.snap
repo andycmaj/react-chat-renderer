@@ -30,3 +30,52 @@ Object {
   "value": undefined,
 }
 `;
+
+exports[`renderer renders a Message with Hello, world text 1`] = `
+Object {
+  "as_user": false,
+  "blocks": Array [
+    Object {
+      "text": Object {
+        "emoji": false,
+        "text": undefined,
+        "type": "plain_text",
+      },
+      "type": "section",
+    },
+  ],
+  "channel": undefined,
+  "response_type": "in_channel",
+  "token": undefined,
+}
+`;
+
+exports[`renderer renders a Message with an array of Blocks 1`] = `
+Object {
+  "as_user": false,
+  "blocks": Array [
+    Object {
+      "text": Object {
+        "emoji": false,
+        "text": undefined,
+        "type": "plain_text",
+      },
+      "type": "section",
+    },
+    Object {
+      "type": "divider",
+    },
+    Object {
+      "text": Object {
+        "text": "\`\`\`code\`\`\`",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+  ],
+  "channel": undefined,
+  "response_type": "in_channel",
+  "token": undefined,
+}
+`;

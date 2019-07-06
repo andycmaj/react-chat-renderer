@@ -1,6 +1,7 @@
 import SlackRenderer from './renderer';
 
 const Message = 'MESSAGE';
+const FuncMessage = 'FUNC_MESSAGE';
 const PlainText = 'PLAIN_TEXT';
 const MarkdownText = 'MARKDOWN_TEXT';
 const DividerBlock = 'DIVIDER_BLOCK';
@@ -12,6 +13,7 @@ const ProgressBar = 'PROGRESS_BAR';
 export {
   SlackRenderer,
   Message,
+  FuncMessage,
   PlainText,
   MarkdownText,
   DividerBlock,

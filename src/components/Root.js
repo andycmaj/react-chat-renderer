@@ -10,7 +10,9 @@ export default class Root {
   }
 
   appendChild(child) {
-    this.instance = this.instance.mergeDeep(child.render());
+    this.instance = this.instance.mergeDeep(
+      Map.isMap(child) ? child : child.render()
+    );
   }
 
   insertBefore(child) {}

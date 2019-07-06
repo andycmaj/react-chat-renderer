@@ -1,4 +1,4 @@
-import Message from './Message';
+import Message, { MessageFunc } from './Message';
 import Root from './Root';
 import DividerBlock from './DividerBlock';
 import SectionBlock from './SectionBlock';
@@ -13,6 +13,7 @@ const constructors = {
   PLAIN_TEXT: PlainText,
   MARKDOWN_TEXT: MarkdownText,
   MESSAGE: Message,
+  FUNC_MESSAGE: MessageFunc,
   DIVIDER_BLOCK: DividerBlock,
   SECTION_BLOCK: SectionBlock,
   BUTTON_ELEMENT: ButtonElement,
