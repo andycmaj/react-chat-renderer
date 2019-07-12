@@ -8,6 +8,8 @@ import {
   SectionBlock,
   ButtonElement,
   ProgressBar,
+  ContextBlock,
+  ImageElement,
 } from '../index';
 
 describe('renderer', () => {
@@ -120,5 +122,16 @@ describe('renderer', () => {
     );
 
     expect(out1).toEqual(out2);
+  });
+
+  it('renders contextblock children', () => {
+    expect(
+      SlackRenderer.render(
+        <ContextBlock>
+          <PlainText emoji>Hello, world</PlainText>
+          <ImageElement imageUrl="foo" altText="alt" />
+        </ContextBlock>
+      )
+    ).toMatchSnapshot();
   });
 });

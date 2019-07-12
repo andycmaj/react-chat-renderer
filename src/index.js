@@ -8,6 +8,7 @@ const SectionBlock = 'SECTION_BLOCK';
 const ButtonElement = 'BUTTON_ELEMENT';
 const ImageElement = 'IMAGE_ELEMENT';
 const ProgressBar = 'PROGRESS_BAR';
+const ContextBlock = 'CONTEXT_BLOCK';
 
 export {
   SlackRenderer,
@@ -19,4 +20,5 @@ export {
   ButtonElement,
   ImageElement,
   ProgressBar,
+  ContextBlock,
 };
