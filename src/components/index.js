@@ -7,6 +7,7 @@ import ImageElement from './ImageElement';
 import PlainText from './PlainText';
 import MarkdownText from './MarkdownText';
 import ProgressBar from './ProgressBar';
+import ContextBlock from './ContextBlock';
 
 const constructors = {
   ROOT: Root,
@@ -15,6 +16,7 @@ const constructors = {
   MESSAGE: Message,
   DIVIDER_BLOCK: DividerBlock,
   SECTION_BLOCK: SectionBlock,
+  CONTEXT_BLOCK: ContextBlock,
   BUTTON_ELEMENT: ButtonElement,
   IMAGE_ELEMENT: ImageElement,
   PROGRESS_BAR: ProgressBar,

@@ -13,12 +13,7 @@ export default class SectionBlock extends Block {
   };
 
   constructor(root, props) {
-    super(
-      root,
-      // { ...props, children: [props.children, props.accessory] },
-      props,
-      'section'
-    );
+    super(root, props, 'section');
 
     this.instance = new Map();
 

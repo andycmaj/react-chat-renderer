@@ -92,3 +92,23 @@ Object {
   "token": "test_token",
 }
 `;
+
+exports[`renderer renders contextblock children 1`] = `
+Object {
+  "blocks": Array [
+    Object {
+      "0": Object {
+        "emoji": true,
+        "text": "Hello, world",
+        "type": "plain_text",
+      },
+      "1": Object {
+        "alt_text": "alt",
+        "image_url": "foo",
+        "type": "image",
+      },
+      "type": "context",
+    },
+  ],
+}
+`;
