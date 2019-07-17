@@ -125,13 +125,36 @@ describe('renderer', () => {
   });
 
   it('renders contextblock children', () => {
-    expect(
-      SlackRenderer.render(
-        <ContextBlock>
-          <PlainText emoji>Hello, world</PlainText>
-          <ImageElement imageUrl="foo" altText="alt" />
-        </ContextBlock>
-      )
-    ).toMatchSnapshot();
+    const message = SlackRenderer.render(
+      <ContextBlock>
+        <PlainText emoji>Hello, world</PlainText>
+        <ImageElement
+          imageUrl="https://api.slack.com/img/blocks/bkb_template_images/beagle.png"
+          altText="alt"
+        />
+      </ContextBlock>
+    );
+
+    // console.log(JSON.stringify(message, null, 2));
+    expect(message.blocks).toEqual([
+      {
+        elements: [
+          {
+            type: 'plain_text',
+            text: 'Hello, world',
+            emoji: true,
+          },
+          {
+            type: 'image',
+            image_url:
+              'https://api.slack.com/img/blocks/bkb_template_images/beagle.png',
+            alt_text: 'alt',
+          },
+        ],
+        type: 'context',
+      },
+    ]);
+
+    expect(message).toMatchSnapshot();
   });
 });

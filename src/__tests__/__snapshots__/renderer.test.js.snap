@@ -97,16 +97,18 @@ exports[`renderer renders contextblock children 1`] = `
 Object {
   "blocks": Array [
     Object {
-      "0": Object {
-        "emoji": true,
-        "text": "Hello, world",
-        "type": "plain_text",
-      },
-      "1": Object {
-        "alt_text": "alt",
-        "image_url": "foo",
-        "type": "image",
-      },
+      "elements": Array [
+        Object {
+          "emoji": true,
+          "text": "Hello, world",
+          "type": "plain_text",
+        },
+        Object {
+          "alt_text": "alt",
+          "image_url": "https://api.slack.com/img/blocks/bkb_template_images/beagle.png",
+          "type": "image",
+        },
+      ],
       "type": "context",
     },
   ],

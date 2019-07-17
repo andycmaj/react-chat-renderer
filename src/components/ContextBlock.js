@@ -19,18 +19,18 @@ export default class ContextBlock extends Block {
       'context'
     );
 
-    this.instance = new List();
+    this.elements = [];
   }
 
   appendChild(child) {
     if (child instanceof Text || child instanceof ImageElement) {
-      this.instance = this.instance.push(child.render());
+      this.elements.push(child.render());
     } else {
       throw new Error(`child not supported yet: ${typeof child}`);
     }
   }
 
   renderBlock() {
-    return this.instance.toJS();
+    return { elements: this.elements };
   }
 }
