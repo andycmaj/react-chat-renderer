@@ -11,7 +11,9 @@ import {
   ContextBlock,
   ImageElement,
   ActionsBlock,
-} from '../index';
+  Link,
+  Mention,
+} from '..';
 
 describe('renderer', () => {
   it('renders a Message with Hello, world text', () => {
@@ -26,6 +28,17 @@ describe('renderer', () => {
             <PlainText emoji>Hello, world</PlainText>
           </SectionBlock>
         </Message>
+      )
+    ).toMatchSnapshot();
+  });
+
+  it('renders Markdown with links and user references', () => {
+    expect(
+      SlackRenderer.render(
+        <MarkdownText>
+          link <Link href="https://google.com">hi google</Link>\n hi user{' '}
+          <Mention userId="U12345" />
+        </MarkdownText>
       )
     ).toMatchSnapshot();
   });

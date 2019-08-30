@@ -10,6 +10,8 @@ const ImageElement = 'IMAGE_ELEMENT';
 const ProgressBar = 'PROGRESS_BAR';
 const ContextBlock = 'CONTEXT_BLOCK';
 const ActionsBlock = 'ACTIONS_BLOCK';
+const Link = 'LINK';
+const Mention = 'MENTION';
 
 export {
   SlackRenderer,
@@ -23,4 +25,6 @@ export {
   ProgressBar,
   ContextBlock,
   ActionsBlock,
+  Link,
+  Mention,
 };

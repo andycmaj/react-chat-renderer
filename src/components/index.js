@@ -9,6 +9,8 @@ import MarkdownText from './MarkdownText';
 import ProgressBar from './ProgressBar';
 import ContextBlock from './ContextBlock';
 import ActionsBlock from './ActionsBlock';
+import Link from './Link';
+import Mention from './Mention';
 
 const constructors = {
   ROOT: Root,
@@ -22,6 +24,8 @@ const constructors = {
   IMAGE_ELEMENT: ImageElement,
   PROGRESS_BAR: ProgressBar,
   ACTIONS_BLOCK: ActionsBlock,
+  LINK: Link,
+  MENTION: Mention,
 };
 
 export function createInstance(element, root) {

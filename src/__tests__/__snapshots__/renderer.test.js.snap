@@ -29,6 +29,14 @@ Object {
 }
 `;
 
+exports[`renderer renders Markdown with links and user references 1`] = `
+Object {
+  "text": "link <https://google.com|hi google>\\\\n hi user <@U12345>",
+  "type": "mrkdwn",
+  "verbatim": false,
+}
+`;
+
 exports[`renderer renders a Block component without a parent Message 1`] = `
 Object {
   "blocks": Array [
