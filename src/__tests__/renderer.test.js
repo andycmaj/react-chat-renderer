@@ -10,6 +10,7 @@ import {
   ProgressBar,
   ContextBlock,
   ImageElement,
+  ActionsBlock,
 } from '../index';
 
 describe('renderer', () => {
@@ -53,6 +54,20 @@ describe('renderer', () => {
         <SectionBlock blockId="section1">
           <PlainText emoji>section ```code```</PlainText>
         </SectionBlock>
+      )
+    ).toMatchSnapshot();
+  });
+
+  it('renders ActionsBlock elements as children', () => {
+    expect(
+      SlackRenderer.render(
+        <ActionsBlock>
+          <ButtonElement actionId="foo">Click</ButtonElement>
+          <ImageElement
+            imageUrl="https://api.slack.com/img/blocks/bkb_template_images/beagle.png"
+            altText="alt"
+          />
+        </ActionsBlock>
       )
     ).toMatchSnapshot();
   });

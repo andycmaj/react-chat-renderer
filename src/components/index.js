@@ -8,6 +8,7 @@ import PlainText from './PlainText';
 import MarkdownText from './MarkdownText';
 import ProgressBar from './ProgressBar';
 import ContextBlock from './ContextBlock';
+import ActionsBlock from './ActionsBlock';
 
 const constructors = {
   ROOT: Root,
@@ -20,6 +21,7 @@ const constructors = {
   BUTTON_ELEMENT: ButtonElement,
   IMAGE_ELEMENT: ImageElement,
   PROGRESS_BAR: ProgressBar,
+  ACTIONS_BLOCK: ActionsBlock,
 };
 
 export function createInstance(element, root) {

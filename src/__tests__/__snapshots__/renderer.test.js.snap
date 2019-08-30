@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renderer renders ActionsBlock elements as children 1`] = `
+Object {
+  "blocks": Array [
+    Object {
+      "elements": Array [
+        Object {
+          "action_id": "foo",
+          "style": undefined,
+          "text": Object {
+            "emoji": true,
+            "text": "Click",
+            "type": "plain_text",
+          },
+          "type": "button",
+          "url": undefined,
+          "value": undefined,
+        },
+        Object {
+          "alt_text": "alt",
+          "image_url": "https://api.slack.com/img/blocks/bkb_template_images/beagle.png",
+          "type": "image",
+        },
+      ],
+      "type": "actions",
+    },
+  ],
+}
+`;
+
 exports[`renderer renders a Block component without a parent Message 1`] = `
 Object {
   "blocks": Array [

@@ -1,6 +1,3 @@
-import PropTypes from 'prop-types';
-import { Map, List } from 'immutable';
-
 import Block from './Block';
 import Text from './Text';
 import ImageElement from './ImageElement';
