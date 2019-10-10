@@ -20,6 +20,10 @@ export default class SectionBlock extends Block {
     if (props.accessory) {
       this.appendChild(props.accessory);
     }
+
+    if (props.fields) {
+      this.instance = this.instance.set('fields', props.fields);
+    }
   }
 
   appendChild(child) {
