@@ -4,18 +4,19 @@ import DividerBlock from './DividerBlock';
 import SectionBlock from './SectionBlock';
 import ButtonElement from './ButtonElement';
 import ImageElement from './ImageElement';
-import PlainText from './PlainText';
-import MarkdownText from './MarkdownText';
+import { PlainText } from './PlainText';
+import { MarkdownText } from './MarkdownText';
 import ProgressBar from './ProgressBar';
 import ContextBlock from './ContextBlock';
 import ActionsBlock from './ActionsBlock';
 import Link from './Link';
 import Mention from './Mention';
-import { SlackElement } from '../@types/index';
 
-type ReactElementType = string;
+export type SlackElement = {} | string;
 
-const constructors: { [key: string]: SlackElement } = {
+export type FC<P extends {}, R extends SlackElement> = (props: P) => R;
+
+const constructors: { [key: string]: FC<{}, SlackElement> } = {
   ROOT: Root,
   PLAIN_TEXT: PlainText,
   MARKDOWN_TEXT: MarkdownText,

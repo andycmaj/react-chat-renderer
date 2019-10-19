@@ -1,4 +1,4 @@
-import SlackRenderer from './renderer';
+import render from './renderer';
 
 const Message = 'MESSAGE';
 const PlainText = 'PLAIN_TEXT';
@@ -14,7 +14,7 @@ const Link = 'LINK';
 const Mention = 'MENTION';
 
 export {
-  SlackRenderer,
+  render,
   Message,
   PlainText,
   MarkdownText,

@@ -1,5 +1,4 @@
 import * as Slack from '@slack/types';
-import { SlackComponent, SlackElement } from '../@types/index';
 
 export interface BlockProps {
   blockId?: string;

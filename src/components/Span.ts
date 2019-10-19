@@ -1,15 +1,3 @@
-// https://api.slack.com/reference/messaging/composition-objects#text
-export default class Span {
-  constructor(root, props) {
-    this.root = root;
-    this.props = { ...Span.defaultProps, ...props };
-  }
+import { FC } from '.';
 
-  appendChild(child) {
-    throw new Error('Span should not have component children.');
-  }
-
-  render() {
-    return '';
-  }
-}
+export type Span<P> = FC<P, string>;

@@ -1,23 +1,17 @@
-import PropTypes from 'prop-types';
-import Text from './Text';
+import { FC } from '.';
+import { TextProps } from './Text';
+import { PlainTextElement } from '@slack/types';
 
-// https://api.slack.com/reference/messaging/composition-objects#text
-export default class PlainText extends Text {
-  static propTypes = {
-    children: PropTypes.element.isRequired,
-    emoji: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    emoji: false,
-  };
-
-  constructor(root, props) {
-    super(root, { ...PlainText.defaultProps, ...props }, 'plain_text');
-  }
-
-  renderText() {
-    const { emoji } = this.props;
-    return { emoji };
-  }
+export interface PlainTextProps extends TextProps<'plain_text'> {
+  emoji?: boolean;
 }
+
+export const PlainText: FC<PlainTextProps, PlainTextElement> = ({
+  type,
+  children,
+  emoji = false,
+}) => ({
+  type,
+  text: children,
+  emoji,
+});

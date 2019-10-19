@@ -1,18 +1,10 @@
+import { ContainerProps } from './ContainerProps';
+import { FC } from '.';
+import { MrkdwnElement, PlainTextElement } from '@slack/types';
+
 // https://api.slack.com/reference/messaging/composition-objects#text
-export default class Text {
-  constructor(root, props, type) {
-    this.root = root;
-    this.props = { ...Text.defaultProps, ...props, type };
-  }
 
-  appendChild(child) {
-    throw new Error('Text should not have component children.');
-  }
-
-  renderText() {}
-
-  render() {
-    const { type, children: text } = this.props;
-    return { type, text, ...this.renderText() };
-  }
+export interface TextProps<T extends 'plain_text' | 'mrkdwn'>
+  extends ContainerProps<string> {
+  type: T;
 }

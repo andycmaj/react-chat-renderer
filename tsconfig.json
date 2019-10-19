@@ -11,11 +11,11 @@
     // Don't emit; allow Babel to transform files.
     "noEmit": true,
     // Enable strictest settings like strictNullChecks & noImplicitAny.
-    "strict": false,
+    "strict": true,
     // Disallow features that require cross-file information for emit.
     // "isolatedModules": true,
     // Import non-ES modules as default imports.
     "esModuleInterop": true
   },
-  "include": ["src"]
+  "include": ["src", "@types"]
 }

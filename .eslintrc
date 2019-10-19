@@ -1,11 +1,10 @@
 {
   "parser": "babel-eslint",
   "extends": [
-    "standard",
-    "standard-react",
-    "@typescript-eslint/recommended",
-    "prettier",
+    "plugin:@typescript-eslint/recommended",
     "prettier/react",
+    // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    "plugin:prettier/recommended",
     "prettier/@typescript-eslint"
   ],
   "plugins": ["@typescript-eslint", "prettier"],
