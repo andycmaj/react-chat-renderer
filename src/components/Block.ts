@@ -1,11 +1,19 @@
-import * as Slack from '@slack/types';
+import { FC } from '.';
+import { ContainerProps } from './ContainerProps';
+import { KnownBlock } from '@slack/types';
 
-export interface BlockProps {
+type BlockType = 'image' | 'context' | 'divider' | 'actions' | 'section';
+
+// TODO: more specific ContainerProps<T>
+export interface BlockProps<T extends BlockType> {
+  type: T;
   blockId?: string;
 }
 
-type Block<P extends BlockProps, T> = P & { __blockType: T };
-export default Block;
+export type Block<P extends BlockProps<BlockType>, B extends KnownBlock> = FC<
+  P,
+  B
+>;
 
 export abstract class BlockClass<B extends Slack.Block>
   implements SlackElement<BlockProps> {

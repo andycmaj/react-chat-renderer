@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Span } from './Span';
 import { ContainerProps } from './ContainerProps';
 

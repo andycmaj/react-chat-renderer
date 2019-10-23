@@ -1,10 +1,10 @@
-import Block from './Block';
-import * as Slack from '@slack/types';
+import { Block, BlockProps } from './Block';
+import { DividerBlock as DividerBlockSpec } from '@slack/types';
 
-type DividerBlock = Block<{}, 'divider'>;
+export type DividerBlockProps = BlockProps<'divider'>;
 
-// export default class DividerBlockClass {
-//   constructor(root, props) {
-//     super(root, props, 'divider');
-//   }
-// }
+export const DividerBlock: Block<DividerBlockProps, DividerBlockSpec> = ({
+  type,
+}) => ({
+  type,
+});
