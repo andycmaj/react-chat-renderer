@@ -4,11 +4,10 @@
   "license": "MIT",
   "scripts": {
     "postversion": "npm publish",
-    "preversion": "npm test",
+    "preversion": "npm test && yarn check-types",
     "test": "jest",
-    "build": "babel src/ --out-dir lib/ --ignore \"src/**/*.test.js,@types/*.ts,src/__tests__/**\" --source-maps --extensions \".ts,.tsx\"",
-    "check-types": "tsc",
-    "prepare": "npm run check-types; npm run build"
+    "build": "yarn check-types && babel src/ --out-dir lib/ --ignore \"src/**/*.test.js,@types/*.ts,src/__tests__/**\" --source-maps --extensions \".ts,.tsx\"",
+    "check-types": "tsc"
   },
   "homepage": "https://github.com/asynchronous-dev/react-chat-renderer#readme",
   "bugs": {
@@ -19,23 +18,14 @@
     "url": "https://github.com/asynchronous-dev/react-chat-renderer"
   },
   "main": "index.js",
-  "types": "types/index.js",
+  "types": "index.d.ts",
   "files": [
     "/lib",
     "index.js",
-    "types/"
+    "index.d.ts"
   ],
   "dependencies": {
-    "@slack/types": "^1.2.1",
-    "@types/lodash": "^4.14.144",
-    "immutable": "^4.0.0-rc.12",
-    "lodash": "^4.17.15",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-reconciler": "^0.20.4"
-  },
-  "peerDependencies": {
-    "react": "^16.8.6"
+    "@slack/types": "^1.2.1"
   },
   "devDependencies": {
     "@babel/cli": "7.6.4",
@@ -54,7 +44,6 @@
     "@typescript-eslint/parser": "^2.6.0",
     "@wordpress/babel-plugin-import-jsx-pragma": "^2.3.0",
     "babel-eslint": "^10.0.3",
-    "babel-jest": "^24.9.0",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-prettier": "^3.1.1",
