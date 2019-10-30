@@ -1,20 +1,22 @@
 import { Block, BlockProps } from './Block';
 import { SectionBlock as SectionBlockSpec } from '@slack/types';
 import { ContainerProps } from './ContainerProps';
-import { MarkdownText } from './MarkdownText';
-import { PlainText } from './PlainText';
+import { AnyText } from './AnyText';
 
 export interface SectionBlockProps
   extends BlockProps<'section'>,
-    // This is weird
-    // ContainerProps<Text<any, any>> {}
-    ContainerProps<typeof PlainText | typeof MarkdownText> {
-  fields: [];
+    ContainerProps<AnyText> {
+  fields: AnyText[];
   accessory: Element;
 }
 
-export const SectionBlock: Block<SectionBlockProps, SectionBlockSpec> = ({
-  type,
-}) => ({
-  type,
-});
+export const SectionBlock: Block<
+  SectionBlockProps,
+  SectionBlockSpec
+> = ({}) => {
+  const spec = {};
+  return {
+    type: 'section',
+    ...spec,
+  };
+};

@@ -12,14 +12,13 @@ export interface ButtonElementProps
 }
 
 export const ButtonElement: Element<ButtonElementProps, ButtonSpec> = ({
-  children: text,
+  children: [text],
   actionId: action_id,
   style,
-  type,
   url,
   value,
 }) => ({
-  type,
+  type: 'button',
   text: {
     // plain_text allows only plain_text
     type: 'plain_text',

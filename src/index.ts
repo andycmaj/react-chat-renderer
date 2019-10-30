@@ -1,30 +1,28 @@
-import render from './renderer';
+export type SlackElement = {} | string;
+export type FC<P extends {}, R extends SlackElement> = (props: P) => R;
+export * from './components';
 
-const Message = 'MESSAGE';
-const PlainText = 'PLAIN_TEXT';
-const MarkdownText = 'MARKDOWN_TEXT';
-const DividerBlock = 'DIVIDER_BLOCK';
-const SectionBlock = 'SECTION_BLOCK';
-const ButtonElement = 'BUTTON_ELEMENT';
-const ImageElement = 'IMAGE_ELEMENT';
-const ProgressBar = 'PROGRESS_BAR';
-const ContextBlock = 'CONTEXT_BLOCK';
-const ActionsBlock = 'ACTIONS_BLOCK';
-const Link = 'LINK';
-const Mention = 'MENTION';
+type Node<T> =
+  | {
+      node: T;
+      props: any;
+      children: Node<any> | Node<any>[];
+    }
+  | string;
 
-export {
-  render,
-  Message,
-  PlainText,
-  MarkdownText,
-  DividerBlock,
-  SectionBlock,
-  ButtonElement,
-  ImageElement,
-  ProgressBar,
-  ContextBlock,
-  ActionsBlock,
-  Link,
-  Mention,
+export default <P extends { children: any }>(
+  node: FC<P, any> | string,
+  props: P | null,
+  ...children: Node<any>[]
+): Node<FC<P, any> | string> | null => {
+  // console.log('pragma =====\n', node, '===\n', props, '===\n', children);
+  if (typeof node === 'function') {
+    return node({
+      ...props,
+      children,
+    });
+  }
+
+  console.error('slack jsx', node, props, children);
+  throw new Error('node not an FC');
 };

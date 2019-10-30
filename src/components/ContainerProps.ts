@@ -1,3 +1,3 @@
 export interface ContainerProps<T> {
-  children: T;
+  children?: T | T[];
 }

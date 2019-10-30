@@ -1,9 +1,9 @@
+import { FC } from '..';
 import {
   ImageElement as ImageElementSpec,
   UserElement as UserElementSpec,
   Button as ButtonSpec,
 } from '@slack/types';
-import { FC } from '.';
 
 export type ActionType = 'button';
 

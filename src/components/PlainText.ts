@@ -1,4 +1,4 @@
-import { TextProps, Text } from './Text';
+import { TextProps, Text, joinTextChildren } from './Text';
 import { PlainTextElement } from '@slack/types';
 
 export interface PlainTextProps extends TextProps<'plain_text'> {
@@ -6,11 +6,10 @@ export interface PlainTextProps extends TextProps<'plain_text'> {
 }
 
 export const PlainText: Text<PlainTextProps, PlainTextElement> = ({
-  type,
   children,
   emoji = false,
 }) => ({
-  type,
-  text: children,
+  type: 'plain_text',
+  text: joinTextChildren(children),
   emoji,
 });

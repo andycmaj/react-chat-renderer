@@ -2,6 +2,8 @@
   "compilerOptions": {
     // Target latest version of ECMAScript.
     "target": "esnext",
+    "module": "commonjs",
+    "sourceMap": true,
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
     // Process & infer types from .js files.
@@ -11,11 +13,13 @@
     // Don't emit; allow Babel to transform files.
     "noEmit": true,
     // Enable strictest settings like strictNullChecks & noImplicitAny.
-    "strict": true,
+    "strict": false,
+    "allowSyntheticDefaultImports": true,
     // Disallow features that require cross-file information for emit.
     // "isolatedModules": true,
     // Import non-ES modules as default imports.
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "jsx": "preserve"
   },
   "include": ["src", "@types"]
 }
