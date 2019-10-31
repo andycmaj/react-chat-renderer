@@ -1,6 +1,8 @@
+import { FC } from '..';
 import { Button as ButtonSpec } from '@slack/types';
 import { ElementProps, Element } from './Element';
 import { ContainerProps } from './ContainerProps';
+import { joinTextChildren } from './Text';
 
 export interface ButtonElementProps
   extends ElementProps<'button'>,
@@ -11,8 +13,8 @@ export interface ButtonElementProps
   style?: 'primary' | 'danger';
 }
 
-export const ButtonElement: Element<ButtonElementProps, ButtonSpec> = ({
-  children: [text],
+export const ButtonElement: FC<ButtonElementProps, ButtonSpec> = ({
+  children,
   actionId: action_id,
   style,
   url,
@@ -23,7 +25,7 @@ export const ButtonElement: Element<ButtonElementProps, ButtonSpec> = ({
     // plain_text allows only plain_text
     type: 'plain_text',
     emoji: true,
-    text,
+    text: joinTextChildren(children),
   },
   action_id,
   url,

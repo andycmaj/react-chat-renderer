@@ -1,124 +1,110 @@
 /** @jsx slack */
 import slack, {
+  ActionsBlock,
   DividerBlock,
   ContextBlock,
+  SectionBlock,
+  ImageElement,
+  ButtonElement,
   PlainText,
   MarkdownText,
   Link,
   Mention,
+  ProgressBar,
+  Message,
 } from '..';
 
-describe('renderer', () => {
-  it('renders a Message with Hello, world text', () => {
+describe('slack jsx', () => {
+  it('component with single string child', () => {
+    const message = <PlainText>fooooo</PlainText>;
+    expect(message).toMatchSnapshot();
+  });
+
+  it('component with single nested component child', () => {
     const message = (
       <ContextBlock>
         <PlainText>fooooo</PlainText>
       </ContextBlock>
     );
-    expect(message).toMatchObject({
-      type: 'context',
-      elements: [
-        {
-          type: 'plain_text',
-          text: 'fooooo',
-          emoji: false,
-        },
-      ],
-    });
+    expect(message).toMatchSnapshot();
   });
 
-  it('renders Markdown with links and user references', () => {
+  it('component with span array children', () => {
     const message = (
       <MarkdownText>
         link <Link href="https://google.com">hi google</Link>\n hi user{' '}
         <Mention userId="U12345" />
       </MarkdownText>
     );
-    expect(message).toMatchObject({
+    expect(message).toMatchSnapshot();
+  });
+
+  it('component with array of nested component children', () => {
+    const message = (
+      <Message token="test_token" channel="test_channel">
+        <SectionBlock>
+          <PlainText emoji>section text :sadkeanu:</PlainText>
+        </SectionBlock>
+        <DividerBlock />
+        <SectionBlock blockId="section1">
+          <MarkdownText>```code```</MarkdownText>
+        </SectionBlock>
+      </Message>
+    );
+    expect(message).toMatchSnapshot();
+  });
+
+  it('component with component props', () => {
+    const message = (
+      <SectionBlock
+        fields={[
+          <MarkdownText>**foo**: bar</MarkdownText>,
+          <MarkdownText>**foo**: bar</MarkdownText>,
+        ]}
+        accessory={<ImageElement imageUrl="foo" altText="foo" />}
+      >
+        <MarkdownText>```code```</MarkdownText>
+      </SectionBlock>
+    );
+    expect(message).toMatchSnapshot();
+  });
+
+  it('renders ActionsBlock elements as children', () => {
+    expect(
+      <ActionsBlock>
+        <ButtonElement actionId="foo">Click</ButtonElement>
+        <ImageElement
+          imageUrl="https://api.slack.com/img/blocks/bkb_template_images/beagle.png"
+          altText="alt"
+        />
+      </ActionsBlock>
+    ).toMatchSnapshot();
+  });
+
+  it('renders Markdown with a ProgressBar', () => {
+    expect(
+      <MarkdownText>
+        progress: <ProgressBar columnWidth={10} total={300} value={200} />
+      </MarkdownText>
+    ).toMatchObject({
       type: 'mrkdwn',
-      text: 'link <https://google.com|hi google>\\n hi user <@U12345>',
-      emoji: false,
+      text: 'progress: ▓▓▓▓▓▓▓░░░',
+      verbatim: false,
     });
   });
 
-  // it('renders a Message with an array of Blocks', () => {
-  //   expect(
-  //     SlackRenderer.render(
-  //       <Message token="test_token" channel="test_channel">
-  //         <SectionBlock
-  //           accessory={<ButtonElement actionId="doAThing">Go!</ButtonElement>}
-  //         >
-  //           <PlainText emoji>section text :sadkeanu:</PlainText>
-  //         </SectionBlock>
-  //         <DividerBlock />
-  //         <SectionBlock blockId="section1">
-  //           <MarkdownText>```code```</MarkdownText>
-  //         </SectionBlock>
-  //       </Message>
-  //     )
-  //   ).toMatchSnapshot();
-  // });
-
-  // it('renders a Block component without a parent Message', () => {
-  //   expect(
-  //     SlackRenderer.render(
-  //       <SectionBlock blockId="section1">
-  //         <PlainText emoji>section ```code```</PlainText>
-  //       </SectionBlock>
-  //     )
-  //   ).toMatchSnapshot();
-  // });
-
-  // it('renders ActionsBlock elements as children', () => {
-  //   expect(
-  //     SlackRenderer.render(
-  //       <ActionsBlock>
-  //         <ButtonElement actionId="foo">Click</ButtonElement>
-  //         <ImageElement
-  //           imageUrl="https://api.slack.com/img/blocks/bkb_template_images/beagle.png"
-  //           altText="alt"
-  //         />
-  //       </ActionsBlock>
-  //     )
-  //   ).toMatchSnapshot();
-  // });
-
-  // it('renders a ButtonElement', () => {
-  //   expect(
-  //     SlackRenderer.render(
-  //       <ButtonElement actionId="doAThing">Go!</ButtonElement>
-  //     )
-  //   ).toMatchSnapshot();
-  // });
-
-  // it('renders Markdown with a ProgressBar', () => {
-  //   expect(
-  //     SlackRenderer.render(
-  //       <MarkdownText>
-  //         progress: <ProgressBar columnWidth="10" total="300" value="200" />
-  //       </MarkdownText>
-  //     )
-  //   ).toEqual({
-  //     type: 'mrkdwn',
-  //     text: 'progress: ▓▓▓▓▓▓▓░░░',
-  //     verbatim: false,
-  //   });
-  // });
-
-  // it('renders a Red ProgressBar', () => {
-  //   expect(
-  //     SlackRenderer.render(
-  //       <MarkdownText>
-  //         progress:{' '}
-  //         <ProgressBar columnWidth="10" total="300" value="200" color="red" />
-  //       </MarkdownText>
-  //     )
-  //   ).toEqual({
-  //     type: 'mrkdwn',
-  //     text: 'progress: `▓▓▓▓▓▓▓░░░`',
-  //     verbatim: false,
-  //   });
-  // });
+  it('renders a Red ProgressBar', () => {
+    expect(
+      <MarkdownText>
+        progress:{' '}
+        <ProgressBar columnWidth={10} total={300} value={200} color="red" />
+      </MarkdownText>
+    ).toMatchObject({
+      type: 'mrkdwn',
+      text: 'progress: `▓▓▓▓▓▓▓░░░`',
+      verbatim: false,
+    });
+  });
 
   // it('renders a Message with child expression', () => {
   //   const block = (

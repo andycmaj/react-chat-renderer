@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "outFile": "index.d.ts",
+    "strict": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "preserve"
+  },
+  "exclude": ["src/__tests__"],
+  "include": ["src", "@types"]
+}

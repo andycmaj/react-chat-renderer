@@ -1,14 +1,13 @@
 import { Span } from './Span';
-import { Childless } from './Childless';
 
 const COMPLETED_CHAR = '▓';
 const INCOMPLETE_CHAR = '░';
 
-interface ProgressBarProps extends Childless {
-  color: 'red' | 'black';
-  total: number;
+interface ProgressBarProps {
   value: number;
-  columnWidth: number;
+  total: number;
+  color?: 'red' | 'black';
+  columnWidth?: number;
 }
 
 export const ProgressBar: Span<ProgressBarProps> = ({

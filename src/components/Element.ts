@@ -3,6 +3,12 @@ import {
   ImageElement as ImageElementSpec,
   UserElement as UserElementSpec,
   Button as ButtonSpec,
+  Button,
+  Overflow,
+  Datepicker,
+  Select,
+  MultiSelect,
+  Action,
 } from '@slack/types';
 
 export type ActionType = 'button';
@@ -11,11 +17,18 @@ export type ActionSpec = ButtonSpec;
 
 export type ElementType = 'image' | 'user' | ActionType;
 
-export interface ElementProps<T extends ElementType> {
-  type: T;
-}
+export type ElementProps<T extends ElementType> = {};
 
-export type ElementSpec = ImageElementSpec | UserElementSpec | ActionSpec;
+export type ElementSpec =
+  | ImageElementSpec
+  | UserElementSpec
+  // | ActionSpec
+  | Button
+  | Overflow
+  | Datepicker
+  | Select
+  | MultiSelect
+  | Action;
 
 export type Element<
   P extends ElementProps<ElementType>,

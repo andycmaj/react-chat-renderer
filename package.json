@@ -7,7 +7,7 @@
     "preversion": "npm test && yarn check-types",
     "test": "jest",
     "build": "yarn check-types && babel src/ --out-dir lib/ --ignore \"src/**/*.test.js,@types/*.ts,src/__tests__/**\" --source-maps --extensions \".ts,.tsx\"",
-    "check-types": "tsc"
+    "check-types": "tsc --build tsconfig.build.json"
   },
   "homepage": "https://github.com/asynchronous-dev/react-chat-renderer#readme",
   "bugs": {

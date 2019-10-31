@@ -4,6 +4,9 @@ import { Childless } from './Childless';
 
 export type DividerBlockProps = BlockProps<'divider'> & Childless;
 
-export const DividerBlock: Block<DividerBlockProps, DividerBlockSpec> = () => ({
+export const DividerBlock: Block<DividerBlockProps, DividerBlockSpec> = ({
+  blockId,
+}) => ({
   type: 'divider',
+  block_id: blockId,
 });

@@ -10,17 +10,26 @@ type Node<T> =
     }
   | string;
 
+const pruneFields = (o: {}) =>
+  Object.keys(o).reduce(
+    (obj, k) => (o[k] !== undefined ? { ...obj, [k]: o[k] } : obj),
+    {}
+  );
+
 export default <P extends { children: any }>(
   node: FC<P, any> | string,
   props: P | null,
   ...children: Node<any>[]
-): Node<FC<P, any> | string> | null => {
-  // console.log('pragma =====\n', node, '===\n', props, '===\n', children);
+) => {
+  // console.log('node', node);
+  // console.log('children', children);
   if (typeof node === 'function') {
-    return node({
+    const spec = node({
       ...props,
       children,
     });
+    // console.log('spec', spec);
+    return typeof spec === 'string' ? spec : pruneFields(spec);
   }
 
   console.error('slack jsx', node, props, children);

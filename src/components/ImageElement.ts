@@ -1,18 +1,17 @@
+import { FC } from '..';
 import { ImageElement as ImageElementSpec } from '@slack/types';
 import { ElementProps, Element } from './Element';
-import { Childless } from './Childless';
 
-export interface ImageElementProps extends ElementProps<'image'>, Childless {
+export interface ImageElementProps extends ElementProps<'image'> {
   imageUrl: string;
   altText: string;
 }
 
-export const ImageElement: Element<ImageElementProps, ImageElementSpec> = ({
-  type,
+export const ImageElement: FC<ImageElementProps, ImageElementSpec> = ({
   imageUrl: image_url,
   altText: alt_text,
 }) => ({
-  type,
+  type: 'image',
   image_url,
   alt_text,
 });
