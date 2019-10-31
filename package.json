@@ -6,8 +6,8 @@
     "postversion": "npm publish",
     "preversion": "yarn test && yarn build",
     "test": "jest",
-    "build": "yarn check-types && babel src/ --out-dir dist/ --ignore \"src/**/*.test.js,@types/*.ts,src/__tests__/**\" --source-maps --extensions \".ts,.tsx\"",
-    "check-types": "tsc --build tsconfig.build.json"
+    "clean": "rm -rf dist",
+    "build": "yarn clean && tsc --build tsconfig.build.json"
   },
   "homepage": "https://github.com/asynchronous-dev/react-chat-renderer#readme",
   "bugs": {
@@ -17,14 +17,13 @@
     "type": "git",
     "url": "https://github.com/asynchronous-dev/react-chat-renderer"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist/**/*",
-    "index.js"
+    "dist/**/*"
   ],
   "dependencies": {
-    "@slack/types": "^1.2.1"
+    "@slack/types": "1.2.1"
   },
   "devDependencies": {
     "@babel/cli": "7.6.4",
