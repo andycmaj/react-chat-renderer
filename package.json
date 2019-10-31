@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "postversion": "npm publish",
-    "preversion": "npm test && yarn check-types",
+    "preversion": "yarn test && yarn build",
     "test": "jest",
-    "build": "yarn check-types && babel src/ --out-dir lib/ --ignore \"src/**/*.test.js,@types/*.ts,src/__tests__/**\" --source-maps --extensions \".ts,.tsx\"",
+    "build": "yarn check-types && babel src/ --out-dir dist/ --ignore \"src/**/*.test.js,@types/*.ts,src/__tests__/**\" --source-maps --extensions \".ts,.tsx\"",
     "check-types": "tsc --build tsconfig.build.json"
   },
   "homepage": "https://github.com/asynchronous-dev/react-chat-renderer#readme",
@@ -18,11 +18,10 @@
     "url": "https://github.com/asynchronous-dev/react-chat-renderer"
   },
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
-    "/lib",
-    "index.js",
-    "index.d.ts"
+    "dist/**/*",
+    "index.js"
   ],
   "dependencies": {
     "@slack/types": "^1.2.1"
