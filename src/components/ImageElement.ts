@@ -1,6 +1,6 @@
 import { FC } from '..';
 import { ImageElement as ImageElementSpec } from '@slack/types';
-import { ElementProps, Element } from './Element';
+import { ElementProps, BlockElement } from './BlockElement';
 
 export interface ImageElementProps extends ElementProps<'image'> {
   imageUrl: string;

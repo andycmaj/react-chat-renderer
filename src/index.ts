@@ -16,6 +16,17 @@ const pruneFields = (o: {}) =>
     {}
   );
 
+// export namespace JSX {
+//   // @ts-ignore
+//   interface Element extends Node {}
+//   export interface ElementAttributesProperty {
+//     props: {};
+//   }
+//   export interface ElementChildrenAttribute {
+//     children: {};
+//   }
+// }
+
 export default <P extends { children: any }>(
   node: FC<P, any> | string,
   props: P | null,

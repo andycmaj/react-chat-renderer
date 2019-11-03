@@ -4,13 +4,13 @@ import { ContainerProps } from './ContainerProps';
 import { AnyText } from './AnyText';
 import { ImageElement } from './ImageElement';
 import { ButtonElement } from './ButtonElement';
-import { Element, ElementSpec } from './Element';
+import { BlockElement, ElementSpec } from './BlockElement';
 
 export interface SectionBlockProps
   extends BlockProps<'section'>,
     ContainerProps<AnyText> {
   fields?: AnyText[];
-  accessory?: Element<any, ElementSpec>;
+  accessory?: BlockElement<any, ElementSpec>;
 }
 
 export const SectionBlock: Block<SectionBlockProps, SectionBlockSpec> = ({

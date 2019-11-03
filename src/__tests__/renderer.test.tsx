@@ -106,6 +106,34 @@ describe('slack jsx', () => {
     });
   });
 
+  it('renders a complex message', () => {
+    const message = (
+      <Message>
+        <SectionBlock>
+          <MarkdownText>
+            Hey <Mention userId="foo" />
+            Hot code review alert! :thermometer:
+            <Link href="foo">some title</Link> has *{34} discussions*. You're
+            missing out!
+          </MarkdownText>
+        </SectionBlock>
+        <ActionsBlock>
+          <ButtonElement actionId="view" style="primary">
+            Get involved!
+          </ButtonElement>
+          <ButtonElement actionId="snooze">Snooze</ButtonElement>
+          <ButtonElement actionId="mute" style="danger">
+            Please stop!
+          </ButtonElement>
+        </ActionsBlock>
+        <ContextBlock>
+          <PlainText>This review has been open for N days.</PlainText>
+        </ContextBlock>
+      </Message>
+    );
+    expect(message).toMatchSnapshot();
+  });
+
   // it('renders a Message with child expression', () => {
   //   const block = (
   //     <SectionBlock>

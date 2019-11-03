@@ -5,6 +5,7 @@ module.exports = {
     'prettier/@typescript-eslint',
   ],
   plugins: ['prettier'],
+  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
@@ -20,6 +21,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-namespace': 'off',
     quotes: [
       2,
       'single',

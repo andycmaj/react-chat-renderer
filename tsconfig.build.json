@@ -11,7 +11,7 @@
     "strict": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "jsx": "preserve"
+    "jsx": "react"
   },
   "exclude": ["src/__tests__"],
   "include": ["src", "@types"]

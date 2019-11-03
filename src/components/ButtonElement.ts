@@ -1,6 +1,6 @@
 import { FC } from '..';
 import { Button as ButtonSpec } from '@slack/types';
-import { ElementProps, Element } from './Element';
+import { ElementProps, BlockElement } from './BlockElement';
 import { ContainerProps } from './ContainerProps';
 import { joinTextChildren } from './Text';
 
