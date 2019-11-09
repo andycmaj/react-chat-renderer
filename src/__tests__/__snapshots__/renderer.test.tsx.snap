@@ -109,3 +109,64 @@ Object {
   "type": "actions",
 }
 `;
+
+exports[`slack jsx renders a complex message 1`] = `
+Object {
+  "as_user": false,
+  "blocks": Array [
+    Object {
+      "text": Object {
+        "text": "Hey <@foo>Hot code review alert! :thermometer:<foo|some title> has *34 discussions*. You're missing out!",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "action_id": "view",
+          "style": "primary",
+          "text": Object {
+            "emoji": true,
+            "text": "Get involved!",
+            "type": "plain_text",
+          },
+          "type": "button",
+        },
+        Object {
+          "action_id": "snooze",
+          "text": Object {
+            "emoji": true,
+            "text": "Snooze",
+            "type": "plain_text",
+          },
+          "type": "button",
+        },
+        Object {
+          "action_id": "mute",
+          "style": "danger",
+          "text": Object {
+            "emoji": true,
+            "text": "Please stop!",
+            "type": "plain_text",
+          },
+          "type": "button",
+        },
+      ],
+      "type": "actions",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "emoji": false,
+          "text": "This review has been open for N days.",
+          "type": "plain_text",
+        },
+      ],
+      "type": "context",
+    },
+  ],
+  "response_type": "in_channel",
+}
+`;
