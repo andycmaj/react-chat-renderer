@@ -1,5 +1,6 @@
 /** @jsx slack */
-import slack, {
+import {
+  slack,
   ActionsBlock,
   DividerBlock,
   ContextBlock,
