@@ -7,7 +7,9 @@ const pruneFields = <R>(o: {}): Partial<R> =>
     {}
   );
 
-export type FC<P extends {}, R extends SlackSpec> = (props: P) => R;
+type Props<P> = { children?: unknown } & P;
+
+export type FC<P extends {}, R extends SlackSpec> = (props: Props<P>) => R;
 
 export namespace JSX {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
