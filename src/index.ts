@@ -1,42 +1,24 @@
-export type SlackElement = {} | string;
-export type FC<P extends {}, R extends SlackElement> = (props: P) => R;
+export type SlackSpec = {} | string;
 export * from './components';
 
-type Node<T> =
-  | {
-      node: T;
-      props: any;
-      children: Node<any> | Node<any>[];
-    }
-  | string;
-
-const pruneFields = (o: {}) =>
+const pruneFields = <R>(o: {}): Partial<R> =>
   Object.keys(o).reduce(
     (obj, k) => (o[k] !== undefined ? { ...obj, [k]: o[k] } : obj),
     {}
   );
 
-// export namespace JSX {
-//   // @ts-ignore
-//   interface Element extends Node {}
-//   export interface ElementAttributesProperty {
-//     props: {};
-//   }
-//   export interface ElementChildrenAttribute {
-//     children: {};
-//   }
-// }
+export type FC<P extends {}, R extends SlackSpec> = (props: P) => R;
 
 export namespace JSX {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  export type Element = {} | string;
+  export interface Element extends FC<any, any> {}
 }
 
-export const slack = <P extends { children: any }>(
-  node: FC<P, any> | string,
-  props: P | null,
-  ...children: Node<any>[]
-): JSX.Element => {
+export const slack = <N extends FC<P, R>, P extends {}, R extends SlackSpec>(
+  node: N,
+  props: P,
+  ...children: N[]
+): Partial<R> => {
   // console.log('node', node);
   // console.log('children', children);
   if (typeof node === 'function') {
