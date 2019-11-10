@@ -29,14 +29,14 @@ const pruneFields = (o: {}) =>
 
 export namespace JSX {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  export type Element = FC<any, any> | string;
+  export type Element = {} | string;
 }
 
 export const slack = <P extends { children: any }>(
   node: FC<P, any> | string,
   props: P | null,
   ...children: Node<any>[]
-): string | {} => {
+): JSX.Element => {
   // console.log('node', node);
   // console.log('children', children);
   if (typeof node === 'function') {
