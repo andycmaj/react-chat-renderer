@@ -13,7 +13,13 @@ export type FC<P extends {}, R extends SlackSpec> = (props: Props<P>) => R;
 
 export namespace JSX {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  export interface Element extends FC<any, any> {}
+  export interface Element {}
+  export interface ElementAttributesProperty {
+    props: {};
+  }
+  export interface ElementChildrenAttribute {
+    children: {};
+  }
 }
 
 export const slack = <N extends FC<P, R>, P extends {}, R extends SlackSpec>(
