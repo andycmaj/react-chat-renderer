@@ -13,7 +13,7 @@ export type FC<P extends {}, R extends SlackSpec> = (props: Props<P>) => R;
 
 declare global {
   namespace JSX {
-    export type Element = SlackSpec;
+    export type Element = SlackSpec | FC<any, any>;
     export interface ElementAttributesProperty {
       props: {};
     }
