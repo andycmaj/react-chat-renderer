@@ -1,8 +1,5 @@
 import { Block, BlockProps } from './Block';
 import { ImageBlock as ImageBlockSpec } from '@slack/types';
-import { ContainerProps } from './ContainerProps';
-import { AnyText } from './AnyText';
-import { ImageElement } from './ImageElement';
 import { Childless } from './Childless';
 
 export interface ImageBlockProps extends BlockProps<'image'>, Childless {

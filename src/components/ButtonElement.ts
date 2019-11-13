@@ -19,8 +19,9 @@ export const ButtonElement: FC<ButtonElementProps, ButtonSpec> = ({
   style,
   url,
   value,
+  type,
 }) => ({
-  type: 'button',
+  type,
   text: {
     // plain_text allows only plain_text
     type: 'plain_text',
