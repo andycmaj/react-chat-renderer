@@ -2,11 +2,9 @@ import { Block, BlockProps } from './Block';
 import { SectionBlock as SectionBlockSpec } from '@slack/types';
 import { ContainerProps } from './ContainerProps';
 import { AnyText } from './AnyText';
-import { BlockElement, ElementSpec } from './BlockElement';
+import { ElementSpec } from './BlockElement';
 
-export interface SectionBlockProps
-  extends BlockProps<'section'>,
-    ContainerProps<AnyText> {
+export interface SectionBlockProps extends BlockProps, ContainerProps<AnyText> {
   fields?: ReturnType<AnyText>[];
   accessory?: ElementSpec;
 }

@@ -17,10 +17,6 @@ export type ActionSpec = ButtonSpec;
 
 export type ElementType = 'image' | 'user' | ActionType;
 
-export type ElementProps<T extends ElementType> = {
-  type?: T;
-};
-
 export type ElementSpec =
   | ImageElementSpec
   | UserElementSpec
@@ -32,7 +28,4 @@ export type ElementSpec =
   | MultiSelect
   | Action;
 
-export type BlockElement<
-  P extends ElementProps<ElementType>,
-  E extends ElementSpec
-> = FC<P, E>;
+export type BlockElement<P extends {}, E extends ElementSpec> = FC<P, E>;

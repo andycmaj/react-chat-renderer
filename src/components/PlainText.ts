@@ -1,7 +1,7 @@
 import { TextProps, Text, joinTextChildren } from './Text';
 import { PlainTextElement } from '@slack/types';
 
-export interface PlainTextProps extends TextProps<'plain_text'> {
+export interface PlainTextProps extends TextProps {
   emoji?: boolean;
 }
 

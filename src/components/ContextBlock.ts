@@ -4,7 +4,7 @@ import { ContainerProps } from './ContainerProps';
 import { AnyText } from './AnyText';
 import { ImageElement } from './ImageElement';
 
-export type ContextBlockProps = BlockProps<'context'> &
+export type ContextBlockProps = BlockProps &
   ContainerProps<ReturnType<AnyText> | ReturnType<typeof ImageElement>>;
 
 export const ContextBlock: Block<ContextBlockProps, ContextBlockSpec> = ({

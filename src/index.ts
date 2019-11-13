@@ -12,30 +12,16 @@ type Props<P> = { children?: unknown } & P;
 export type FC<P extends {}, R> = (props: Props<P>) => R;
 
 export namespace slack {
-  // type ChildElement<P> =
-  //   | FC<P, any>
-  //   | string
-  //   | number // toString to normalize
-  //   | boolean // Remove to normalize
-  //   | null // Remove to normalize
-  //   | undefined; // Remove to normalize
-
-  // export type Child<P> = ChildElement<P> | ChildElement<P>[];
-  // export type Children<P> = Child<P> | Child<P>[];
-
   export const h = <N extends FC<P, R>, P extends {}, R extends SlackSpec>(
     node: N,
     props: P,
     ...children: R[]
   ): JSX.Element => {
-    // console.log('node', node);
-    // console.log('children', children);
     if (typeof node === 'function') {
       const spec = node({
         ...props,
         children,
       });
-      // console.log('spec', spec);
       return typeof spec === 'string' ? spec : pruneFields(spec);
     }
 

@@ -1,12 +1,9 @@
 import { FC } from '..';
 import { Button as ButtonSpec } from '@slack/types';
-import { ElementProps, BlockElement } from './BlockElement';
 import { ContainerProps } from './ContainerProps';
 import { joinTextChildren } from './Text';
 
-export interface ButtonElementProps
-  extends ElementProps<'button'>,
-    ContainerProps<string> {
+export interface ButtonElementProps extends ContainerProps<string> {
   actionId: string;
   url?: string;
   value?: string;

@@ -6,14 +6,11 @@ import { ContainerProps } from './ContainerProps';
 
 export type TextType = 'plain_text' | 'mrkdwn';
 
-export type TextProps<T extends TextType> = ContainerProps<string>;
+export type TextProps = ContainerProps<string>;
 
 export type TextElementSpec = MrkdwnElement | PlainTextElement;
 
-export type Text<P extends TextProps<TextType>, E extends TextElementSpec> = FC<
-  P,
-  E
->;
+export type Text<P extends TextProps, E extends TextElementSpec> = FC<P, E>;
 
 export const joinTextChildren = (children: string | string[]) =>
   [].concat(children).join('');

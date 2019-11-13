@@ -2,7 +2,7 @@ import { Block, BlockProps } from './Block';
 import { ImageBlock as ImageBlockSpec } from '@slack/types';
 import { Childless } from './Childless';
 
-export interface ImageBlockProps extends BlockProps<'image'>, Childless {
+export interface ImageBlockProps extends BlockProps, Childless {
   altText: string;
   imageUrl: string;
   title?: string;
