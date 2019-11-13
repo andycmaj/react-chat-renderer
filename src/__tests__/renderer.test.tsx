@@ -13,9 +13,34 @@ import {
   Mention,
   ProgressBar,
   Message,
+  MessageText,
 } from '..';
 
 describe('slack jsx', () => {
+  it('message with complex fallback text', () => {
+    const message = (
+      <Message
+        text={
+          <MessageText>
+            Hey <Mention userId="foo" />
+            progress:{' '}
+            <ProgressBar columnWidth={10} total={300} value={200} color="red" />
+          </MessageText>
+        }
+      ></Message>
+    );
+    expect(message).toMatchSnapshot();
+  });
+
+  it('message with simple fallback text', () => {
+    const message = (
+      <Message
+        text={<MessageText mrkdwn={false}>simple message text</MessageText>}
+      ></Message>
+    );
+    expect(message).toMatchSnapshot();
+  });
+
   it('component with single string child', () => {
     const message = <PlainText>fooooo</PlainText>;
     expect(message).toMatchSnapshot();

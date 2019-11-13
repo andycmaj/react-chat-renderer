@@ -88,6 +88,26 @@ Object {
 }
 `;
 
+exports[`slack jsx message with complex fallback text 1`] = `
+Object {
+  "as_user": false,
+  "blocks": Array [],
+  "mrkdwn": true,
+  "response_type": "in_channel",
+  "text": "Hey <@foo>progress: \`▓▓▓▓▓▓▓░░░\`",
+}
+`;
+
+exports[`slack jsx message with simple fallback text 1`] = `
+Object {
+  "as_user": false,
+  "blocks": Array [],
+  "mrkdwn": false,
+  "response_type": "in_channel",
+  "text": "simple message text",
+}
+`;
+
 exports[`slack jsx renders ActionsBlock elements as children 1`] = `
 Object {
   "elements": Array [
