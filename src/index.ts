@@ -11,14 +11,15 @@ type Props<P> = { children?: unknown } & P;
 
 export type FC<P extends {}, R extends SlackSpec> = (props: Props<P>) => R;
 
-export namespace JSX {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
-  export interface Element {}
-  export interface ElementAttributesProperty {
-    props: {};
-  }
-  export interface ElementChildrenAttribute {
-    children: {};
+declare global {
+  namespace JSX {
+    export type Element = SlackSpec;
+    export interface ElementAttributesProperty {
+      props: {};
+    }
+    export interface ElementChildrenAttribute {
+      children: {};
+    }
   }
 }
 
@@ -26,7 +27,7 @@ export const slack = <N extends FC<P, R>, P extends {}, R extends SlackSpec>(
   node: N,
   props: P,
   ...children: N[]
-): Partial<R> => {
+): JSX.Element => {
   // console.log('node', node);
   // console.log('children', children);
   if (typeof node === 'function') {
