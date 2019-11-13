@@ -11,15 +11,13 @@ type Props<P> = { children?: unknown } & P;
 
 export type FC<P extends {}, R extends SlackSpec> = (props: Props<P>) => R;
 
-declare global {
-  namespace JSX {
-    export type Element = SlackSpec | FC<any, any>;
-    export interface ElementAttributesProperty {
-      props: {};
-    }
-    export interface ElementChildrenAttribute {
-      children: {};
-    }
+export namespace JSX {
+  export type Element = SlackSpec | FC<any, any>;
+  export interface ElementAttributesProperty {
+    props: {};
+  }
+  export interface ElementChildrenAttribute {
+    children: {};
   }
 }
 
