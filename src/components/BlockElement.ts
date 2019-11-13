@@ -18,7 +18,7 @@ export type ActionSpec = ButtonSpec;
 export type ElementType = 'image' | 'user' | ActionType;
 
 export type ElementProps<T extends ElementType> = {
-  type: T;
+  type?: T;
 };
 
 export type ElementSpec =
