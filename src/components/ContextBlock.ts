@@ -3,10 +3,13 @@ import { ContextBlock as ContextBlockSpec } from '@slack/types';
 import { ContainerProps } from './ContainerProps';
 import { AnyText } from './AnyText';
 import { ImageElement } from './ImageElement';
+import { slack } from '..';
 
-export interface ContextBlockProps
-  extends BlockProps<'context'>,
-    ContainerProps<AnyText | typeof ImageElement> {}
+export type ContextBlockProps = BlockProps<'context'> & {
+  children: slack.Children<
+    ReturnType<AnyText> | ReturnType<typeof ImageElement>
+  >;
+};
 
 export const ContextBlock: Block<ContextBlockProps, ContextBlockSpec> = ({
   children,

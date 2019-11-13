@@ -1,4 +1,4 @@
-/** @jsx slack */
+/** @jsx slack.h */
 import {
   slack,
   ActionsBlock,
