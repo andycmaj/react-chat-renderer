@@ -11,7 +11,7 @@ export { ImageElement } from './ImageElement';
 
 export { PlainText } from './PlainText';
 export { MarkdownText } from './MarkdownText';
-export { MessageText } from './MessageText';
+export { AltText } from './MessageText';
 
 export { Link } from './Link';
 export { Mention } from './Mention';

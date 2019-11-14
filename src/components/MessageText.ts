@@ -3,17 +3,17 @@ import {
   TextProps,
   MessageText as Text,
   joinTextChildren,
-  MessageTextSpec
+  MessageTextSpec,
 } from './Text';
 
 export interface MessageTextProps extends TextProps {
   mrkdwn?: boolean;
 }
 
-export const MessageText: Text<MessageTextProps, MessageTextSpec> = ({
+export const AltText: Text<MessageTextProps, MessageTextSpec> = ({
   children,
-  mrkdwn = true
+  mrkdwn = true,
 }) => ({
   mrkdwn,
-  text: joinTextChildren(children)
+  text: joinTextChildren(children),
 });

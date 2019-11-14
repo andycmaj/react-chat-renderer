@@ -11,7 +11,7 @@ export interface MessageProps
   channel?: string;
   token?: string;
   asUser?: boolean;
-  text?: MessageTextProps;
+  altText?: MessageTextProps;
 }
 
 export interface MessageSpec {
@@ -28,7 +28,7 @@ export const Message: FC<MessageProps, MessageSpec> = ({
   responseType = 'in_channel',
   channel,
   token,
-  text,
+  altText,
   asUser = false,
 }) => ({
   response_type: responseType,
@@ -36,5 +36,5 @@ export const Message: FC<MessageProps, MessageSpec> = ({
   as_user: asUser,
   channel,
   token,
-  ...text,
+  ...altText,
 });
