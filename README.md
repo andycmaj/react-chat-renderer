@@ -9,13 +9,13 @@ I wanted to build rich, interactive Slack and Discord workflows in a familiar id
 - Support Slack's new [Block-kit](https://api.slack.com/block-kit) and [Interactive Messaging Workflows](https://api.slack.com/messaging/interactivity).
   - Attachments considered legacy/obsolete
 - Components are stateless, but message handlers will follow a redux/flux model. Props only, and map event handlers to actions.
-- Each Component encapsulates a parent-agnostic view of a Slack message entity (eg. a [layout block](https://api.slack.com/reference/messaging/blocks)). It's responsible for `render`ing its own JSON shape.
-  - `render` should always return a JSON entity that is a subtree of a Slack message.
+- Each Component is a pure function with a parent-agnostic view of a Slack message entity (eg. a [layout block](https://api.slack.com/reference/messaging/blocks)). It's responsible for `render`ing its own JSON shape.
+  - these `FCs` should always return a JSON entity that is a subtree of a Slack message.
 
 ## Upcoming
 
 - [redux-like state management for slack interaction workflows](https://github.com/andycmaj/react-chat-renderer/issues/4)
-- discord support
+- Microsoft Teams support
 - more out-of-the-box elements
 
 ## Inspirations
