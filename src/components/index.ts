@@ -1,4 +1,4 @@
-export { Message } from './Message';
+export { Message, MessageSpec, MessageProps } from './Message';
 
 export { ActionsBlock } from './ActionsBlock';
 export { ContextBlock } from './ContextBlock';
