@@ -25,6 +25,7 @@ I wanted to build rich, interactive Slack and Discord workflows in a familiar id
 - [react-ionize](https://github.com/mhink/react-ionize/blob/master/src/IonizeHostConfig.js)
 - [react-synth](https://github.com/FormidableLabs/react-synth)
 - [react-slack](https://github.com/andreyvital/react-slack-renderer/blob/master/components/SlackAttachment.js)
+- [jsx-slack](https://github.com/speee/jsx-slack/blob/master/src/jsx.ts#L146)
 
 ## Example
 
