@@ -1,7 +1,8 @@
 import { FC } from '..';
 import { ContainerProps } from './ContainerProps';
 import { Block } from './Block';
-import { MessageTextProps } from './MessageText';
+import { AltText } from './MessageText';
+import { MessageTextSpec } from './Text';
 
 export type MessageType = 'ephemeral' | 'in_channel';
 
@@ -11,16 +12,15 @@ export interface MessageProps
   channel?: string;
   token?: string;
   asUser?: boolean;
-  altText?: MessageTextProps;
+  altText?: ReturnType<typeof AltText>;
 }
 
-export interface MessageSpec {
+export interface MessageSpec extends MessageTextSpec {
   response_type: MessageType;
   channel?: string;
   as_user?: boolean;
   token?: string;
   blocks?: Block<any, any>[];
-  text?: string;
 }
 
 export const Message: FC<MessageProps, MessageSpec> = ({
