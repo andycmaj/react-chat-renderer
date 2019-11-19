@@ -136,7 +136,9 @@ Object {
   "blocks": Array [
     Object {
       "text": Object {
-        "text": "Hey <@foo>Hot code review alert! :thermometer:<foo|some title> has *34 discussions*. You're missing out!",
+        "text": "Hey <@foo>
+Hot code review alert! :thermometer:
+<foo|some title> has *34 discussions*. You're missing out!",
         "type": "mrkdwn",
         "verbatim": false,
       },

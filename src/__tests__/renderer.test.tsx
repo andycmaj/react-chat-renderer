@@ -15,6 +15,7 @@ import {
   Message,
   AltText,
 } from '..';
+import { LineBreak } from '../components';
 
 describe('slack jsx', () => {
   it('message with complex fallback text', () => {
@@ -138,7 +139,9 @@ describe('slack jsx', () => {
         <SectionBlock>
           <MarkdownText>
             Hey <Mention userId="foo" />
+            <LineBreak />
             Hot code review alert! :thermometer:
+            <LineBreak />
             <Link href="foo">some title</Link> has *{34} discussions*. You're
             missing out!
           </MarkdownText>
