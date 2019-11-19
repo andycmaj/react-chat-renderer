@@ -16,3 +16,4 @@ export { AltText } from './MessageText';
 export { Link } from './Link';
 export { Mention } from './Mention';
 export { ProgressBar } from './ProgressBar';
+export { LineBreak } from './LineBreak';
