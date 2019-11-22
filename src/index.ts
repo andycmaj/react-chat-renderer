@@ -21,7 +21,7 @@ export namespace slack {
     if (typeof node === 'function') {
       const spec = node({
         ...props,
-        children: flattenDeep(children),
+        children: flattenDeep(children).filter(child => !!child),
       });
       return typeof spec === 'string' ? spec : pruneFields(spec);
     }
