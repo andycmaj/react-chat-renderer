@@ -163,6 +163,34 @@ describe('slack jsx', () => {
     expect(message).toMatchSnapshot();
   });
 
+  it('flattens multiple sections in an array', () => {
+    const message = (
+      <Message altText={<AltText>New code review request</AltText>}>
+        <SectionBlock>
+          {true ? (
+            <MarkdownText>
+              Hey <Mention userId="42" />,
+              <Mention userId="42" /> has requested your review for{' '}
+              <Link href="http://foo.com">code review x</Link>'
+            </MarkdownText>
+          ) : (
+            <MarkdownText>
+              <Link href="http://google.com">
+                Looks like you're assigned to a PullRequest
+              </Link>
+            </MarkdownText>
+          )}
+        </SectionBlock>
+        {[1, 2, 3].map(num => (
+          <SectionBlock>
+            <PlainText>{num.toString()}</PlainText>
+          </SectionBlock>
+        ))}
+      </Message>
+    );
+    expect(message).toMatchSnapshot();
+  });
+
   // it('renders a Message with child expression', () => {
   //   const block = (
   //     <SectionBlock>

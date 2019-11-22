@@ -1,3 +1,4 @@
+import flattenDeep from 'lodash.flattendeep';
 export type SlackSpec = {} | string;
 export * from './components';
 
@@ -20,7 +21,7 @@ export namespace slack {
     if (typeof node === 'function') {
       const spec = node({
         ...props,
-        children,
+        children: flattenDeep(children),
       });
       return typeof spec === 'string' ? spec : pruneFields(spec);
     }
