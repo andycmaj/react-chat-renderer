@@ -23,7 +23,8 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "@slack/types": "1.2.1"
+    "@slack/types": "1.2.1",
+    "lodash.flattendeep": "^4.4.0"
   },
   "devDependencies": {
     "@babel/cli": "7.6.4",
