@@ -188,6 +188,7 @@ Hot code review alert! :thermometer:
       "type": "section",
     },
     Object {
+      "block_id": "action-block-id",
       "elements": Array [
         Object {
           "action_id": "view",
