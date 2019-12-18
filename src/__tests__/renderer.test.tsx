@@ -146,7 +146,7 @@ describe('slack jsx', () => {
             missing out!
           </MarkdownText>
         </SectionBlock>
-        <ActionsBlock>
+        <ActionsBlock blockId="action-block-id">
           <ButtonElement actionId="view" style="primary">
             Get involved!
           </ButtonElement>
