@@ -9,6 +9,8 @@ export type MessageTextSpec = { text: string; mrkdwn: boolean };
 
 export type TextType = 'plain_text' | 'mrkdwn';
 
+export type ModalType = 'modal' | 'home';
+
 export type TextProps = ContainerProps<string>;
 
 export type TextElementSpec = MrkdwnElement | PlainTextElement;
