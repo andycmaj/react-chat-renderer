@@ -4,7 +4,7 @@ import { Block } from './Block';
 import { KnownBlock } from '@slack/types';
 import { ModalType } from './Text';
 
-export interface ModaleProps
+export interface ModalProps
   extends ContainerProps<ReturnType<Block<any, KnownBlock>>> {
   callbackId: string;
   title: string;
@@ -17,7 +17,7 @@ export interface ModalSpec {
   blocks: ReturnType<Block<any, KnownBlock>>[];
 }
 
-export const Modal: FC<ModaleProps, ModalSpec> = ({
+export const Modal: FC<ModalProps, ModalSpec> = ({
   children,
   callbackId,
   title,
