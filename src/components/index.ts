@@ -1,5 +1,6 @@
 export { Message, MessageSpec, MessageProps } from './Message';
 
+export { Modal, ModalSpec } from './Modal';
 export { ActionsBlock } from './ActionsBlock';
 export { ContextBlock } from './ContextBlock';
 export { DividerBlock } from './DividerBlock';

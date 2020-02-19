@@ -32,7 +32,6 @@ export const Message: FC<MessageProps, MessageSpec> = ({
   altText,
   asUser = false,
 }) => {
-  console.log(children);
   return {
     response_type: responseType,
     blocks: Array.isArray(children) ? children : [].concat(children),
