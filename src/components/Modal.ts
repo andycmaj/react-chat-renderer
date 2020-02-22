@@ -7,24 +7,45 @@ import { KnownBlock, View } from '@slack/types';
 
 export interface ModalProps
   extends ContainerProps<ReturnType<Block<any, KnownBlock>>> {
-  callbackId: string;
   title: string;
+  callbackId?: string;
+  submitButtonText?: string;
+  closeButtonText?: string;
+  privateMetadata?: string;
+  clearOnClose?: boolean;
+  notifyOnClose?: boolean;
 }
 
-export interface ModalSpec
-  extends Pick<View, 'callback_id' | 'blocks' | 'title'> {
-  type: 'modal';
-}
+// TODO: maybe just rename Modal -> View. slack docs make this a bit confusing
+// in the meantime exporting this spec for consistency
+export type ModalSpec = View;
 
 export const Modal: FC<ModalProps, ModalSpec> = ({
   children,
   callbackId,
   title,
+  submitButtonText,
+  closeButtonText,
+  privateMetadata,
+  clearOnClose,
+  notifyOnClose,
 }) => {
-  return {
+  const modal: ModalSpec = {
     type: 'modal',
     callback_id: callbackId,
     blocks: Array.isArray(children) ? children : [].concat(children),
     title: { type: 'plain_text', text: title },
+    private_metadata: privateMetadata,
+    clear_on_close: clearOnClose,
+    notify_on_close: notifyOnClose,
   };
+
+  if (submitButtonText) {
+    modal.submit = { type: 'plain_text', text: submitButtonText };
+  }
+  if (closeButtonText) {
+    modal.close = { type: 'plain_text', text: closeButtonText };
+  }
+
+  return modal;
 };
