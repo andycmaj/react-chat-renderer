@@ -7,6 +7,7 @@ export interface PlainTextInputProps {
   multiline?: boolean;
   minLength?: number;
   maxLength?: number;
+  actionId?: string;
 }
 
 export const PlainTextInputElement: FC<
@@ -18,6 +19,7 @@ export const PlainTextInputElement: FC<
   multiline,
   minLength: min_length,
   maxLength: max_length,
+  actionId: action_id,
 }) => {
   const plainTextInput: PlainTextInputSpec = {
     type: 'plain_text_input',
@@ -25,6 +27,7 @@ export const PlainTextInputElement: FC<
     multiline,
     min_length,
     max_length,
+    action_id,
   };
 
   if (placeholderText) {

@@ -11,6 +11,7 @@ export { ImageBlock } from './ImageBlock';
 export { ButtonElement } from './ButtonElement';
 export { ImageElement } from './ImageElement';
 export { PlainTextInputElement } from './PlainTextInputElement';
+export { ChannelSelect } from './ChannelsSelect';
 
 export { PlainText } from './PlainText';
 export { MarkdownText } from './MarkdownText';
