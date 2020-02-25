@@ -71,7 +71,7 @@ describe('slack jsx', () => {
       <Message
         token="test_token"
         channel="test_channel"
-        altText={<AltText>this is so got</AltText>}
+        altText={<AltText>this is alt text</AltText>}
       >
         <SectionBlock>
           <PlainText emoji>section text :sadkeanu:</PlainText>
