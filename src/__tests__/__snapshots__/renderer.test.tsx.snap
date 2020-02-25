@@ -26,7 +26,9 @@ Object {
     },
   ],
   "channel": "test_channel",
+  "mrkdwn": true,
   "response_type": "in_channel",
+  "text": "this is alt text",
   "token": "test_token",
 }
 `;
@@ -233,6 +235,8 @@ Hot code review alert! :thermometer:
       "type": "context",
     },
   ],
+  "mrkdwn": true,
   "response_type": "in_channel",
+  "text": "Hot code review alert",
 }
 `;

@@ -9,11 +9,11 @@ export type MessageType = 'ephemeral' | 'in_channel';
 
 export interface MessageProps
   extends ContainerProps<ReturnType<Block<any, KnownBlock>>> {
+  altText: ReturnType<typeof AltText>;
   responseType?: MessageType;
   channel?: string;
   token?: string;
   asUser?: boolean;
-  altText?: ReturnType<typeof AltText>;
 }
 
 export interface MessageSpec extends MessageTextSpec {
