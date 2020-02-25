@@ -68,7 +68,11 @@ describe('slack jsx', () => {
 
   it('component with array of nested component children', () => {
     const message = (
-      <Message token="test_token" channel="test_channel">
+      <Message
+        token="test_token"
+        channel="test_channel"
+        altText={<AltText>this is so got</AltText>}
+      >
         <SectionBlock>
           <PlainText emoji>section text :sadkeanu:</PlainText>
         </SectionBlock>
@@ -135,7 +139,7 @@ describe('slack jsx', () => {
 
   it('renders a complex message', () => {
     const message = (
-      <Message>
+      <Message altText={<AltText>Hot code review alert</AltText>}>
         <SectionBlock>
           <MarkdownText>
             Hey <Mention userId="foo" />
