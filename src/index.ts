@@ -25,7 +25,7 @@ export namespace slack {
       });
       return typeof spec === 'string' ? spec : pruneFields(spec);
     } else if ('children' in node && Array.isArray(node.children)) {
-      return node.children;
+      return flattenDeep(node.children).filter(child => !!child);
     }
 
     console.error('slack jsx', node, props, children);
