@@ -32,6 +32,9 @@ export namespace slack {
     throw new Error('node not an FC');
   };
 
+  export const Fragment = ({ children }): JSX.Element =>
+    children as JSX.Element;
+
   export namespace JSX {
     export type Element = any;
     export interface ElementAttributesProperty {

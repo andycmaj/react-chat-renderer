@@ -32,6 +32,7 @@ export const Message: FC<MessageProps, MessageSpec> = ({
   altText,
   asUser = false,
 }) => {
+  console.log('jsx message children', JSON.stringify(children, null, 2));
   return {
     response_type: responseType,
     blocks: Array.isArray(children) ? children : [].concat(children),
