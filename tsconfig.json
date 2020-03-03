@@ -18,7 +18,7 @@
     // "isolatedModules": true,
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "jsxFactory": "slack.h"
   },
   "include": ["src", "@types"]

@@ -31,13 +31,11 @@ export const Message: FC<MessageProps, MessageSpec> = ({
   token,
   altText,
   asUser = false,
-}) => {
-  return {
-    response_type: responseType,
-    blocks: Array.isArray(children) ? children : [].concat(children),
-    as_user: asUser,
-    channel,
-    token,
-    ...altText,
-  };
-};
+}) => ({
+  response_type: responseType,
+  blocks: Array.isArray(children) ? children : [].concat(children),
+  as_user: asUser,
+  channel,
+  token,
+  ...altText,
+});

@@ -1,4 +1,5 @@
 /** @jsx slack.h */
+/** @jsxFrag slack.Fragment */
 import {
   slack,
   ActionsBlock,
@@ -14,8 +15,8 @@ import {
   ProgressBar,
   Message,
   AltText,
+  LineBreak,
 } from '..';
-import { LineBreak } from '../components';
 
 describe('slack jsx', () => {
   it('message with complex fallback text', () => {
@@ -45,6 +46,84 @@ describe('slack jsx', () => {
   it('component with single string child', () => {
     const message = <PlainText>fooooo</PlainText>;
     expect(message).toMatchSnapshot();
+  });
+
+  it('can render nested fragments in maps', () => {
+    const userMotivations = [
+      {
+        motivation: {
+          name: 'm1',
+          motivationHabits: [
+            {
+              habit: {
+                name: 'h1',
+                userHabits: [
+                  {
+                    habit: {
+                      name: 'uh1',
+                    },
+                  },
+                  {
+                    habit: { name: 'uh2' },
+                  },
+                ],
+              },
+            },
+            {
+              habit: {
+                name: 'h2',
+                userHabits: [
+                  {
+                    habit: { name: 'uh3' },
+                  },
+                  {
+                    habit: { name: 'uh4' },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+    ];
+
+    const msg = (
+      <Message altText={<AltText>My weekly summary</AltText>}>
+        <DividerBlock />
+        <SectionBlock>
+          <MarkdownText>My growth this week</MarkdownText>
+        </SectionBlock>
+        <DividerBlock />
+        {userMotivations.map(({ motivation: { name, motivationHabits } }) =>
+          motivationHabits.map(({ habit: { userHabits } }) =>
+            userHabits.map(({ habit: { name: habitName } }) => (
+              <>
+                <SectionBlock>
+                  <MarkdownText>
+                    *{name}: {habitName}*
+                  </MarkdownText>
+                </SectionBlock>
+                <ContextBlock>
+                  <ImageElement
+                    altText="improved"
+                    imageUrl="https://user-images.githubusercontent.com/97470/75739421-a7138180-5cb9-11ea-9547-e64acf86eb59.png"
+                  />
+                  <ImageElement
+                    altText="declined"
+                    imageUrl="https://user-images.githubusercontent.com/97470/75739424-a7ac1800-5cb9-11ea-969a-e1ac9f12a41a.png"
+                  />
+                  <MarkdownText>
+                    :evergreen_tree: :small_red_triangle_down: stats go here
+                  </MarkdownText>
+                </ContextBlock>
+              </>
+            ))
+          )
+        )}
+      </Message>
+    );
+
+    console.log(JSON.stringify(msg, null, 2));
   });
 
   it('component with single nested component child', () => {

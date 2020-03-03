@@ -14,7 +14,7 @@ export type FC<P extends {}, R> = (props: Props<P>) => R;
 
 export namespace slack {
   export const h = <N extends FC<P, R>, P extends {}, R extends SlackSpec>(
-    node: N,
+    node: N | { children: [] },
     props: P,
     ...children: R[]
   ): JSX.Element => {
@@ -23,11 +23,20 @@ export namespace slack {
         ...props,
         children: flattenDeep(children).filter(child => !!child),
       });
-      return typeof spec === 'string' ? spec : pruneFields(spec);
+      return typeof spec === 'string'
+        ? spec
+        : Array.isArray(spec)
+        ? spec
+        : pruneFields(spec);
+    } else if ('children' in node && Array.isArray(node.children)) {
+      return flattenDeep(node.children).filter(child => !!child);
     }
 
-    console.error('slack jsx', node, props, children);
     throw new Error('node not an FC');
+  };
+
+  export const Fragment = ({ children }): JSX.Element => {
+    return children as JSX.Element;
   };
 
   export namespace JSX {
