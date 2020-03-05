@@ -2,12 +2,7 @@
 const { jsWithTs } = require('ts-jest/presets');
 
 module.exports = {
-  collectCoverageFrom: [
-    'src/**/*.js',
-    'src/**/*.jsx',
-    'src/**/*.ts',
-    'src/**/*.tsx',
-  ],
+  collectCoverageFrom: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
   coveragePathIgnorePatterns: [
     'lib',
     '@types',
@@ -15,14 +10,12 @@ module.exports = {
     '.*\\.d\\.ts',
   ],
   testEnvironment: 'node',
-  testRegex:
-    'src.*(/(test|__tests__)/(?![_.]).*|(\\.|/)(test|spec))\\.[jt]sx?$',
+  testRegex: '.*(/(test|__tests__)/(?![_.]).*|(\\.|/)(test|spec))\\.[jt]sx?$',
   transform: { ...jsWithTs.transform },
   globals: {
     'ts-jest': {
       // ts-jest configuration goes here
-      // babelConfig: true,
-      // tsConfig: 'tsconfig.json',
+      babelConfig: 'babel.config.js',
     },
   },
 };
