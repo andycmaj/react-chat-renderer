@@ -304,16 +304,46 @@ describe('slack jsx', () => {
   //   expect(out1).toEqual(out2);
   // });
 
-  // it('renders contextblock children', () => {
-  //   const message = SlackRenderer.render(
-  //     <ContextBlock>
-  //       <PlainText emoji>Hello, world</PlainText>
-  //       <ImageElement
-  //         imageUrl="https://api.slack.com/img/blocks/bkb_template_images/beagle.png"
-  //         altText="alt"
-  //       />
-  //     </ContextBlock>
-  //   );
+  const DeltaIndicator = ({ delta }: { delta: number }) =>
+    delta > 0 ? (
+      <ImageElement
+        altText="improved"
+        imageUrl="https://user-images.githubusercontent.com/97470/75739421-a7138180-5cb9-11ea-9547-e64acf86eb59.png"
+      />
+    ) : delta === 0 ? (
+      'okay!'
+    ) : (
+      <ImageElement
+        altText="declined"
+        imageUrl="https://user-images.githubusercontent.com/97470/75739424-a7ac1800-5cb9-11ea-969a-e1ac9f12a41a.png"
+      />
+    );
+
+  it('renders contextblock with component children', () => {
+    const message = (
+      <ContextBlock>
+        <PlainText emoji>Hello, world</PlainText>
+        <DeltaIndicator delta={-3} />
+        <DeltaIndicator delta={0} />
+      </ContextBlock>
+    );
+
+    expect(message).toMatchSnapshot();
+  });
+
+  it('renders contextblock children', () => {
+    const message = (
+      <ContextBlock>
+        <PlainText emoji>Hello, world</PlainText>
+        <ImageElement
+          imageUrl="https://api.slack.com/img/blocks/bkb_template_images/beagle.png"
+          altText="alt"
+        />
+      </ContextBlock>
+    );
+
+    expect(message).toMatchSnapshot();
+  });
 
   //   // console.log(JSON.stringify(message, null, 2));
   //   expect(message.blocks).toEqual([

@@ -1,5 +1,142 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`slack jsx can render nested fragments in maps 1`] = `
+Object {
+  "as_user": false,
+  "blocks": Array [
+    Object {
+      "type": "divider",
+    },
+    Object {
+      "text": Object {
+        "text": "My growth this week",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+    Object {
+      "type": "divider",
+    },
+    Object {
+      "text": Object {
+        "text": "*m1: uh1*",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "alt_text": "improved",
+          "image_url": "https://user-images.githubusercontent.com/97470/75739421-a7138180-5cb9-11ea-9547-e64acf86eb59.png",
+          "type": "image",
+        },
+        Object {
+          "alt_text": "declined",
+          "image_url": "https://user-images.githubusercontent.com/97470/75739424-a7ac1800-5cb9-11ea-969a-e1ac9f12a41a.png",
+          "type": "image",
+        },
+        Object {
+          "text": ":evergreen_tree: :small_red_triangle_down: stats go here",
+          "type": "mrkdwn",
+          "verbatim": false,
+        },
+      ],
+      "type": "context",
+    },
+    Object {
+      "text": Object {
+        "text": "*m1: uh2*",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "alt_text": "improved",
+          "image_url": "https://user-images.githubusercontent.com/97470/75739421-a7138180-5cb9-11ea-9547-e64acf86eb59.png",
+          "type": "image",
+        },
+        Object {
+          "alt_text": "declined",
+          "image_url": "https://user-images.githubusercontent.com/97470/75739424-a7ac1800-5cb9-11ea-969a-e1ac9f12a41a.png",
+          "type": "image",
+        },
+        Object {
+          "text": ":evergreen_tree: :small_red_triangle_down: stats go here",
+          "type": "mrkdwn",
+          "verbatim": false,
+        },
+      ],
+      "type": "context",
+    },
+    Object {
+      "text": Object {
+        "text": "*m1: uh3*",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "alt_text": "improved",
+          "image_url": "https://user-images.githubusercontent.com/97470/75739421-a7138180-5cb9-11ea-9547-e64acf86eb59.png",
+          "type": "image",
+        },
+        Object {
+          "alt_text": "declined",
+          "image_url": "https://user-images.githubusercontent.com/97470/75739424-a7ac1800-5cb9-11ea-969a-e1ac9f12a41a.png",
+          "type": "image",
+        },
+        Object {
+          "text": ":evergreen_tree: :small_red_triangle_down: stats go here",
+          "type": "mrkdwn",
+          "verbatim": false,
+        },
+      ],
+      "type": "context",
+    },
+    Object {
+      "text": Object {
+        "text": "*m1: uh4*",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+    Object {
+      "elements": Array [
+        Object {
+          "alt_text": "improved",
+          "image_url": "https://user-images.githubusercontent.com/97470/75739421-a7138180-5cb9-11ea-9547-e64acf86eb59.png",
+          "type": "image",
+        },
+        Object {
+          "alt_text": "declined",
+          "image_url": "https://user-images.githubusercontent.com/97470/75739424-a7ac1800-5cb9-11ea-969a-e1ac9f12a41a.png",
+          "type": "image",
+        },
+        Object {
+          "text": ":evergreen_tree: :small_red_triangle_down: stats go here",
+          "type": "mrkdwn",
+          "verbatim": false,
+        },
+      ],
+      "type": "context",
+    },
+  ],
+  "mrkdwn": true,
+  "response_type": "in_channel",
+  "text": "My weekly summary",
+}
+`;
+
 exports[`slack jsx component with array of nested component children 1`] = `
 Object {
   "as_user": false,
@@ -238,5 +375,42 @@ Hot code review alert! :thermometer:
   "mrkdwn": true,
   "response_type": "in_channel",
   "text": "Hot code review alert",
+}
+`;
+
+exports[`slack jsx renders contextblock children 1`] = `
+Object {
+  "elements": Array [
+    Object {
+      "emoji": true,
+      "text": "Hello, world",
+      "type": "plain_text",
+    },
+    Object {
+      "alt_text": "alt",
+      "image_url": "https://api.slack.com/img/blocks/bkb_template_images/beagle.png",
+      "type": "image",
+    },
+  ],
+  "type": "context",
+}
+`;
+
+exports[`slack jsx renders contextblock with component children 1`] = `
+Object {
+  "elements": Array [
+    Object {
+      "emoji": true,
+      "text": "Hello, world",
+      "type": "plain_text",
+    },
+    Object {
+      "alt_text": "declined",
+      "image_url": "https://user-images.githubusercontent.com/97470/75739424-a7ac1800-5cb9-11ea-969a-e1ac9f12a41a.png",
+      "type": "image",
+    },
+    "okay!",
+  ],
+  "type": "context",
 }
 `;
