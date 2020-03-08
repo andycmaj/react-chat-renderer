@@ -2,6 +2,7 @@
 /** @jsxFrag slack.Fragment */
 import {
   slack,
+  render,
   ActionsBlock,
   DividerBlock,
   ContextBlock,
@@ -18,8 +19,10 @@ import {
   LineBreak,
 } from '..';
 
+const fakePromise = async () => Promise.resolve();
+
 describe('slack jsx', () => {
-  it('message with complex fallback text', () => {
+  it('message with complex fallback text', async () => {
     const message = (
       <Message
         altText={
@@ -31,24 +34,65 @@ describe('slack jsx', () => {
         }
       ></Message>
     );
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
 
-  it('message with simple fallback text', () => {
+  it('message with simple fallback text', async () => {
     const message = (
       <Message
         altText={<AltText mrkdwn={false}>simple message text</AltText>}
       ></Message>
     );
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
 
-  it('component with single string child', () => {
+  it('component with single string child', async () => {
     const message = <PlainText>fooooo</PlainText>;
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
 
-  it('can render nested fragments in maps', () => {
+  it('can render simple fragments', async () => {
+    const CustomBlock = async () => Promise.resolve(<DividerBlock />);
+
+    const message = (
+      <Message altText={<AltText>My weekly summary</AltText>}>
+        <>
+          <DividerBlock />
+          <CustomBlock />
+          <DividerBlock />
+        </>
+      </Message>
+    );
+
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('can ignore falsy children', async () => {
+    const CustomBlock = async () =>
+      Promise.resolve(
+        <>
+          <DividerBlock />
+          {false}
+        </>
+      );
+
+    const message = (
+      <Message altText={<AltText>My weekly summary</AltText>}>
+        <DividerBlock />
+        {null}
+        <>
+          <CustomBlock />
+          {false}
+          <DividerBlock />
+        </>
+        {undefined}
+      </Message>
+    );
+
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('can render nested fragments in maps', async () => {
     const userMotivations = [
       {
         motivation: {
@@ -123,29 +167,29 @@ describe('slack jsx', () => {
       </Message>
     );
 
-    expect(msg).toMatchSnapshot();
+    expect(await render(msg)).toMatchSnapshot();
   });
 
-  it('component with single nested component child', () => {
+  it('component with single nested component child', async () => {
     const message = (
       <ContextBlock>
         <PlainText>fooooo</PlainText>
       </ContextBlock>
     );
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
 
-  it('component with span array children', () => {
+  it('component with span array children', async () => {
     const message = (
       <MarkdownText>
         link <Link href="https://google.com">hi google</Link>\n hi user{' '}
         <Mention userId="U12345" />
       </MarkdownText>
     );
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
 
-  it('component with array of nested component children', () => {
+  it('component with array of nested component children', async () => {
     const message = (
       <Message
         token="test_token"
@@ -161,10 +205,10 @@ describe('slack jsx', () => {
         </SectionBlock>
       </Message>
     );
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
 
-  it('component with component props', () => {
+  it('component with component props', async () => {
     const message = (
       <SectionBlock
         fields={[
@@ -176,26 +220,30 @@ describe('slack jsx', () => {
         <MarkdownText>```code```</MarkdownText>
       </SectionBlock>
     );
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
 
-  it('renders ActionsBlock elements as children', () => {
+  it('renders ActionsBlock elements as children', async () => {
     expect(
-      <ActionsBlock>
-        <ButtonElement actionId="foo">Click</ButtonElement>
-        <ImageElement
-          imageUrl="https://api.slack.com/img/blocks/bkb_template_images/beagle.png"
-          altText="alt"
-        />
-      </ActionsBlock>
+      await render(
+        <ActionsBlock>
+          <ButtonElement actionId="foo">Click</ButtonElement>
+          <ImageElement
+            imageUrl="https://api.slack.com/img/blocks/bkb_template_images/beagle.png"
+            altText="alt"
+          />
+        </ActionsBlock>
+      )
     ).toMatchSnapshot();
   });
 
-  it('renders Markdown with a ProgressBar', () => {
+  it('renders Markdown with a ProgressBar', async () => {
     expect(
-      <MarkdownText>
-        progress: <ProgressBar columnWidth={10} total={300} value={200} />
-      </MarkdownText>
+      await render(
+        <MarkdownText>
+          progress: <ProgressBar columnWidth={10} total={300} value={200} />
+        </MarkdownText>
+      )
     ).toMatchObject({
       type: 'mrkdwn',
       text: 'progress: ▓▓▓▓▓▓▓░░░',
@@ -203,12 +251,14 @@ describe('slack jsx', () => {
     });
   });
 
-  it('renders a Red ProgressBar', () => {
+  it('renders a Red ProgressBar', async () => {
     expect(
-      <MarkdownText>
-        progress:{' '}
-        <ProgressBar columnWidth={10} total={300} value={200} color="red" />
-      </MarkdownText>
+      await render(
+        <MarkdownText>
+          progress:{' '}
+          <ProgressBar columnWidth={10} total={300} value={200} color="red" />
+        </MarkdownText>
+      )
     ).toMatchObject({
       type: 'mrkdwn',
       text: 'progress: `▓▓▓▓▓▓▓░░░`',
@@ -216,7 +266,7 @@ describe('slack jsx', () => {
     });
   });
 
-  it('renders a complex message', () => {
+  it('renders a complex message', async () => {
     const message = (
       <Message altText={<AltText>Hot code review alert</AltText>}>
         <SectionBlock>
@@ -243,10 +293,10 @@ describe('slack jsx', () => {
         </ContextBlock>
       </Message>
     );
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
 
-  it('flattens multiple sections in an array', () => {
+  it('flattens multiple sections in an array', async () => {
     const message = (
       <Message altText={<AltText>New code review request</AltText>}>
         <SectionBlock>
@@ -271,41 +321,13 @@ describe('slack jsx', () => {
         ))}
       </Message>
     );
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
 
-  // it('renders a Message with child expression', () => {
-  //   const block = (
-  //     <SectionBlock>
-  //       <PlainText emoji>Hello, world</PlainText>
-  //     </SectionBlock>
-  //   );
+  const DeltaIndicator = async ({ delta }: { delta: number }) => {
+    await fakePromise();
 
-  //   const out1 = SlackRenderer.render(
-  //     <Message
-  //       token="test_token"
-  //       channel="test_channel"
-  //       responseType="in_channel"
-  //     >
-  //       {block}
-  //     </Message>
-  //   );
-
-  //   const out2 = SlackRenderer.render(
-  //     <Message
-  //       token="test_token"
-  //       channel="test_channel"
-  //       responseType="in_channel"
-  //     >
-  //       {block}
-  //     </Message>
-  //   );
-
-  //   expect(out1).toEqual(out2);
-  // });
-
-  const DeltaIndicator = ({ delta }: { delta: number }) =>
-    delta > 0 ? (
+    return delta > 0 ? (
       <ImageElement
         altText="improved"
         imageUrl="https://user-images.githubusercontent.com/97470/75739421-a7138180-5cb9-11ea-9547-e64acf86eb59.png"
@@ -318,8 +340,9 @@ describe('slack jsx', () => {
         imageUrl="https://user-images.githubusercontent.com/97470/75739424-a7ac1800-5cb9-11ea-969a-e1ac9f12a41a.png"
       />
     );
+  };
 
-  it('renders contextblock with component children', () => {
+  it('renders contextblock with component children', async () => {
     const message = (
       <ContextBlock>
         <PlainText emoji>Hello, world</PlainText>
@@ -328,10 +351,10 @@ describe('slack jsx', () => {
       </ContextBlock>
     );
 
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
 
-  it('renders contextblock children', () => {
+  it('renders contextblock children', async () => {
     const message = (
       <ContextBlock>
         <PlainText emoji>Hello, world</PlainText>
@@ -342,29 +365,6 @@ describe('slack jsx', () => {
       </ContextBlock>
     );
 
-    expect(message).toMatchSnapshot();
+    expect(await render(message)).toMatchSnapshot();
   });
-
-  //   // console.log(JSON.stringify(message, null, 2));
-  //   expect(message.blocks).toEqual([
-  //     {
-  //       elements: [
-  //         {
-  //           type: 'plain_text',
-  //           text: 'Hello, world',
-  //           emoji: true,
-  //         },
-  //         {
-  //           type: 'image',
-  //           image_url:
-  //             'https://api.slack.com/img/blocks/bkb_template_images/beagle.png',
-  //           alt_text: 'alt',
-  //         },
-  //       ],
-  //       type: 'context',
-  //     },
-  //   ]);
-
-  //   expect(message).toMatchSnapshot();
-  // });
 });

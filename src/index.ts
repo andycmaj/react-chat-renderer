@@ -12,24 +12,56 @@ type Props<P> = { children?: unknown } & P;
 
 export type FC<P extends {}, R> = (props: Props<P>) => R;
 
+export const render = async (
+  rootElement: Promise<slack.JSX.Element>
+): Promise<any> => await rootElement;
+
 export namespace slack {
-  export const h = <N extends FC<P, R>, P extends {}, R extends SlackSpec>(
-    node: N | { children: [] },
+  export const h = async <N extends FC<P, any>, P extends {}>(
+    node: N,
     props: P,
-    ...children: R[]
-  ): JSX.Element => {
+    ...children: []
+  ): Promise<JSX.Element> => {
     if (typeof node === 'function') {
-      const spec = node({
-        ...props,
-        children: flattenDeep(children).filter(child => !!child),
+      const resolvedPropArray = await Promise.all(
+        Object.keys(props || {}).map(async propKey => {
+          const prop = props[propKey];
+
+          if (Array.isArray(prop)) {
+            return [propKey, await Promise.all(prop)];
+          } else if (typeof prop === 'function' || typeof prop === 'object') {
+            return [propKey, await Promise.resolve(prop)];
+          }
+
+          return [propKey, prop];
+        })
+      );
+
+      const resolvedProps = Object.fromEntries(resolvedPropArray) as any;
+
+      const spec = await node({
+        ...resolvedProps,
+        children: flattenDeep(
+          await Promise.all(
+            children.map(async child => {
+              if (Array.isArray(child)) {
+                return await Promise.all(flattenDeep(child));
+              } else if (
+                typeof child === 'function' ||
+                typeof child === 'object'
+              ) {
+                return await Promise.resolve(child);
+              }
+
+              return child;
+            })
+          )
+        ).filter(child => !!child),
       });
-      return typeof spec === 'string'
-        ? spec
-        : Array.isArray(spec)
+
+      return typeof spec === 'string' || Array.isArray(spec)
         ? spec
         : pruneFields(spec);
-    } else if ('children' in node && Array.isArray(node.children)) {
-      return flattenDeep(node.children).filter(child => !!child);
     }
 
     throw new Error('node not an FC');
