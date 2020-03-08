@@ -367,4 +367,21 @@ describe('slack jsx', () => {
 
     expect(await render(message)).toMatchSnapshot();
   });
+
+  it('renders inline text elements with promises returning text elements', async () => {
+    const renderText = async () => {
+      const strings = await Promise.all(
+        ['foo', 'bar'].map(s => render(<Mention userId={s} />))
+      );
+      return `world! ${strings}`;
+    };
+
+    const message = (
+      <ContextBlock>
+        <MarkdownText>Hello, {await renderText()}</MarkdownText>
+      </ContextBlock>
+    );
+
+    expect(await render(message)).toMatchSnapshot();
+  });
 });

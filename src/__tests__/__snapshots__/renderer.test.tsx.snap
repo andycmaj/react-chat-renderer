@@ -454,3 +454,16 @@ Object {
   "type": "context",
 }
 `;
+
+exports[`slack jsx renders inline text elements with promises returning text elements 1`] = `
+Object {
+  "elements": Array [
+    Object {
+      "text": "Hello, world! <@foo>,<@bar>",
+      "type": "mrkdwn",
+      "verbatim": false,
+    },
+  ],
+  "type": "context",
+}
+`;

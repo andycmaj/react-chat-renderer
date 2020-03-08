@@ -28,11 +28,14 @@ export namespace slack {
           const prop = props[propKey];
 
           if (Array.isArray(prop)) {
+            // console.log('ARRAY PROP', prop);
             return [propKey, await Promise.all(prop)];
           } else if (typeof prop === 'function' || typeof prop === 'object') {
+            // console.log('FUNC/OBJ PROP', prop);
             return [propKey, await Promise.resolve(prop)];
           }
 
+          // console.log('SCALAR PROP', prop);
           return [propKey, prop];
         })
       );
@@ -45,13 +48,17 @@ export namespace slack {
           await Promise.all(
             children.map(async child => {
               if (Array.isArray(child)) {
+                // console.log('ARRAY CHILD', child);
                 return await Promise.all(flattenDeep(child));
               } else if (
                 typeof child === 'function' ||
                 typeof child === 'object'
               ) {
+                // console.log('FUNC/OBJ CHILD', child);
                 return await Promise.resolve(child);
               }
+
+              // console.log('SCALAR CHILD', child);
 
               return child;
             })
@@ -59,6 +66,7 @@ export namespace slack {
         ).filter(child => !!child),
       });
 
+      // console.log('SPEC', typeof spec, spec);
       return typeof spec === 'string' || Array.isArray(spec)
         ? spec
         : pruneFields(spec);
