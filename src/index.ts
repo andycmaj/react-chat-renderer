@@ -18,7 +18,7 @@ export const render = async (
 
 export namespace slack {
   export const h = async <N extends FC<P, any>, P extends {}>(
-    node: N | { children: [] },
+    node: N,
     props: P,
     ...children: []
   ): Promise<JSX.Element> => {
@@ -27,7 +27,9 @@ export namespace slack {
         Object.keys(props || {}).map(async propKey => {
           const prop = props[propKey];
 
-          if (typeof prop === 'function' || typeof prop === 'object') {
+          if (Array.isArray(prop)) {
+            return [propKey, await Promise.all(prop)];
+          } else if (typeof prop === 'function' || typeof prop === 'object') {
             return [propKey, await Promise.resolve(prop)];
           }
 
@@ -42,7 +44,12 @@ export namespace slack {
         children: flattenDeep(
           await Promise.all(
             children.map(async child => {
-              if (typeof child === 'function' || typeof child === 'object') {
+              if (Array.isArray(child)) {
+                return await Promise.all(flattenDeep(child));
+              } else if (
+                typeof child === 'function' ||
+                typeof child === 'object'
+              ) {
                 return await Promise.resolve(child);
               }
 
@@ -52,13 +59,9 @@ export namespace slack {
         ).filter(child => !!child),
       });
 
-      return typeof spec === 'string'
-        ? spec
-        : Array.isArray(spec)
+      return typeof spec === 'string' || Array.isArray(spec)
         ? spec
         : pruneFields(spec);
-    } else if ('children' in node && Array.isArray(node.children)) {
-      return flattenDeep(node.children).filter(child => !!child);
     }
 
     throw new Error('node not an FC');
