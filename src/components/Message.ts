@@ -30,12 +30,19 @@ export const Message: FC<MessageProps, MessageSpec> = ({
   channel,
   token,
   altText,
-  asUser = false,
-}) => ({
-  response_type: responseType,
-  blocks: Array.isArray(children) ? children : [].concat(children),
-  as_user: asUser,
-  channel,
-  token,
-  ...altText,
-});
+  asUser,
+}) => {
+  const message = {
+    response_type: responseType,
+    blocks: Array.isArray(children) ? children : [].concat(children),
+    as_user: asUser,
+    channel,
+    token,
+    ...altText,
+  };
+
+  if (asUser) {
+    message.as_user = asUser;
+  }
+  return message;
+};
