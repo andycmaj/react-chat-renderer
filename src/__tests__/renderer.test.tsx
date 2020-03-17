@@ -384,4 +384,20 @@ describe('slack jsx', () => {
 
     expect(await render(message)).toMatchSnapshot();
   });
+
+  it('only renders as_user when explicitly set', async () => {
+    const message = (
+      <Message
+        token="test_token"
+        channel="test_channel"
+        altText={<AltText>as user</AltText>}
+        asUser
+      >
+        <SectionBlock>
+          <PlainText emoji>sent as user</PlainText>
+        </SectionBlock>
+      </Message>
+    );
+    expect(await render(message)).toMatchSnapshot();
+  });
 });
