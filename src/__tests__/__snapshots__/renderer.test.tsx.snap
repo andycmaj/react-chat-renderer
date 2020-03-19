@@ -472,7 +472,7 @@ exports[`slack jsx renders inline text elements with promises returning text ele
 Object {
   "elements": Array [
     Object {
-      "text": "Hello, world! <@foo>,<@bar>",
+      "text": "Hello, world! <@foo><@bar>",
       "type": "mrkdwn",
       "verbatim": false,
     },
