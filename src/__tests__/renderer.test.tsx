@@ -369,16 +369,14 @@ describe('slack jsx', () => {
   });
 
   it('renders inline text elements with promises returning text elements', async () => {
-    const renderText = async () => {
-      const strings = await Promise.all(
-        ['foo', 'bar'].map(s => render(<Mention userId={s} />))
-      );
-      return `world! ${strings}`;
+    const renderText = () => {
+      const strings = ['foo', 'bar'].map(s => <Mention userId={s} />);
+      return <>world! {strings}</>;
     };
 
     const message = (
       <ContextBlock>
-        <MarkdownText>Hello, {await renderText()}</MarkdownText>
+        <MarkdownText>Hello, {renderText()}</MarkdownText>
       </ContextBlock>
     );
 
