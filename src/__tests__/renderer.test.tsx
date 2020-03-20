@@ -17,6 +17,7 @@ import {
   Message,
   AltText,
   LineBreak,
+  FC,
 } from '..';
 
 const fakePromise = async () => Promise.resolve();
@@ -374,9 +375,13 @@ describe('slack jsx', () => {
       return <>world! {strings}</>;
     };
 
+    const Emoji: FC<{ value: number }, string> = ({ value }) => ':thumbsup:';
+
     const message = (
       <ContextBlock>
-        <MarkdownText>Hello, {renderText()}</MarkdownText>
+        <MarkdownText>
+          Hello, {renderText()}, <Emoji value={1} />
+        </MarkdownText>
       </ContextBlock>
     );
 
