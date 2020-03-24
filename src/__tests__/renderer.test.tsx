@@ -19,6 +19,7 @@ import {
   LineBreak,
   FC,
 } from '..';
+import { ActionsBlockProps } from '../components/ActionsBlock';
 
 const fakePromise = async () => Promise.resolve();
 
@@ -402,5 +403,16 @@ describe('slack jsx', () => {
       </Message>
     );
     expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('can create custom components based on block kit', async () => {
+    const NudgeActionsBlock: FC<
+      ActionsBlockProps & { nudgeState: { id: number } },
+      ReturnType<typeof ActionsBlock>
+    > = ({ nudgeState, children, ...rest }) => (
+      <ActionsBlock {...rest} blockId={nudgeState.id.toString()}>
+        {children}
+      </ActionsBlock>
+    );
   });
 });
