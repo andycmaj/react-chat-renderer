@@ -10,7 +10,7 @@ I wanted to build rich, interactive Slack and Discord workflows in a familiar id
   - Attachments considered legacy/obsolete
 - Each Component is a pure function with a parent-agnostic view of a Slack message entity (eg. a [layout block](https://api.slack.com/reference/messaging/blocks)). It's responsible for `render`ing its own JSON shape.
   - these `FCs` should always return a JSON entity that is a subtree of a Slack message.
-- Should be able to build USEFUL, self-contained components that can do asynchronous things. Don't need a full-blown hooks implementation, but you CAN make the JSX factory asynchronous.
+- Should be able to build USEFUL, self-contained components that can do asynchronous things. Don't need a full-blown hooks implementation, but you [CAN make the JSX factory asynchronous](https://github.com/asynchronous-dev/react-chat-renderer/blob/master/src/__tests__/renderer.test.tsx#L330).
 
 ## Upcoming
 
@@ -28,9 +28,54 @@ I wanted to build rich, interactive Slack and Discord workflows in a familiar id
 
 ## Example
 
-### React `Message`
+### Asynchronous components
 
-````js
+```jsx
+/** @jsx slack.h */
+/** @jsxFrag slack.Fragment */
+import {
+  slack,
+  render,
+  ContextBlock,
+  ImageElement,
+  PlainText,
+  FC,
+} from 'react-chat-renderer';
+
+  const DeltaIndicator: FC<{delta: number}, any> = async ({ delta }) => {
+    await fakePromise();
+
+    return delta > 0 ? (
+      <ImageElement
+        altText="improved"
+        imageUrl="https://user-images.githubusercontent.com/97470/75739421-a7138180-5cb9-11ea-9547-e64acf86eb59.png"
+      />
+    ) : delta === 0 ? (
+      'okay!'
+    ) : (
+      <ImageElement
+        altText="declined"
+        imageUrl="https://user-images.githubusercontent.com/97470/75739424-a7ac1800-5cb9-11ea-969a-e1ac9f12a41a.png"
+      />
+    );
+  };
+
+  it('renders contextblock with component children', async () => {
+    const message = (
+      <ContextBlock>
+        <PlainText emoji>Hello, world</PlainText>
+        <DeltaIndicator delta={-3} />
+        <DeltaIndicator delta={0} />
+      </ContextBlock>
+    );
+
+    expect(await render(message)).toMatchSnapshot();
+  });
+```
+
+### JSX `Message`
+
+````jsx
 /** @jsx slack.h */
 import {
   slack,
