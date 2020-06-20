@@ -17,6 +17,7 @@ import {
   Message,
   AltText,
   LineBreak,
+  BlockQuote,
   FC,
 } from '..';
 import { ActionsBlockProps } from '../components/ActionsBlock';
@@ -414,5 +415,12 @@ describe('slack jsx', () => {
         {children}
       </ActionsBlock>
     );
+  });
+
+  it('renders BlockQuote', async () => {
+    const message = (
+      <BlockQuote>this is a test{'\n'}this too is a test</BlockQuote>
+    );
+    expect(await render(message)).toMatchSnapshot();
   });
 });

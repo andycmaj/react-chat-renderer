@@ -366,6 +366,14 @@ Object {
 }
 `;
 
+exports[`slack jsx renders BlockQuote 1`] = `
+Object {
+  "text": ">this is a test
+>this too is a test",
+  "type": "mrkdwn",
+}
+`;
+
 exports[`slack jsx renders a complex message 1`] = `
 Object {
   "blocks": Array [
