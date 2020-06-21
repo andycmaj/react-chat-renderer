@@ -1,7 +1,6 @@
 import { FC } from '..';
 import {
   ImageElement as ImageElementSpec,
-  UserElement as UserElementSpec,
   Button as ButtonSpec,
   Button,
   Overflow,
@@ -19,7 +18,6 @@ export type ElementType = 'image' | 'user' | ActionType;
 
 export type ElementSpec =
   | ImageElementSpec
-  | UserElementSpec
   // | ActionSpec
   | Button
   | Overflow
