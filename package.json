@@ -1,6 +1,6 @@
 {
   "name": "react-chat-renderer",
-  "version": "0.3.2",
+  "version": "0.3.3-alpha1",
   "license": "MIT",
   "scripts": {
     "postversion": "npm publish",

@@ -21,6 +21,7 @@ import {
   FC,
 } from '..';
 import { ActionsBlockProps } from '../components/ActionsBlock';
+import { SelectElement } from '../components/SelectElement';
 
 const fakePromise = async () => Promise.resolve();
 
@@ -421,6 +422,23 @@ describe('slack jsx', () => {
     const message = (
       <BlockQuote>this is a test{'\n'}this too is a test</BlockQuote>
     );
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('renders a simple multi-select', async () => {
+    const message = (
+      <SelectElement
+        actionId="action1"
+        placeholder={<PlainText>placeholder text</PlainText>}
+        options={[
+          {
+            text: <PlainText>option 1</PlainText>,
+            value: 'value1',
+          },
+        ]}
+      />
+    );
+
     expect(await render(message)).toMatchSnapshot();
   });
 });
