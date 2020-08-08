@@ -1,3 +1,4 @@
+import { SelectElement } from './SelectElement';
 export { Message, MessageSpec, MessageProps } from './Message';
 
 export { Modal, ModalSpec } from './Modal';
@@ -12,6 +13,7 @@ export { ButtonElement } from './ButtonElement';
 export { ImageElement } from './ImageElement';
 export { PlainTextInputElement } from './PlainTextInputElement';
 export { ChannelSelect } from './ChannelsSelect';
+export { SelectElement } from './SelectElement';
 
 export { PlainText } from './PlainText';
 export { MarkdownText } from './MarkdownText';
