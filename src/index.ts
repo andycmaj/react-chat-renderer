@@ -13,7 +13,9 @@ type Props<P> = { children?: unknown } & P;
 export type FC<P extends {}, R extends any> = (props: Props<P>) => R;
 
 const resolveDeep = async (thing: any) => {
-  if (Array.isArray(thing)) {
+  if (!thing) {
+    return thing;
+  } else if (Array.isArray(thing)) {
     return await Promise.all(thing.map(item => resolveDeep(item)));
   } else if (thing.__proto__ === Promise.prototype) {
     return await Promise.resolve(thing);
