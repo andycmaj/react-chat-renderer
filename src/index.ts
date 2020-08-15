@@ -12,6 +12,25 @@ type Props<P> = { children?: unknown } & P;
 
 export type FC<P extends {}, R extends any> = (props: Props<P>) => R;
 
+const resolveDeep = async (thing: any) => {
+  if (!thing) {
+    return thing;
+  } else if (Array.isArray(thing)) {
+    return await Promise.all(thing.map(item => resolveDeep(item)));
+  } else if (thing.__proto__ === Promise.prototype) {
+    return await Promise.resolve(thing);
+  } else if (typeof thing === 'object') {
+    const resolvedPairs = await Promise.all(
+      Object.keys(thing).map(async key => [key, await resolveDeep(thing[key])])
+    );
+    return Object.fromEntries(resolvedPairs);
+  } else if (typeof thing === 'function') {
+    return await Promise.resolve(thing);
+  } else {
+    return thing;
+  }
+};
+
 // for now, this is a hack to help with typescript checking.
 // if you wrap a top-level JSX element with `await render(<>)`,
 // it's a better experience than just warpping with `await (<>)`.
@@ -33,28 +52,7 @@ export namespace slack {
       throw new Error('node not an FC');
     }
 
-    const resolvedPropArray = await Promise.all(
-      Object.keys(props || {}).map(
-        async (propKey): Promise<[string, any]> => {
-          const prop = props[propKey];
-
-          if (Array.isArray(prop)) {
-            // console.log('ARRAY PROP', prop);
-            return [propKey, await Promise.all(prop)];
-          } else if (typeof prop === 'function' || typeof prop === 'object') {
-            // console.log('FUNC/OBJ PROP', prop);
-            return [propKey, await Promise.resolve(prop)];
-          }
-
-          // console.log('SCALAR PROP', prop);
-          return [propKey, prop];
-        }
-      )
-    );
-
-    const resolvedProps: Record<string, any> = Object.fromEntries(
-      resolvedPropArray
-    );
+    const resolvedProps = await resolveDeep(props || {});
 
     const spec = await node({
       ...resolvedProps,
@@ -62,17 +60,13 @@ export namespace slack {
         await Promise.all(
           children.map(async child => {
             if (Array.isArray(child)) {
-              // console.log('ARRAY CHILD', child);
               return await Promise.all(flattenDeep(child));
             } else if (
               typeof child === 'function' ||
               typeof child === 'object'
             ) {
-              // console.log('FUNC/OBJ CHILD', child);
               return await Promise.resolve(child);
             }
-
-            // console.log('SCALAR CHILD', child);
 
             return child;
           })
@@ -80,7 +74,6 @@ export namespace slack {
       ).filter(child => !!child),
     });
 
-    // console.log('SPEC', typeof spec, spec);
     return typeof spec === 'string' || Array.isArray(spec)
       ? spec
       : pruneFields(spec);
