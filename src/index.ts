@@ -49,7 +49,11 @@ export namespace slack {
     ...children: any[]
   ): Promise<JSX.Element> => {
     if (typeof node !== 'function') {
-      throw new Error('node not an FC');
+      throw new Error(
+        `node not an FC: ${typeof node}: ${JSON.stringify(
+          node
+        )}, props: ${JSON.stringify(props)}`
+      );
     }
 
     const resolvedProps = await resolveDeep(props || {});

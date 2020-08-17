@@ -439,6 +439,45 @@ Hot code review alert! :thermometer:
 }
 `;
 
+exports[`slack jsx renders a select as an accessory 1`] = `
+Object {
+  "blocks": Array [
+    Object {
+      "accessory": Object {
+        "action_id": "tagCodeReview",
+        "options": Array [
+          Object {
+            "text": Object {
+              "emoji": true,
+              "text": ":question: some other reason",
+              "type": "plain_text",
+            },
+            "value": "OTHERVALUE",
+          },
+        ],
+        "placeholder": Object {
+          "emoji": false,
+          "text": "Tell us why this was helpful",
+          "type": "plain_text",
+        },
+        "type": "multi_static_select",
+      },
+      "block_id": "BLOCK1",
+      "text": Object {
+        "text": "<@REVIEWERID> wants to get better at code reviews.
+Can you help them by giving some feedback their review of <https://google.com|google>?",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+  ],
+  "mrkdwn": true,
+  "response_type": "in_channel",
+  "text": "Help <@REVIEWERID> improve their code reviews",
+}
+`;
+
 exports[`slack jsx renders a simple multi-select 1`] = `
 Object {
   "action_id": "action1",

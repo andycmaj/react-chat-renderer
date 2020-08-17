@@ -447,4 +447,47 @@ describe('slack jsx', () => {
 
     expect(await render(message)).toMatchSnapshot();
   });
+
+  it('renders a select as an accessory', async () => {
+    const reviewerMention = <Mention userId="REVIEWERID" />;
+
+    const message = await render(
+      <Message
+        altText={
+          <AltText>Help {reviewerMention} improve their code reviews</AltText>
+        }
+      >
+        <SectionBlock
+          blockId="BLOCK1"
+          accessory={
+            <SelectElement
+              actionId="tagCodeReview"
+              placeholder={<PlainText>Tell us why this was helpful</PlainText>}
+              options={[
+                {
+                  text: (
+                    <PlainText emoji={true}>
+                      :question: some other reason
+                    </PlainText>
+                  ),
+                  value: 'OTHERVALUE',
+                },
+              ]}
+            />
+          }
+        >
+          <MarkdownText>
+            {reviewerMention} wants to get better at code reviews.
+            <LineBreak />
+            Can you help them by giving some feedback their review of{' '}
+            <Link href="https://google.com">google</Link>?
+          </MarkdownText>
+        </SectionBlock>
+      </Message>
+    );
+
+    console.log(JSON.stringify(await render(message), null, 2));
+
+    expect(await render(message)).toMatchSnapshot();
+  });
 });

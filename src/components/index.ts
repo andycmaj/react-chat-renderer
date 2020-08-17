@@ -1,4 +1,3 @@
-import { SelectElement } from './SelectElement';
 export { Message, MessageSpec, MessageProps } from './Message';
 
 export { Modal, ModalSpec } from './Modal';
