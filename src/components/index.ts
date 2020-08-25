@@ -1,26 +1,26 @@
-import { SelectElement } from './SelectElement';
-export { Message, MessageSpec, MessageProps } from './Message';
+export * from './Message';
 
-export { Modal, ModalSpec } from './Modal';
-export { ActionsBlock } from './ActionsBlock';
-export { ContextBlock } from './ContextBlock';
-export { DividerBlock } from './DividerBlock';
-export { InputBlock } from './InputBlock';
-export { SectionBlock } from './SectionBlock';
-export { ImageBlock } from './ImageBlock';
+export * from './Modal';
+export * from './ActionsBlock';
+export * from './ContextBlock';
+export * from './DividerBlock';
+export * from './InputBlock';
+export * from './SectionBlock';
+export * from './ImageBlock';
+export * from './HeaderBlock';
 
-export { ButtonElement } from './ButtonElement';
-export { ImageElement } from './ImageElement';
-export { PlainTextInputElement } from './PlainTextInputElement';
-export { ChannelSelect } from './ChannelsSelect';
-export { SelectElement, SelectOption } from './SelectElement';
+export * from './ButtonElement';
+export * from './ImageElement';
+export * from './PlainTextInputElement';
+export * from './ChannelsSelect';
+export * from './SelectElement';
 
-export { PlainText } from './PlainText';
-export { MarkdownText } from './MarkdownText';
-export { AltText } from './MessageText';
+export * from './PlainText';
+export * from './MarkdownText';
+export * from './MessageText';
 
-export { Link } from './Link';
-export { Mention } from './Mention';
-export { ProgressBar } from './ProgressBar';
-export { LineBreak } from './LineBreak';
-export { BlockQuote } from './BlockQuote';
+export * from './Link';
+export * from './Mention';
+export * from './ProgressBar';
+export * from './LineBreak';
+export * from './BlockQuote';
