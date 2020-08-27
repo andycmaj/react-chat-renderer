@@ -15,7 +15,7 @@ export const PlainTextInputElement: FC<
   PlainTextInputSpec
 > = ({
   placeholderText,
-  initialValue: initial_value,
+  initialValue,
   multiline,
   minLength: min_length,
   maxLength: max_length,
@@ -23,7 +23,6 @@ export const PlainTextInputElement: FC<
 }) => {
   const plainTextInput: PlainTextInputSpec = {
     type: 'plain_text_input',
-    initial_value,
     multiline,
     min_length,
     max_length,
@@ -32,6 +31,10 @@ export const PlainTextInputElement: FC<
 
   if (placeholderText) {
     plainTextInput.placeholder = { type: 'plain_text', text: placeholderText };
+  }
+
+  if (initialValue) {
+    plainTextInput.initial_value = initialValue;
   }
 
   return plainTextInput;
