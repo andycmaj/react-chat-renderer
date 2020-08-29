@@ -1,6 +1,6 @@
 import flattenDeep from 'lodash.flattendeep';
+import { renderMarkdown } from './renderMarkdown';
 export type SlackSpec = {} | string;
-export * from './components';
 
 const pruneFields = <R>(o: {}): Partial<R> =>
   Object.keys(o).reduce(
@@ -93,3 +93,6 @@ export namespace slack {
     }
   }
 }
+
+export * from './components';
+export { renderMarkdown } from './renderMarkdown';
