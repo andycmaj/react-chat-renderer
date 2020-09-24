@@ -20,6 +20,7 @@ import {
   BlockQuote,
   FC,
 } from '..';
+import { Home } from '../components';
 import { ActionsBlockProps } from '../components/ActionsBlock';
 import { SelectElement } from '../components/SelectElement';
 
@@ -445,6 +446,17 @@ describe('slack jsx', () => {
 
     console.log(JSON.stringify(await render(message), null, 2));
 
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('renders Home view', async () => {
+    const message = (
+      <Home title="Title Text">
+        <SectionBlock>
+          <MarkdownText>this is a test{'\n'}this too is a test</MarkdownText>
+        </SectionBlock>
+      </Home>
+    );
     expect(await render(message)).toMatchSnapshot();
   });
 });

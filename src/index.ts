@@ -1,5 +1,4 @@
 import flattenDeep from 'lodash.flattendeep';
-import { renderMarkdown } from './renderMarkdown';
 export type SlackSpec = {} | string;
 
 const pruneFields = <R>(o: {}): Partial<R> =>

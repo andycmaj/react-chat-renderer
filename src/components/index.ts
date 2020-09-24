@@ -1,6 +1,7 @@
 export * from './Message';
 
 export * from './Modal';
+export * from './Home';
 export * from './ActionsBlock';
 export * from './ContextBlock';
 export * from './DividerBlock';
