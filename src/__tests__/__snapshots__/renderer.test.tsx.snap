@@ -374,6 +374,27 @@ Object {
 }
 `;
 
+exports[`slack jsx renders Home view 1`] = `
+Object {
+  "blocks": Array [
+    Object {
+      "text": Object {
+        "text": "this is a test
+this too is a test",
+        "type": "mrkdwn",
+        "verbatim": false,
+      },
+      "type": "section",
+    },
+  ],
+  "title": Object {
+    "text": "Title Text",
+    "type": "plain_text",
+  },
+  "type": "home",
+}
+`;
+
 exports[`slack jsx renders a complex message 1`] = `
 Object {
   "blocks": Array [
