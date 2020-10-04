@@ -14,7 +14,8 @@ export * from './ButtonElement';
 export * from './ImageElement';
 export * from './PlainTextInputElement';
 export * from './ChannelsSelect';
-export * from './SelectElement';
+export * from './SingleSelectElement';
+export * from './MultiSelectElement';
 
 export * from './PlainText';
 export * from './MarkdownText';
