@@ -18,11 +18,12 @@ import {
   AltText,
   LineBreak,
   BlockQuote,
+  SingleSelectElement,
+  MultiSelectElement,
+  Home,
+  ActionsBlockProps,
   FC,
 } from '..';
-import { Home } from '../components';
-import { ActionsBlockProps } from '../components/ActionsBlock';
-import { SelectElement } from '../components/SelectElement';
 
 const fakePromise = async () => Promise.resolve();
 
@@ -428,8 +429,41 @@ describe('slack jsx', () => {
 
   it('renders a simple multi-select', async () => {
     const message = (
-      <SelectElement
+      <MultiSelectElement
         actionId="action1"
+        placeholder={<PlainText>placeholder text</PlainText>}
+        initialOptions={[
+          {
+            text: <PlainText>option 1</PlainText>,
+            value: 'value1',
+          },
+        ]}
+        options={[
+          {
+            text: <PlainText>option 1</PlainText>,
+            value: 'value1',
+          },
+          {
+            text: <PlainText>option 2</PlainText>,
+            value: 'value2',
+          },
+        ]}
+      />
+    );
+
+    console.log(JSON.stringify(await render(message), null, 2));
+
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('renders a simple single-select', async () => {
+    const message = (
+      <SingleSelectElement
+        actionId="action1"
+        initialOption={{
+          text: <PlainText>option 1</PlainText>,
+          value: 'value1',
+        }}
         placeholder={<PlainText>placeholder text</PlainText>}
         options={[
           {

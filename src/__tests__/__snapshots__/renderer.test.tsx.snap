@@ -463,6 +463,16 @@ Hot code review alert! :thermometer:
 exports[`slack jsx renders a simple multi-select 1`] = `
 Object {
   "action_id": "action1",
+  "initial_options": Array [
+    Object {
+      "text": Object {
+        "emoji": false,
+        "text": "option 1",
+        "type": "plain_text",
+      },
+      "value": "value1",
+    },
+  ],
   "options": Array [
     Object {
       "text": Object {
@@ -487,6 +497,44 @@ Object {
     "type": "plain_text",
   },
   "type": "multi_static_select",
+}
+`;
+
+exports[`slack jsx renders a simple single-select 1`] = `
+Object {
+  "action_id": "action1",
+  "initial_option": Object {
+    "text": Object {
+      "emoji": false,
+      "text": "option 1",
+      "type": "plain_text",
+    },
+    "value": "value1",
+  },
+  "options": Array [
+    Object {
+      "text": Object {
+        "emoji": false,
+        "text": "option 1",
+        "type": "plain_text",
+      },
+      "value": "value1",
+    },
+    Object {
+      "text": Object {
+        "emoji": false,
+        "text": "option 2",
+        "type": "plain_text",
+      },
+      "value": "value2",
+    },
+  ],
+  "placeholder": Object {
+    "emoji": false,
+    "text": "placeholder text",
+    "type": "plain_text",
+  },
+  "type": "static_select",
 }
 `;
 
