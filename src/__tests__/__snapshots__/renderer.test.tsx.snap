@@ -460,6 +460,37 @@ Hot code review alert! :thermometer:
 }
 `;
 
+exports[`slack jsx renders a simple checkbox 1`] = `
+Object {
+  "action_id": "action1",
+  "options": Array [
+    Object {
+      "description": Object {
+        "emoji": true,
+        "text": "description",
+        "type": "plain_text",
+      },
+      "text": Object {
+        "emoji": false,
+        "text": "option 1",
+        "type": "plain_text",
+      },
+      "value": "value1",
+    },
+    Object {
+      "text": Object {
+        "emoji": false,
+        "text": "option 2",
+        "type": "plain_text",
+      },
+      "url": "https://botany.io",
+      "value": "value2",
+    },
+  ],
+  "type": "checkboxes",
+}
+`;
+
 exports[`slack jsx renders a simple multi-select 1`] = `
 Object {
   "action_id": "action1",

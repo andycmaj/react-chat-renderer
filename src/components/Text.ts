@@ -23,7 +23,7 @@ export type MessageText<P extends TextProps, E extends MessageTextSpec> = FC<
   E
 >;
 
-export const joinTextChildren = (children: string | string[]) => {
+export const joinTextChildren = (children: string | string[]): string => {
   // console.log('TEXT CHILDREN', children);
   return [].concat(children).join('');
 };

@@ -1,7 +1,6 @@
 import { StaticSelect, PlainTextElement } from '@slack/types';
 import { FC } from '..';
-import { AnyText } from './AnyText';
-import { InputOption } from './shared/inputOption';
+import { buildInputOptions, InputOption } from './shared/inputOption';
 
 export interface SelectElementProps {
   placeholder: PlainTextElement;
@@ -20,6 +19,6 @@ export const SingleSelectElement: FC<
   type: 'static_select',
   placeholder,
   action_id: actionId,
-  options,
-  initial_option: initialOption,
+  options: buildInputOptions(options),
+  initial_option: buildInputOptions([initialOption])[0],
 });

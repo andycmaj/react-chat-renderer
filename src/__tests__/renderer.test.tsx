@@ -22,6 +22,7 @@ import {
   MultiSelectElement,
   Home,
   ActionsBlockProps,
+  CheckboxElement,
   FC,
 } from '..';
 
@@ -473,6 +474,30 @@ describe('slack jsx', () => {
           {
             text: <PlainText>option 2</PlainText>,
             value: 'value2',
+          },
+        ]}
+      />
+    );
+
+    console.log(JSON.stringify(await render(message), null, 2));
+
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('renders a simple checkbox', async () => {
+    const message = (
+      <CheckboxElement
+        actionId="action1"
+        options={[
+          {
+            text: <PlainText>option 1</PlainText>,
+            description: 'description',
+            value: 'value1',
+          },
+          {
+            text: <PlainText>option 2</PlainText>,
+            value: 'value2',
+            url: 'https://botany.io',
           },
         ]}
       />
