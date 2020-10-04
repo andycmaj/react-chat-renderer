@@ -1,6 +1,6 @@
 {
   "name": "react-chat-renderer",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "license": "MIT",
   "scripts": {
     "postversion": "npm publish",
@@ -23,7 +23,7 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "@slack/types": "1.7.0",
+    "@slack/types": "1.9.0",
     "lodash.flattendeep": "^4.4.0",
     "slackify-markdown": "3.0.3"
   },
@@ -34,7 +34,7 @@
     "@babel/preset-env": "7.10.3",
     "@babel/preset-react": "7.10.1",
     "@babel/preset-typescript": "^7.10.1",
-    "@slack/web-api": "^5.11.0",
+    "@slack/web-api": "^5.12.0",
     "@types/jest": "^26.0.3",
     "@types/lodash": "^4.14.157",
     "@typescript-eslint/eslint-plugin": "^3.4.0",

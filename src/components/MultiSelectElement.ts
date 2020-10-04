@@ -1,6 +1,6 @@
 import { MultiStaticSelect } from '@slack/types';
 import { FC, SelectElementProps } from '..';
-import { InputOption } from './shared/inputOption';
+import { buildInputOptions, InputOption } from './shared/inputOption';
 
 export interface MultiSelectElementProps extends SelectElementProps {
   initialOptions?: InputOption[];
@@ -13,6 +13,6 @@ export const MultiSelectElement: FC<
   type: 'multi_static_select',
   placeholder,
   action_id: actionId,
-  options,
-  initial_options: initialOptions,
+  options: buildInputOptions(options),
+  initial_options: buildInputOptions(initialOptions),
 });

@@ -16,6 +16,7 @@ export * from './PlainTextInputElement';
 export * from './ChannelsSelect';
 export * from './SingleSelectElement';
 export * from './MultiSelectElement';
+export * from './Checkbox';
 
 export * from './PlainText';
 export * from './MarkdownText';
