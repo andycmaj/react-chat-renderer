@@ -3,7 +3,7 @@ import { FC } from '..';
 import { buildInputOptions, InputOption } from './shared/inputOption';
 
 export interface RadioButtonsElementProps {
-  initialOptions?: InputOption[];
+  initialOption?: InputOption;
   actionId: string;
   confirm?: boolean;
   options: InputOption[];
@@ -12,9 +12,9 @@ export interface RadioButtonsElementProps {
 export const RadioButtonsElement: FC<
   RadioButtonsElementProps,
   RadioButtons
-> = ({ initialOptions, actionId, options }) => ({
+> = ({ initialOption, actionId, options }) => ({
   type: 'radio_buttons',
   action_id: actionId,
   options: buildInputOptions(options),
-  initial_options: buildInputOptions(initialOptions),
+  initial_option: buildInputOptions([initialOption])[0],
 });
