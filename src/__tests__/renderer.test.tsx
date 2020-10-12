@@ -25,6 +25,7 @@ import {
   CheckboxElement,
   FC,
 } from '..';
+import { RadioButtonsElement } from '../components';
 
 const fakePromise = async () => Promise.resolve();
 
@@ -478,9 +479,6 @@ describe('slack jsx', () => {
         ]}
       />
     );
-
-    console.log(JSON.stringify(await render(message), null, 2));
-
     expect(await render(message)).toMatchSnapshot();
   });
 
@@ -502,9 +500,27 @@ describe('slack jsx', () => {
         ]}
       />
     );
+    expect(await render(message)).toMatchSnapshot();
+  });
 
-    console.log(JSON.stringify(await render(message), null, 2));
-
+  it('renders a radiobutton group', async () => {
+    const message = (
+      <RadioButtonsElement
+        actionId="action1"
+        options={[
+          {
+            text: <PlainText>on</PlainText>,
+            description: 'description',
+            value: 'value1',
+          },
+          {
+            text: <PlainText>off</PlainText>,
+            value: 'value2',
+            url: 'https://botany.io',
+          },
+        ]}
+      />
+    );
     expect(await render(message)).toMatchSnapshot();
   });
 
