@@ -519,6 +519,11 @@ describe('slack jsx', () => {
             url: 'https://botany.io',
           },
         ]}
+        initialOption={{
+          text: <PlainText>on</PlainText>,
+          description: 'description',
+          value: 'value1',
+        }}
       />
     );
     expect(await render(message)).toMatchSnapshot();
