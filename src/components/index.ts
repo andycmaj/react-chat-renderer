@@ -18,6 +18,7 @@ export * from './SingleSelectElement';
 export * from './MultiSelectElement';
 export * from './Checkbox';
 export * from './RadioButtons';
+export { InputOption } from './shared/inputOption';
 
 export * from './PlainText';
 export * from './MarkdownText';
