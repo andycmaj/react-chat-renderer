@@ -463,6 +463,19 @@ Hot code review alert! :thermometer:
 exports[`slack jsx renders a radiobutton group 1`] = `
 Object {
   "action_id": "action1",
+  "initial_option": Object {
+    "description": Object {
+      "emoji": true,
+      "text": "description",
+      "type": "plain_text",
+    },
+    "text": Object {
+      "emoji": false,
+      "text": "on",
+      "type": "plain_text",
+    },
+    "value": "value1",
+  },
   "options": Array [
     Object {
       "description": Object {
