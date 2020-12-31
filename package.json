@@ -25,7 +25,7 @@
   "dependencies": {
     "@slack/types": "1.8.0",
     "lodash.flattendeep": "^4.4.0",
-    "slackify-markdown": "3.0.3"
+    "slackify-markdown": "4.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.10.3",
