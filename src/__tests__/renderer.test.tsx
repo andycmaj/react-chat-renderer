@@ -25,7 +25,11 @@ import {
   CheckboxElement,
   FC,
 } from '..';
-import { RadioButtonsElement } from '../components';
+import {
+  RadioButtonsElement,
+  ConversationsSelect,
+  ChannelSelect,
+} from '../components';
 
 const fakePromise = async () => Promise.resolve();
 
@@ -536,6 +540,21 @@ describe('slack jsx', () => {
           <MarkdownText>this is a test{'\n'}this too is a test</MarkdownText>
         </SectionBlock>
       </Home>
+    );
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('renders ChannelsSelect', async () => {
+    const message = <ChannelSelect actionId="channels-action-id" />;
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('renders ConversationsSelect', async () => {
+    const message = (
+      <ConversationsSelect
+        responseUrlEnabled={true}
+        actionId="conversations-action-id"
+      />
     );
     expect(await render(message)).toMatchSnapshot();
   });

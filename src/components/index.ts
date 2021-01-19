@@ -14,6 +14,7 @@ export * from './ButtonElement';
 export * from './ImageElement';
 export * from './PlainTextInputElement';
 export * from './ChannelsSelect';
+export * from './ConversationsSelect';
 export * from './SingleSelectElement';
 export * from './MultiSelectElement';
 export * from './Checkbox';
