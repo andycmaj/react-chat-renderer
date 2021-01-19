@@ -5,7 +5,7 @@ import { FC } from '..';
 
 export interface ConversationSelectProps extends ContainerProps<string> {
   initialConversation?: string;
-  actionId?: string;
+  actionId: string;
   responseUrlEnabled?: boolean;
 }
 
