@@ -483,6 +483,80 @@ Hot code review alert! :thermometer:
 }
 `;
 
+exports[`slack jsx renders a multi-select with option_groups 1`] = `
+Object {
+  "action_id": "action1",
+  "initial_options": Array [
+    Object {
+      "text": Object {
+        "emoji": false,
+        "text": "option 1",
+        "type": "plain_text",
+      },
+      "value": "value1",
+    },
+  ],
+  "option_groups": Array [
+    Object {
+      "label": Object {
+        "emoji": false,
+        "text": "Group 1",
+        "type": "plain_text",
+      },
+      "options": Array [
+        Object {
+          "text": Object {
+            "emoji": false,
+            "text": "option 1",
+            "type": "plain_text",
+          },
+          "value": "value1",
+        },
+        Object {
+          "text": Object {
+            "emoji": false,
+            "text": "option 2",
+            "type": "plain_text",
+          },
+          "value": "value2",
+        },
+      ],
+    },
+    Object {
+      "label": Object {
+        "emoji": false,
+        "text": "Group 2",
+        "type": "plain_text",
+      },
+      "options": Array [
+        Object {
+          "text": Object {
+            "emoji": false,
+            "text": "option 1",
+            "type": "plain_text",
+          },
+          "value": "value3",
+        },
+        Object {
+          "text": Object {
+            "emoji": false,
+            "text": "option 2",
+            "type": "plain_text",
+          },
+          "value": "value4",
+        },
+      ],
+    },
+  ],
+  "placeholder": Object {
+    "emoji": false,
+    "text": "placeholder text",
+    "type": "plain_text",
+  },
+  "type": "multi_static_select",
+}
+`;
+
 exports[`slack jsx renders a radiobutton group 1`] = `
 Object {
   "action_id": "action1",
@@ -625,6 +699,78 @@ Object {
         "type": "plain_text",
       },
       "value": "value2",
+    },
+  ],
+  "placeholder": Object {
+    "emoji": false,
+    "text": "placeholder text",
+    "type": "plain_text",
+  },
+  "type": "static_select",
+}
+`;
+
+exports[`slack jsx renders a single-select with option_groups 1`] = `
+Object {
+  "action_id": "action1",
+  "initial_option": Object {
+    "text": Object {
+      "emoji": false,
+      "text": "option 1",
+      "type": "plain_text",
+    },
+    "value": "value1",
+  },
+  "option_groups": Array [
+    Object {
+      "label": Object {
+        "emoji": false,
+        "text": "Group 1",
+        "type": "plain_text",
+      },
+      "options": Array [
+        Object {
+          "text": Object {
+            "emoji": false,
+            "text": "option 1",
+            "type": "plain_text",
+          },
+          "value": "value1",
+        },
+        Object {
+          "text": Object {
+            "emoji": false,
+            "text": "option 2",
+            "type": "plain_text",
+          },
+          "value": "value2",
+        },
+      ],
+    },
+    Object {
+      "label": Object {
+        "emoji": false,
+        "text": "Group 2",
+        "type": "plain_text",
+      },
+      "options": Array [
+        Object {
+          "text": Object {
+            "emoji": false,
+            "text": "option 1",
+            "type": "plain_text",
+          },
+          "value": "value3",
+        },
+        Object {
+          "text": Object {
+            "emoji": false,
+            "text": "option 2",
+            "type": "plain_text",
+          },
+          "value": "value4",
+        },
+      ],
     },
   ],
   "placeholder": Object {

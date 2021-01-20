@@ -9,10 +9,16 @@ export interface MultiSelectElementProps extends SelectElementProps {
 export const MultiSelectElement: FC<
   MultiSelectElementProps,
   MultiStaticSelect
-> = ({ placeholder, actionId, options, initialOptions }) => ({
+> = ({ placeholder, actionId, options, optionGroups, initialOptions }) => ({
   type: 'multi_static_select',
   placeholder,
   action_id: actionId,
-  options: buildInputOptions(options),
+  ...(options && { options: buildInputOptions(options) }),
+  ...(optionGroups && {
+    option_groups: optionGroups.map(group => ({
+      label: group.label,
+      options: buildInputOptions(group.options),
+    })),
+  }),
   initial_options: buildInputOptions(initialOptions),
 });
