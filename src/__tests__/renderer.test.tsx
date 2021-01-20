@@ -462,6 +462,53 @@ describe('slack jsx', () => {
     expect(await render(message)).toMatchSnapshot();
   });
 
+  it('renders a multi-select with option_groups', async () => {
+    const message = (
+      <MultiSelectElement
+        actionId="action1"
+        placeholder={<PlainText>placeholder text</PlainText>}
+        initialOptions={[
+          {
+            text: <PlainText>option 1</PlainText>,
+            value: 'value1',
+          },
+        ]}
+        optionGroups={[
+          {
+            label: <PlainText>Group 1</PlainText>,
+            options: [
+              {
+                text: <PlainText>option 1</PlainText>,
+                value: 'value1',
+              },
+              {
+                text: <PlainText>option 2</PlainText>,
+                value: 'value2',
+              },
+            ],
+          },
+          {
+            label: <PlainText>Group 2</PlainText>,
+            options: [
+              {
+                text: <PlainText>option 1</PlainText>,
+                value: 'value3',
+              },
+              {
+                text: <PlainText>option 2</PlainText>,
+                value: 'value4',
+              },
+            ],
+          },
+        ]}
+      />
+    );
+
+    console.log(JSON.stringify(await render(message), null, 2));
+
+    expect(await render(message)).toMatchSnapshot();
+  });
+
   it('renders a simple single-select', async () => {
     const message = (
       <SingleSelectElement
@@ -479,6 +526,48 @@ describe('slack jsx', () => {
           {
             text: <PlainText>option 2</PlainText>,
             value: 'value2',
+          },
+        ]}
+      />
+    );
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('renders a single-select with option_groups', async () => {
+    const message = (
+      <SingleSelectElement
+        actionId="action1"
+        initialOption={{
+          text: <PlainText>option 1</PlainText>,
+          value: 'value1',
+        }}
+        placeholder={<PlainText>placeholder text</PlainText>}
+        optionGroups={[
+          {
+            label: <PlainText>Group 1</PlainText>,
+            options: [
+              {
+                text: <PlainText>option 1</PlainText>,
+                value: 'value1',
+              },
+              {
+                text: <PlainText>option 2</PlainText>,
+                value: 'value2',
+              },
+            ],
+          },
+          {
+            label: <PlainText>Group 2</PlainText>,
+            options: [
+              {
+                text: <PlainText>option 1</PlainText>,
+                value: 'value3',
+              },
+              {
+                text: <PlainText>option 2</PlainText>,
+                value: 'value4',
+              },
+            ],
           },
         ]}
       />
