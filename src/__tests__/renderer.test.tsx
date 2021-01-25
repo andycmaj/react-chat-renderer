@@ -638,11 +638,22 @@ describe('slack jsx', () => {
     expect(await render(message)).toMatchSnapshot();
   });
 
-  it('renders ConversationsSelect', async () => {
+  it('renders ConversationsSelect with no filter', async () => {
     const message = (
       <ConversationsSelect
         responseUrlEnabled={true}
         actionId="conversations-action-id"
+      />
+    );
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('renders ConversationsSelect with filter', async () => {
+    const message = (
+      <ConversationsSelect
+        responseUrlEnabled={true}
+        actionId="conversations-action-id"
+        filter={{ include: ['public'] }}
       />
     );
     expect(await render(message)).toMatchSnapshot();
