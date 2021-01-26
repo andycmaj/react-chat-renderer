@@ -5,6 +5,7 @@ import { ContainerProps } from './ContainerProps';
 export interface InputBlockProps extends BlockProps, ContainerProps<any> {
   label: string;
   hint?: string;
+  optional?: boolean;
 }
 
 export const InputBlock: Block<InputBlockProps, InputBlockSpec> = ({
@@ -12,12 +13,14 @@ export const InputBlock: Block<InputBlockProps, InputBlockSpec> = ({
   hint,
   blockId,
   children,
+  optional,
 }) => {
   const spec: InputBlockSpec = {
     type: 'input',
     label: { type: 'plain_text', text: label, emoji: true },
     block_id: blockId,
     element: children[0],
+    optional,
   };
 
   if (hint) {

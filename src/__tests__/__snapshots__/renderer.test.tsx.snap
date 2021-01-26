@@ -862,3 +862,50 @@ Object {
   "type": "context",
 }
 `;
+
+exports[`slack jsx simple input block test 1`] = `
+Object {
+  "element": Object {
+    "action_id": "action1",
+    "initial_option": Object {
+      "text": Object {
+        "emoji": false,
+        "text": "option 1",
+        "type": "plain_text",
+      },
+      "value": "value1",
+    },
+    "options": Array [
+      Object {
+        "text": Object {
+          "emoji": false,
+          "text": "option 1",
+          "type": "plain_text",
+        },
+        "value": "value1",
+      },
+      Object {
+        "text": Object {
+          "emoji": false,
+          "text": "option 2",
+          "type": "plain_text",
+        },
+        "value": "value2",
+      },
+    ],
+    "placeholder": Object {
+      "emoji": false,
+      "text": "placeholder text",
+      "type": "plain_text",
+    },
+    "type": "static_select",
+  },
+  "label": Object {
+    "emoji": true,
+    "text": "test",
+    "type": "plain_text",
+  },
+  "optional": true,
+  "type": "input",
+}
+`;

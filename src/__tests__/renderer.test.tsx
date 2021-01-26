@@ -29,6 +29,7 @@ import {
   RadioButtonsElement,
   ConversationsSelect,
   ChannelSelect,
+  InputBlock,
 } from '../components';
 
 const fakePromise = async () => Promise.resolve();
@@ -655,6 +656,32 @@ describe('slack jsx', () => {
         actionId="conversations-action-id"
         filter={{ include: ['public'] }}
       />
+    );
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('simple input block test', async () => {
+    const message = (
+      <InputBlock label="test" optional={true}>
+        <SingleSelectElement
+          actionId="action1"
+          initialOption={{
+            text: <PlainText>option 1</PlainText>,
+            value: 'value1',
+          }}
+          placeholder={<PlainText>placeholder text</PlainText>}
+          options={[
+            {
+              text: <PlainText>option 1</PlainText>,
+              value: 'value1',
+            },
+            {
+              text: <PlainText>option 2</PlainText>,
+              value: 'value2',
+            },
+          ]}
+        />{' '}
+      </InputBlock>
     );
     expect(await render(message)).toMatchSnapshot();
   });
