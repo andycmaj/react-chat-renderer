@@ -385,18 +385,6 @@ Object {
 }
 `;
 
-exports[`slack jsx renders ConversationsSelect 1`] = `
-Object {
-  "action_id": "conversations-action-id",
-  "placeholder": Object {
-    "text": "",
-    "type": "plain_text",
-  },
-  "response_url_enabled": true,
-  "type": "conversations_select",
-}
-`;
-
 exports[`slack jsx renders ConversationsSelect with filter 1`] = `
 Object {
   "action_id": "conversations-action-id",
