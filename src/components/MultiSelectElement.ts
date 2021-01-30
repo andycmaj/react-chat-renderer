@@ -20,5 +20,7 @@ export const MultiSelectElement: FC<
       options: buildInputOptions(group.options),
     })),
   }),
-  initial_options: buildInputOptions(initialOptions),
+  ...(initialOptions && {
+    initial_options: buildInputOptions(initialOptions),
+  }),
 });
