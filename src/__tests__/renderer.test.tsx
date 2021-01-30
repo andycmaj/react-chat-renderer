@@ -1,5 +1,6 @@
 /** @jsx slack.h */
 /** @jsxFrag slack.Fragment */
+import { View } from '@slack/types';
 import {
   slack,
   render,
@@ -476,6 +477,10 @@ describe('slack jsx', () => {
         ]}
         optionGroups={[
           {
+            label: <PlainText>Empty Group</PlainText>,
+            options: [],
+          },
+          {
             label: <PlainText>Group 1</PlainText>,
             options: [
               {
@@ -505,9 +510,13 @@ describe('slack jsx', () => {
       />
     );
 
-    console.log(JSON.stringify(await render(message), null, 2));
+    const view = await render(message);
 
-    expect(await render(message)).toMatchSnapshot();
+    expect(view.option_groups[0].options).toMatchObject([]);
+
+    console.log(JSON.stringify(view, null, 2));
+
+    expect(view).toMatchSnapshot();
   });
 
   it('renders a simple single-select', async () => {

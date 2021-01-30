@@ -519,6 +519,14 @@ Object {
     Object {
       "label": Object {
         "emoji": false,
+        "text": "Empty Group",
+        "type": "plain_text",
+      },
+      "options": Array [],
+    },
+    Object {
+      "label": Object {
+        "emoji": false,
         "text": "Group 1",
         "type": "plain_text",
       },
@@ -623,6 +631,7 @@ Object {
 exports[`slack jsx renders a simple checkbox 1`] = `
 Object {
   "action_id": "action1",
+  "initial_options": Array [],
   "options": Array [
     Object {
       "description": Object {
