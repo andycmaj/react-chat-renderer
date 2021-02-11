@@ -31,6 +31,7 @@ import {
   ConversationsSelect,
   ChannelSelect,
   InputBlock,
+  TimePickerElement,
 } from '../components';
 
 const fakePromise = async () => Promise.resolve();
@@ -691,6 +692,17 @@ describe('slack jsx', () => {
           ]}
         />{' '}
       </InputBlock>
+    );
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('renders a beta time picker', async () => {
+    const message = (
+      <TimePickerElement
+        initialTime="22:04"
+        actionId="actionid"
+        placeholder={<PlainText>placeholder text</PlainText>}
+      />
     );
     expect(await render(message)).toMatchSnapshot();
   });

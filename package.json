@@ -23,7 +23,7 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "@slack/types": "1.8.0",
+    "@slack/types": "2.0.0",
     "lodash.flattendeep": "^4.4.0",
     "slackify-markdown": "3.0.3"
   },
