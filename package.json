@@ -1,6 +1,6 @@
 {
   "name": "react-chat-renderer",
-  "version": "0.5.14",
+  "version": "0.6.0",
   "license": "MIT",
   "scripts": {
     "postversion": "npm publish",
@@ -23,7 +23,7 @@
     "dist/**/*"
   ],
   "dependencies": {
-    "@slack/types": "1.8.0",
+    "@slack/types": "2.0.0",
     "lodash.flattendeep": "^4.4.0",
     "slackify-markdown": "4.0.0"
   },

@@ -5,7 +5,6 @@ import { buildInputOptions, InputOption } from './shared/inputOption';
 export interface RadioButtonsElementProps {
   initialOption?: InputOption;
   actionId: string;
-  confirm?: boolean;
   options: InputOption[];
 }
 

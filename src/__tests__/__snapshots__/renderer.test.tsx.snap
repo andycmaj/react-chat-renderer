@@ -437,6 +437,19 @@ this too is a test",
 }
 `;
 
+exports[`slack jsx renders a beta time picker 1`] = `
+Object {
+  "action_id": "actionid",
+  "initial_time": "22:04",
+  "placeholder": Object {
+    "emoji": false,
+    "text": "placeholder text",
+    "type": "plain_text",
+  },
+  "type": "time_picker",
+}
+`;
+
 exports[`slack jsx renders a complex message 1`] = `
 Object {
   "blocks": Array [

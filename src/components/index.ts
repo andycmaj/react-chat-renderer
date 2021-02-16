@@ -30,3 +30,4 @@ export * from './Mention';
 export * from './ProgressBar';
 export * from './LineBreak';
 export * from './BlockQuote';
+export * from './TimePicker';
