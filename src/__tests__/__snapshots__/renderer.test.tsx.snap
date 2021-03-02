@@ -823,6 +823,29 @@ Object {
 }
 `;
 
+exports[`slack jsx renders an external multi-select 1`] = `
+Object {
+  "action_id": "action1",
+  "initial_options": Array [
+    Object {
+      "text": Object {
+        "emoji": false,
+        "text": "option 1",
+        "type": "plain_text",
+      },
+      "value": "value1",
+    },
+  ],
+  "min_query_length": 0,
+  "placeholder": Object {
+    "emoji": false,
+    "text": "placeholder text",
+    "type": "plain_text",
+  },
+  "type": "multi_external_select",
+}
+`;
+
 exports[`slack jsx renders contextblock children 1`] = `
 Object {
   "elements": Array [
