@@ -17,6 +17,7 @@ export * from './ChannelsSelect';
 export * from './ConversationsSelect';
 export * from './SingleSelectElement';
 export * from './MultiSelectElement';
+export * from './ExternalSelect';
 export * from './Checkbox';
 export * from './RadioButtons';
 export { InputOption } from './shared/inputOption';

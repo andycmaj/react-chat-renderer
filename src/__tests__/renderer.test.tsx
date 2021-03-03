@@ -32,6 +32,7 @@ import {
   ChannelSelect,
   InputBlock,
   TimePickerElement,
+  MultiExternalSelectElement,
 } from '../components';
 
 const fakePromise = async () => Promise.resolve();
@@ -433,6 +434,23 @@ describe('slack jsx', () => {
     const message = (
       <BlockQuote>this is a test{'\n'}this too is a test</BlockQuote>
     );
+    expect(await render(message)).toMatchSnapshot();
+  });
+
+  it('renders an external multi-select', async () => {
+    const message = (
+      <MultiExternalSelectElement
+        actionId="action1"
+        placeholder={<PlainText>placeholder text</PlainText>}
+        initialOptions={[
+          {
+            text: <PlainText>option 1</PlainText>,
+            value: 'value1',
+          },
+        ]}
+      />
+    );
+
     expect(await render(message)).toMatchSnapshot();
   });
 
