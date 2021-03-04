@@ -446,7 +446,7 @@ Object {
     "text": "placeholder text",
     "type": "plain_text",
   },
-  "type": "time_picker",
+  "type": "timepicker",
 }
 `;
 
