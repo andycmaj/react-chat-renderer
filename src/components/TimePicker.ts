@@ -5,7 +5,7 @@ export interface TimePickerSpec {
   initial_time?: string;
   placeholder: PlainTextElement;
   action_id: string;
-  type: 'time_picker';
+  type: 'timepicker';
 }
 
 export interface TimePickerElementProps {
@@ -19,7 +19,7 @@ export const TimePickerElement: FC<TimePickerElementProps, TimePickerSpec> = ({
   actionId,
   placeholder,
 }) => ({
-  type: 'time_picker',
+  type: 'timepicker',
   action_id: actionId,
   initial_time: initialTime,
   placeholder,
