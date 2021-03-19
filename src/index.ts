@@ -19,6 +19,9 @@ const resolveDeep = async (thing: any) => {
   } else if (thing.__proto__ === Promise.prototype) {
     return await Promise.resolve(thing);
   } else if (typeof thing === 'object') {
+    if (Object.getPrototypeOf(thing).constructor.toString().match(/class/)) {
+      return await Promise.resolve(thing);
+    }
     const resolvedPairs = await Promise.all(
       Object.keys(thing).map(async key => [key, await resolveDeep(thing[key])])
     );

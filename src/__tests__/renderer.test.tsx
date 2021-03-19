@@ -724,4 +724,42 @@ describe('slack jsx', () => {
     );
     expect(await render(message)).toMatchSnapshot();
   });
+
+  it('renders with a class prop', async () => {
+    const expectedNameProp = 'testName';
+    class TestClass {
+      private name: string;
+      constructor(name: string) {
+        this.name = name;
+      }
+
+      get theName(): string {
+        return this.name;
+      }
+    }
+
+    interface ComponentProps {
+      testClass: TestClass;
+      children?: never;
+    }
+
+    const Component: FC<ComponentProps, ReturnType<typeof Message>> = ({
+      testClass,
+    }) => {
+      const name = testClass.theName;
+      expect(name).toEqual(expectedNameProp);
+      return (
+        <SectionBlock>
+          <MarkdownText>can you see me</MarkdownText>
+        </SectionBlock>
+      );
+    };
+
+    const message = (
+      <Message altText={<AltText>Code review activity</AltText>}>
+        <Component testClass={new TestClass(expectedNameProp)} />
+      </Message>
+    );
+    expect(await render(message)).toMatchSnapshot();
+  });
 });
