@@ -9,6 +9,7 @@ export interface HeaderBlockProps
 export interface HeaderBlockSpec {
   type: 'header';
   text: ReturnType<typeof PlainText>;
+  emoji: true;
 }
 
 export const HeaderBlock: Block<HeaderBlockProps, HeaderBlockSpec> = ({
@@ -16,6 +17,7 @@ export const HeaderBlock: Block<HeaderBlockProps, HeaderBlockSpec> = ({
   blockId,
 }) => ({
   type: 'header',
+  emoji: true,
   block_id: blockId,
   text: [].concat(children)[0],
 });
