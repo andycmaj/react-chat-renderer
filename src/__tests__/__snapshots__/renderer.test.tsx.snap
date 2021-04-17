@@ -644,7 +644,6 @@ Object {
 exports[`slack jsx renders a simple checkbox 1`] = `
 Object {
   "action_id": "action1",
-  "initial_options": Array [],
   "options": Array [
     Object {
       "description": Object {

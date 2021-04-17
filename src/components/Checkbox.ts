@@ -17,5 +17,7 @@ export const CheckboxElement: FC<CheckboxElementProps, Checkboxes> = ({
   type: 'checkboxes',
   action_id: actionId,
   options: buildInputOptions(options),
-  initial_options: buildInputOptions(initialOptions),
+  ...(initialOptions && {
+    initial_options: buildInputOptions(initialOptions),
+  }),
 });
