@@ -196,9 +196,10 @@ describe('slack jsx', () => {
   });
 
   it('component with span array children', async () => {
+    const linkText = 'hi & <google>';
     const message = (
       <MarkdownText>
-        link <Link href="https://google.com">hi google</Link>\n hi user{' '}
+        link <Link href="https://google.com">{linkText}</Link>\n hi user{' '}
         <Mention userId="U12345" />
       </MarkdownText>
     );

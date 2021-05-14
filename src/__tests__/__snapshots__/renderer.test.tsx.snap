@@ -257,7 +257,7 @@ Object {
 
 exports[`slack jsx component with span array children 1`] = `
 Object {
-  "text": "link <https://google.com|hi google>\\\\n hi user <@U12345>",
+  "text": "link <https://google.com|hi &amp; &lt;google&gt;>\\\\n hi user <@U12345>",
   "type": "mrkdwn",
   "verbatim": false,
 }
