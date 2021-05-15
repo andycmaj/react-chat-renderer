@@ -1,11 +1,14 @@
 import flattenDeep from 'lodash.flattendeep';
+
 export type SlackSpec = {} | string;
 
 const pruneFields = <R>(o: {}): Partial<R> =>
-  Object.keys(o).reduce(
-    (obj, k) => (o[k] !== undefined ? { ...obj, [k]: o[k] } : obj),
-    {}
-  );
+  o
+    ? Object.keys(o).reduce(
+        (obj, k) => (o[k] !== undefined ? { ...obj, [k]: o[k] } : obj),
+        {}
+      )
+    : undefined;
 
 type Props<P> = { children?: unknown } & P;
 

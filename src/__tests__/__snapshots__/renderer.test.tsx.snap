@@ -257,7 +257,7 @@ Object {
 
 exports[`slack jsx component with span array children 1`] = `
 Object {
-  "text": "link <https://google.com|hi google>\\\\n hi user <@U12345>",
+  "text": "link <https://google.com|hi &amp; &lt;google&gt;>\\\\n hi user <@U12345>",
   "type": "mrkdwn",
   "verbatim": false,
 }
@@ -644,7 +644,6 @@ Object {
 exports[`slack jsx renders a simple checkbox 1`] = `
 Object {
   "action_id": "action1",
-  "initial_options": Array [],
   "options": Array [
     Object {
       "description": Object {
