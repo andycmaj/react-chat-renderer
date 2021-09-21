@@ -847,26 +847,34 @@ Object {
 
 exports[`slack jsx renders an overflow menu 1`] = `
 Object {
-  "action_id": "action1",
-  "options": Array [
-    Object {
-      "text": Object {
-        "emoji": false,
-        "text": "option 1",
-        "type": "plain_text",
+  "accessory": Object {
+    "action_id": "action1",
+    "options": Array [
+      Object {
+        "text": Object {
+          "emoji": false,
+          "text": "option 1",
+          "type": "plain_text",
+        },
+        "value": "value1",
       },
-      "value": "value1",
-    },
-    Object {
-      "text": Object {
-        "emoji": false,
-        "text": "option 2",
-        "type": "plain_text",
+      Object {
+        "text": Object {
+          "emoji": false,
+          "text": "option 2",
+          "type": "plain_text",
+        },
+        "value": "value2",
       },
-      "value": "value2",
-    },
-  ],
-  "type": "overflow",
+    ],
+    "type": "overflow",
+  },
+  "text": Object {
+    "text": "This is a section block with an overflow menu.",
+    "type": "mrkdwn",
+    "verbatim": false,
+  },
+  "type": "section",
 }
 `;
 

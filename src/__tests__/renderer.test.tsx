@@ -33,7 +33,7 @@ import {
   InputBlock,
   TimePickerElement,
   MultiExternalSelectElement,
-  OverflowMenu,
+  OverflowMenuElement,
 } from '../components';
 
 const fakePromise = async () => Promise.resolve();
@@ -767,19 +767,27 @@ describe('slack jsx', () => {
 
   it('renders an overflow menu', async () => {
     const message = (
-      <OverflowMenu
-        actionId="action1"
-        options={[
-          {
-            text: <PlainText>option 1</PlainText>,
-            value: 'value1',
-          },
-          {
-            text: <PlainText>option 2</PlainText>,
-            value: 'value2',
-          },
-        ]}
-      />
+      <SectionBlock
+        accessory={
+          <OverflowMenuElement
+            actionId="action1"
+            options={[
+              {
+                text: <PlainText>option 1</PlainText>,
+                value: 'value1',
+              },
+              {
+                text: <PlainText>option 2</PlainText>,
+                value: 'value2',
+              },
+            ]}
+          />
+        }
+      >
+        <MarkdownText>
+          This is a section block with an overflow menu.
+        </MarkdownText>
+      </SectionBlock>
     );
     expect(await render(message)).toMatchSnapshot();
   });

@@ -20,7 +20,7 @@ export * from './MultiSelectElement';
 export * from './ExternalSelect';
 export * from './Checkbox';
 export * from './RadioButtons';
-export * from './OverflowMenu';
+export * from './OverflowMenuElement';
 export { InputOption } from './shared/inputOption';
 
 export * from './PlainText';
