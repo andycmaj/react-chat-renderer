@@ -845,6 +845,39 @@ Object {
 }
 `;
 
+exports[`slack jsx renders an overflow menu 1`] = `
+Object {
+  "accessory": Object {
+    "action_id": "action1",
+    "options": Array [
+      Object {
+        "text": Object {
+          "emoji": false,
+          "text": "option 1",
+          "type": "plain_text",
+        },
+        "value": "value1",
+      },
+      Object {
+        "text": Object {
+          "emoji": false,
+          "text": "option 2",
+          "type": "plain_text",
+        },
+        "value": "value2",
+      },
+    ],
+    "type": "overflow",
+  },
+  "text": Object {
+    "text": "This is a section block with an overflow menu.",
+    "type": "mrkdwn",
+    "verbatim": false,
+  },
+  "type": "section",
+}
+`;
+
 exports[`slack jsx renders contextblock children 1`] = `
 Object {
   "elements": Array [
