@@ -845,6 +845,31 @@ Object {
 }
 `;
 
+exports[`slack jsx renders an overflow menu 1`] = `
+Object {
+  "action_id": "action1",
+  "options": Array [
+    Object {
+      "text": Object {
+        "emoji": false,
+        "text": "option 1",
+        "type": "plain_text",
+      },
+      "value": "value1",
+    },
+    Object {
+      "text": Object {
+        "emoji": false,
+        "text": "option 2",
+        "type": "plain_text",
+      },
+      "value": "value2",
+    },
+  ],
+  "type": "overflow",
+}
+`;
+
 exports[`slack jsx renders contextblock children 1`] = `
 Object {
   "elements": Array [
